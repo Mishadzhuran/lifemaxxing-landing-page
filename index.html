@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LifeMaxxing — Log Your Life. Max It Out.</title>
+<meta name="description" content="LifeMaxxing is the IMDb for real life — log your experiences, discover what to do next, and see where your friends have been. Join the founding-member waitlist.">
+<meta property="og:title" content="LifeMaxxing — Log Your Life. Max It Out.">
+<meta property="og:description" content="The IMDb for real life. Log experiences, discover what to do next, see where friends have been. Become a Founding Member.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/jpeg" href="assets/icon.jpg">
+<link rel="apple-touch-icon" href="assets/icon.jpg">
+
+<!-- Typography: Fraunces (editorial serif — matches the serif used in-app for names & "Ask Lify")
+     + Outfit (geometric sans — matches the app's UI type) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   LIFEMAXXING BRAND TOKENS
+   ============================================================ */
+:root{
+  --cream:      #F7F3EB;  /* background */
+  --forest:     #2D4628;  /* CTA / brand green */
+  --forest-deep:#233A20;  /* hover green */
+  --ink:        #1C1C1C;  /* headlines */
+  --gray:       #7A7A72;  /* subtext */
+  --white:      #FFFFFF;
+  --divider:    #E8E2D6;  /* borders / outline buttons */
+  --gold:       #D4AF37;  /* accents, stars, streaks */
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Outfit", -apple-system, "SF Pro Text", sans-serif;
+
+  --r-lg: 28px;
+  --r-md: 20px;
+  --r-sm: 14px;
+  --shadow-card: 0 2px 6px rgba(28,28,28,.04), 0 18px 44px -18px rgba(28,28,28,.18);
+  --shadow-float: 0 30px 70px -24px rgba(28,28,28,.32);
+  --ease-out: cubic-bezier(.22,1,.36,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-body);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+::selection{background:var(--forest);color:var(--cream)}
+
+/* ============================================================
+   REVEAL-ON-SCROLL (elements start hidden, JS adds .in)
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.08s}
+.reveal[data-delay="2"]{transition-delay:.16s}
+.reveal[data-delay="3"]{transition-delay:.24s}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+
+.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+.section{padding:72px 0}
+@media(min-width:760px){.section{padding:110px 0}}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--forest);
+}
+.kicker::before{content:"";width:22px;height:2px;background:var(--gold);border-radius:2px}
+
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+.sub{color:var(--gray);font-size:17px;font-weight:400}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-body);font-weight:600;font-size:16px;
+  padding:16px 30px;border-radius:999px;
+  transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),background .25s ease;
+  will-change:transform;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:active{transform:scale(.96)}
+.btn-primary{
+  background:var(--forest);color:var(--white);
+  box-shadow:0 10px 26px -10px rgba(45,70,40,.55);
+}
+.btn-primary:hover{background:var(--forest-deep);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(45,70,40,.6)}
+.btn-primary .arr{transition:transform .35s var(--ease-out)}
+.btn-primary:hover .arr{transform:translateX(4px)}
+.btn-ghost{
+  background:transparent;color:var(--ink);
+  border:1.5px solid var(--divider);
+}
+.btn-ghost:hover{border-color:var(--forest);color:var(--forest);transform:translateY(-2px)}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .4s ease,box-shadow .4s ease,backdrop-filter .4s ease;
+}
+.header.scrolled{
+  background:rgba(247,243,235,.82);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--divider);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;
+}
+.header .logo img{height:44px;width:auto}
+.header .btn{padding:11px 22px;font-size:14px}
+@media(max-width:479px){.header .btn{padding:10px 18px;font-size:13px}.header .logo img{height:38px}}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  padding:120px 0 40px;
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;
+}
+@media(min-width:900px){.hero{padding:150px 0 60px}}
+
+/* soft ambient blobs behind hero */
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
+.blob-1{width:520px;height:520px;background:#E5EBDD;top:-160px;right:-140px}
+.blob-2{width:420px;height:420px;background:#F0E7D2;bottom:-120px;left:-160px}
+.blob-3{width:260px;height:260px;background:rgba(212,175,55,.16);top:34%;left:52%}
+
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;gap:56px;align-items:center;
+}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:32px}}
+
+.hero-copy{text-align:center}
+@media(min-width:900px){.hero-copy{text-align:left}}
+
+.hero-logo{margin:0 auto 34px;width:min(300px,68vw)}
+@media(min-width:900px){.hero-logo{margin:0 0 34px}}
+
+.hero h1{
+  font-size:clamp(42px,9vw,72px);
+  margin:18px 0 20px;
+}
+.hero h1 em{
+  font-style:italic;font-weight:500;color:var(--forest);position:relative;white-space:nowrap;
+}
+.hero h1 em .u{position:absolute;left:0;right:0;bottom:.02em;height:.14em;overflow:visible}
+.hero h1 em .u path{stroke:var(--gold);stroke-width:7;fill:none;stroke-linecap:round;
+  stroke-dasharray:320;stroke-dashoffset:320;animation:draw 1s .9s var(--ease-out) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.hero .sub{max-width:460px;margin:0 auto 34px;font-size:18px}
+@media(min-width:900px){.hero .sub{margin:0 0 34px}}
+
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+@media(min-width:900px){.hero-ctas{justify-content:flex-start}}
+
+.hero-meta{
+  display:flex;align-items:center;gap:12px;justify-content:center;
+  margin-top:30px;color:var(--gray);font-size:14px;
+}
+@media(min-width:900px){.hero-meta{justify-content:flex-start}}
+.avatar-stack{display:flex}
+.avatar-stack span{
+  width:30px;height:30px;border-radius:50%;border:2px solid var(--cream);
+  margin-left:-9px;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:var(--white);
+}
+.avatar-stack span:first-child{margin-left:0}
+
+/* --------- HERO PHONE MOCKUP --------- */
+.hero-visual{position:relative;display:flex;justify-content:center;perspective:1200px}
+.phone{
+  width:min(330px,82vw);
+  background:var(--ink);
+  border-radius:48px;
+  padding:10px;
+  box-shadow:var(--shadow-float);
+  transform:rotate(2.5deg);
+  animation:phone-in 1.2s .3s var(--ease-out) both, float 7s 1.6s ease-in-out infinite;
+}
+@keyframes phone-in{from{opacity:0;transform:rotate(6deg) translateY(60px)}to{opacity:1;transform:rotate(2.5deg) translateY(0)}}
+@keyframes float{0%,100%{transform:rotate(2.5deg) translateY(0)}50%{transform:rotate(2.5deg) translateY(-12px)}}
+@media (prefers-reduced-motion: reduce){.phone{animation:none}}
+
+.phone-screen{
+  background:var(--cream);border-radius:40px;overflow:hidden;
+  padding:16px 14px 18px;position:relative;
+}
+.phone-notch{width:110px;height:26px;background:var(--ink);border-radius:999px;margin:0 auto 14px}
+
+/* in-app chips row */
+.app-chips{display:flex;gap:8px;margin-bottom:14px;overflow:hidden}
+.chip{
+  font-size:12px;font-weight:600;padding:8px 15px;border-radius:999px;
+  background:var(--white);color:var(--ink);border:1px solid var(--divider);white-space:nowrap;
+}
+.chip.on{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+
+/* in-app experience card (mirrors the real Home feed) */
+.app-card{background:var(--white);border-radius:22px;overflow:hidden;box-shadow:0 8px 24px -12px rgba(28,28,28,.14)}
+.app-card-head{display:flex;align-items:center;gap:9px;padding:11px 13px}
+.app-ava{width:32px;height:32px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+.app-card-head .who{font-size:12.5px;font-weight:600;line-height:1.25}
+.app-card-head .where{font-size:11px;color:var(--gray);font-weight:400}
+.app-badge{
+  margin-left:auto;background:var(--forest);color:var(--cream);
+  font-size:10px;font-weight:600;padding:5px 10px;border-radius:999px;display:flex;align-items:center;gap:4px;
+}
+.app-photo{
+  height:220px;position:relative;
+  background:
+    radial-gradient(120% 90% at 20% 108%, #C4B49A 0%, transparent 42%),
+    radial-gradient(90% 60% at 82% 100%, #8A6748 0%, transparent 50%),
+    linear-gradient(180deg, #BCD0DC 0%, #D8CDB4 46%, #B37A4E 78%, #8F5638 100%);
+}
+.app-photo::before,.app-photo::after{content:"";position:absolute;background:#A2542F;border-radius:38% 42% 8% 10%/58% 66% 6% 8%}
+.app-photo::before{width:74px;height:120px;left:8%;bottom:24%;filter:brightness(.82)}
+.app-photo::after{width:60px;height:96px;right:10%;bottom:26%;filter:brightness(.92)}
+.app-photo .road{position:absolute;left:38%;bottom:0;width:24%;height:44%;background:linear-gradient(180deg,transparent, #7E8A93 30%, #5E6B75);clip-path:polygon(46% 0,54% 0,100% 100%,0 100%)}
+.app-photo .title{
+  position:absolute;left:14px;bottom:28px;color:#fff;z-index:2;
+  font-family:var(--font-display);font-size:17px;font-weight:600;text-shadow:0 2px 14px rgba(0,0,0,.45);
+}
+.app-photo .rate{position:absolute;left:14px;bottom:10px;display:flex;align-items:center;gap:4px;color:#fff;font-size:11.5px;font-weight:600;z-index:2}
+.app-photo .shade{position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(180deg,transparent,rgba(20,24,18,.55))}
+.app-card-body{padding:12px 13px 13px}
+.app-card-body p{font-size:11.5px;color:#3d3d38;line-height:1.5}
+.app-tags{display:flex;gap:6px;margin:9px 0 11px}
+.app-tags span{font-size:10px;font-weight:600;color:var(--forest);background:var(--cream);border-radius:999px;padding:4px 9px}
+.app-actions{display:flex;align-items:center;gap:14px;color:var(--ink);font-size:11px;font-weight:600}
+.app-actions svg{width:16px;height:16px;vertical-align:-3px}
+.app-actions .r{margin-left:auto;display:flex;gap:12px;color:var(--gray)}
+
+/* floating tags around the phone */
+.float-tag{
+  position:absolute;z-index:3;background:var(--white);border-radius:16px;
+  box-shadow:var(--shadow-card);padding:10px 14px;
+  font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;
+  animation:float 6s ease-in-out infinite;
+}
+.float-tag .star{color:var(--gold)}
+.float-tag small{display:block;font-weight:400;color:var(--gray);font-size:10.5px;line-height:1.2}
+.ft-1{top:5%;left:calc(50% - 245px);animation-delay:.6s}
+.ft-2{bottom:16%;right:calc(50% - 250px);animation-delay:1.4s}
+@media(max-width:900px){
+  .ft-1{left:max(-6px,calc(50% - 220px))}
+  .ft-2{right:max(-6px,calc(50% - 220px))}
+}
+
+/* scroll cue */
+.scroll-cue{
+  position:relative;z-index:2;
+  margin:56px auto 0;width:26px;height:42px;border:2px solid var(--divider);border-radius:999px;
+  display:flex;justify-content:center;padding-top:8px;
+}
+.scroll-cue i{width:4px;height:8px;border-radius:4px;background:var(--forest);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:1}60%{transform:translateY(12px);opacity:.2}}
+
+/* ============================================================
+   FEATURES
+   ============================================================ */
+.features-head{text-align:center;max-width:640px;margin:0 auto 64px}
+.features-head h2{font-size:clamp(32px,6vw,52px);margin:16px 0 18px}
+
+.feature-row{
+  display:grid;gap:40px;align-items:center;
+  margin-bottom:88px;
+}
+.feature-row:last-child{margin-bottom:0}
+@media(min-width:860px){
+  .feature-row{grid-template-columns:1fr 1fr;gap:72px}
+  .feature-row.flip .feature-copy{order:2}
+  .feature-row.flip .feature-visual{order:1}
+}
+
+.feature-copy .icon{
+  width:52px;height:52px;border-radius:16px;background:var(--forest);
+  display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+  box-shadow:0 10px 22px -10px rgba(45,70,40,.5);
+}
+.feature-copy .icon svg{width:24px;height:24px;stroke:var(--cream)}
+.feature-copy h3{font-size:clamp(26px,4.4vw,36px);margin-bottom:14px}
+.feature-copy p{color:var(--gray);font-size:16.5px;max-width:440px}
+.feature-copy .points{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.feature-copy .points li{
+  list-style:none;display:flex;gap:10px;align-items:baseline;font-size:15px;color:#3d3d38;
+}
+.feature-copy .points li::before{content:"✦";color:var(--gold);font-size:12px}
+
+/* device-style visual shells */
+.feature-visual{display:flex;justify-content:center}
+.shot{
+  width:min(340px,88vw);
+  background:var(--white);
+  border-radius:30px;
+  border:1px solid var(--divider);
+  box-shadow:var(--shadow-card);
+  padding:18px;
+  transition:transform .6s var(--ease-out),box-shadow .6s var(--ease-out);
+}
+.shot:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:var(--shadow-float)}
+
+/* --- explore mockup --- */
+.m-search{
+  display:flex;align-items:center;gap:8px;background:var(--cream);
+  border-radius:999px;padding:11px 15px;color:var(--gray);font-size:12.5px;margin-bottom:14px;
+}
+.m-search svg{width:14px;height:14px;stroke:var(--gray)}
+.m-label{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--gray);margin:2px 0 9px}
+.m-row{
+  display:flex;gap:11px;align-items:center;background:var(--cream);
+  border-radius:16px;padding:11px;margin-bottom:9px;position:relative;overflow:hidden;
+  border:1px solid transparent;transition:border-color .3s;
+}
+.shot:hover .m-row{border-color:var(--divider)}
+.m-row .bar{position:absolute;left:0;top:0;bottom:0;width:4px}
+.m-thumb{width:46px;height:46px;border-radius:12px;flex:none}
+.m-row .t{font-size:12.5px;font-weight:600;line-height:1.3}
+.m-row .d{font-size:10.5px;color:var(--gray)}
+.m-row .s{font-size:10.5px;color:var(--gray);display:flex;align-items:center;gap:3px;margin-top:2px}
+.m-row .s b{color:var(--ink)}
+.m-star{color:var(--gold)}
+
+/* --- map mockup --- */
+.m-map{
+  position:relative;height:250px;border-radius:18px;overflow:hidden;
+  background:
+    linear-gradient(rgba(45,70,40,.05) 1.4px, transparent 1.4px),
+    linear-gradient(90deg, rgba(45,70,40,.05) 1.4px, transparent 1.4px),
+    linear-gradient(120deg,#EFEADF, #F5F0E4 55%, #E9EDDF);
+  background-size:34px 34px,34px 34px,cover;
+}
+.m-map .river{
+  position:absolute;top:-12%;bottom:-8%;left:47%;width:15%;
+  background:#CFE0E4;border-radius:50%/12%;transform:rotate(9deg);
+}
+.m-map .park{position:absolute;background:rgba(45,70,40,.12);border-radius:40%}
+.m-pin{
+  position:absolute;width:34px;height:34px;border-radius:50% 50% 50% 12%;
+  transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 14px -4px rgba(28,28,28,.35);
+  animation:pin-pop .6s var(--ease-out) both;
+}
+.m-pin svg{transform:rotate(45deg);width:15px;height:15px}
+@keyframes pin-pop{from{transform:rotate(-45deg) scale(0)}to{transform:rotate(-45deg) scale(1)}}
+.m-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  background:var(--forest);border-radius:16px;margin-top:14px;padding:14px 6px;text-align:center;
+}
+.m-stats b{font-family:var(--font-display);font-size:20px;color:var(--gold);display:block;line-height:1.1}
+.m-stats span{font-size:9px;font-weight:700;letter-spacing:.12em;color:rgba(247,243,235,.75)}
+
+/* --- profile mockup --- */
+.m-cover{
+  height:86px;border-radius:18px 18px 0 0;margin:-18px -18px 0;
+  background:linear-gradient(160deg,#9FB4C7 0%, #5C7A8A 45%, #2F4A44 100%);
+  position:relative;overflow:hidden;
+}
+.m-cover::before,.m-cover::after{content:"";position:absolute;bottom:-6px;border-radius:20% 60% 0 0/60% 100% 0 0;background:#243B33}
+.m-cover::before{left:-8%;width:55%;height:52%}
+.m-cover::after{right:-10%;width:60%;height:64%;opacity:.85}
+.m-pava{
+  width:62px;height:62px;border-radius:50%;border:3px solid var(--white);
+  margin:-31px 0 8px 4px;position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px;
+  background:linear-gradient(140deg,#8a6d5c,#4d3f38);
+}
+.m-name{font-family:var(--font-display);font-size:19px;font-weight:600;display:flex;align-items:center;gap:6px}
+.m-name .check{width:15px;height:15px;border-radius:50%;background:var(--gold);display:inline-flex;align-items:center;justify-content:center}
+.m-name .check svg{width:8px;height:8px;stroke:#fff}
+.m-handle{font-size:11px;color:var(--gray)}
+.m-streak{
+  display:inline-flex;align-items:center;gap:5px;background:#F3EBD8;color:#8a6d1f;
+  font-size:10.5px;font-weight:700;border-radius:999px;padding:5px 11px;margin:9px 0 13px;
+}
+.m-pstats{display:flex;border:1px solid var(--divider);border-radius:16px;padding:12px 0;margin-bottom:12px}
+.m-pstats div{flex:1;text-align:center}
+.m-pstats div+div{border-left:1px solid var(--divider)}
+.m-pstats b{font-family:var(--font-display);font-size:17px;display:block;line-height:1.1}
+.m-pstats span{font-size:8.5px;font-weight:700;letter-spacing:.1em;color:var(--gray)}
+
+/* --- log/compose mockup --- */
+.m-compose .head{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.m-compose .head b{font-family:var(--font-display);font-size:16px;font-weight:600}
+.m-photo-strip{display:grid;grid-template-columns:1.6fr 1fr;gap:8px;margin-bottom:12px}
+.m-photo-strip i{border-radius:12px;height:88px;display:block}
+.m-photo-strip i:nth-child(1){background:linear-gradient(150deg,#B9CBD8,#C99A62 65%,#9A6238)}
+.m-photo-strip i:nth-child(2){background:linear-gradient(160deg,#DCE3D2,#7E9678);position:relative}
+.m-photo-strip i:nth-child(2)::after{
+  content:"+ 12";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:13px;background:rgba(28,28,28,.28);border-radius:12px;font-style:normal;
+}
+.m-stars{display:flex;gap:4px;margin-bottom:10px}
+.m-stars svg{width:20px;height:20px}
+.m-field{background:var(--cream);border-radius:12px;padding:10px 13px;font-size:11.5px;color:var(--gray);margin-bottom:8px}
+.m-post{
+  background:var(--forest);color:var(--cream);text-align:center;border-radius:999px;
+  font-size:12.5px;font-weight:700;padding:11px;margin-top:4px;
+}
+
+/* ============================================================
+   SHOWCASE (video + asset grid placeholders)
+   ============================================================ */
+.showcase{background:var(--forest);border-radius:var(--r-lg);overflow:hidden;position:relative;color:var(--cream)}
+.showcase-inner{padding:64px 24px}
+@media(min-width:760px){.showcase-inner{padding:96px 72px}}
+.showcase .kicker{color:var(--gold)}
+.showcase .kicker::before{background:var(--gold)}
+.showcase h2{font-size:clamp(30px,5.4vw,46px);color:var(--cream);margin:16px 0 14px}
+.showcase .sub{color:rgba(247,243,235,.66);max-width:520px}
+
+.video-slot{
+  margin-top:44px;aspect-ratio:16/9;border-radius:22px;
+  background:rgba(247,243,235,.06);
+  border:1.5px dashed rgba(247,243,235,.28);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  transition:background .35s, border-color .35s;
+  position:relative;overflow:hidden;
+}
+.video-slot:hover{background:rgba(247,243,235,.1);border-color:rgba(212,175,55,.6)}
+.play-btn{
+  width:74px;height:74px;border-radius:50%;background:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.45);
+  transition:transform .4s var(--ease-out);
+}
+.video-slot:hover .play-btn{transform:scale(1.1)}
+.play-btn svg{width:26px;height:26px;fill:var(--forest);margin-left:4px}
+.video-slot p{font-size:13px;color:rgba(247,243,235,.55);font-weight:500}
+
+.asset-grid{
+  margin-top:18px;display:grid;gap:14px;
+  grid-template-columns:repeat(2,1fr);
+}
+@media(min-width:700px){.asset-grid{grid-template-columns:repeat(4,1fr)}}
+.asset-slot{
+  aspect-ratio:4/5;border-radius:18px;
+  background:rgba(247,243,235,.06);
+  border:1.5px dashed rgba(247,243,235,.22);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(247,243,235,.4);font-size:11.5px;font-weight:600;letter-spacing:.06em;
+  transition:transform .4s var(--ease-out),background .35s;
+}
+.asset-slot:hover{transform:translateY(-6px);background:rgba(247,243,235,.1)}
+
+/* ============================================================
+   SIGN-UP — THE CENTERPIECE
+   ============================================================ */
+.join{position:relative}
+.join-card{
+  position:relative;overflow:hidden;
+  background:var(--white);
+  border:1px solid var(--divider);
+  border-radius:var(--r-lg);
+  box-shadow:var(--shadow-float);
+  padding:64px 24px;
+  text-align:center;
+}
+@media(min-width:760px){.join-card{padding:88px 80px}}
+.join-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:6px;
+  background:linear-gradient(90deg,var(--forest),var(--gold),var(--forest));
+  background-size:200% 100%;animation:shimmer 6s linear infinite;
+}
+@keyframes shimmer{to{background-position:200% 0}}
+
+.founder-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--cream);border:1px solid var(--divider);border-radius:999px;
+  padding:8px 18px;font-size:12.5px;font-weight:600;color:var(--forest);
+  margin-bottom:24px;
+}
+.founder-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}50%{box-shadow:0 0 0 7px rgba(212,175,55,0)}}
+
+.join-card h2{font-size:clamp(34px,6.6vw,56px);margin-bottom:18px}
+.join-card h2 em{font-style:italic;color:var(--forest);font-weight:500}
+.join-card>.sub{max-width:480px;margin:0 auto 36px}
+
+.perks{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px;
+}
+.perk{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--cream);border-radius:999px;padding:9px 16px;
+  font-size:13px;font-weight:600;color:#3d3d38;
+}
+.perk svg{width:14px;height:14px;stroke:var(--gold)}
+
+/* form */
+.form-zone{max-width:520px;margin:0 auto;position:relative}
+.subscribe-form{
+  display:flex;gap:10px;
+  background:var(--cream);
+  border:1.5px solid var(--divider);
+  border-radius:999px;
+  padding:7px;
+  transition:border-color .3s,box-shadow .3s,transform .2s;
+}
+.subscribe-form:focus-within{border-color:var(--forest);box-shadow:0 0 0 5px rgba(45,70,40,.08)}
+.subscribe-form.error{border-color:#B4482E;animation:shake .45s var(--ease-out)}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
+.subscribe-form input{
+  flex:1;min-width:0;border:none;background:transparent;outline:none;
+  font-family:var(--font-body);font-size:16px;color:var(--ink);
+  padding:10px 10px 10px 18px;
+}
+.subscribe-form input::placeholder{color:var(--gray)}
+.subscribe-form .btn{padding:14px 26px;font-size:15px;flex:none}
+@media(max-width:520px){
+  .subscribe-form{flex-direction:column;border-radius:24px;padding:10px}
+  .subscribe-form input{padding:12px 10px;text-align:center}
+  .subscribe-form .btn{width:100%}
+}
+.btn .spinner{
+  width:18px;height:18px;border-radius:50%;
+  border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;
+  animation:spin .7s linear infinite;display:none;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.subscribe-form.loading .spinner{display:block}
+.subscribe-form.loading .btn-label{display:none}
+
+.form-msg{min-height:24px;margin-top:14px;font-size:14px;font-weight:500;color:#B4482E;
+  opacity:0;transform:translateY(-4px);transition:opacity .3s,transform .3s}
+.form-msg.show{opacity:1;transform:none}
+
+/* success state */
+.success-state{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  background:var(--white);
+  opacity:0;pointer-events:none;transform:scale(.94);
+  transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);
+}
+.form-zone.done .subscribe-form,.form-zone.done .form-msg{visibility:hidden}
+.form-zone.done .success-state{opacity:1;pointer-events:auto;transform:scale(1)}
+.success-check{width:60px;height:60px;margin-bottom:8px}
+.success-check circle{fill:none;stroke:var(--forest);stroke-width:2.4;stroke-dasharray:166;stroke-dashoffset:166}
+.success-check path{fill:none;stroke:var(--forest);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:48;stroke-dashoffset:48}
+.form-zone.done .success-check circle{animation:draw-c .7s var(--ease-out) forwards}
+.form-zone.done .success-check path{animation:draw-c .5s .5s var(--ease-out) forwards}
+@keyframes draw-c{to{stroke-dashoffset:0}}
+.success-state b{font-family:var(--font-display);font-size:21px;font-weight:600}
+.success-state p{font-size:14px;color:var(--gray);max-width:320px}
+
+.join-foot{margin-top:26px;font-size:12.5px;color:var(--gray)}
+
+/* ============================================================
+   SOCIAL PROOF
+   ============================================================ */
+.proof{text-align:center}
+.proof .count{
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(56px,12vw,96px);line-height:1;color:var(--forest);
+  font-variant-numeric:tabular-nums;
+}
+.proof .count sup{font-size:.45em;color:var(--gold);top:-.7em}
+.proof .lbl{font-size:17px;color:var(--gray);margin-top:10px}
+.proof .lbl b{color:var(--ink);font-weight:600}
+.city-ticker{
+  margin-top:34px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+}
+.city-ticker span{
+  font-size:12.5px;font-weight:600;color:var(--gray);
+  border:1px solid var(--divider);border-radius:999px;padding:7px 15px;background:var(--white);
+  transition:all .3s;
+}
+.city-ticker span:hover{color:var(--forest);border-color:var(--forest);transform:translateY(-2px)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{border-top:1px solid var(--divider);padding:44px 0 calc(34px + env(safe-area-inset-bottom))}
+.footer-inner{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+@media(min-width:700px){.footer-inner{flex-direction:row;justify-content:space-between;text-align:left}}
+.footer .logo img{height:40px}
+.footer nav{display:flex;gap:26px;font-size:14px;color:var(--gray)}
+.footer nav a{transition:color .25s}
+.footer nav a:hover{color:var(--forest)}
+.footer .copy{font-size:12.5px;color:var(--gray)}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="LifeMaxxing home">
+      <img src="assets/logo.png" alt="LifeMaxxing">
+    </a>
+    <a href="#join" class="btn btn-primary">Join the waitlist</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg" data-parallax="0.18">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="hero-logo reveal"><img src="assets/logo.png" alt="LifeMaxxing logo"></div>
+      <span class="kicker reveal" data-delay="1">The IMDb for real life</span>
+      <h1 class="reveal" data-delay="1">Log your life.<br><em>Max it out.<svg class="u" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 Q 150 4 296 12"/></svg></em></h1>
+      <p class="sub reveal" data-delay="2">Every trail, table, trip and tiny win — logged, rated and mapped. Discover what to do next and see where your friends have really been.</p>
+      <div class="hero-ctas reveal" data-delay="3">
+        <a href="#join" class="btn btn-primary">Become a Founding Member <span class="arr">→</span></a>
+        <a href="#what" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="hero-meta reveal" data-delay="3">
+        <div class="avatar-stack" aria-hidden="true">
+          <span style="background:#7a6a58">M</span>
+          <span style="background:#5c7a68">E</span>
+          <span style="background:#8a5a4a">A</span>
+          <span style="background:#2D4628">+</span>
+        </div>
+        <span><b data-count-inline>2,800</b>+ already maxxing their lives</span>
+      </div>
+    </div>
+
+    <!-- Phone mockup: hand-built recreation of the Home feed.
+         To swap in a real screenshot instead, replace .phone-screen's
+         contents with <img src="assets/screenshot-home.png" alt="..."> -->
+    <div class="hero-visual reveal" data-delay="2">
+      <div class="float-tag ft-1"><span class="star">★</span><div>4.9 · Ubud Jungle Retreat<small>Meditation · Bali</small></div></div>
+      <div class="float-tag ft-2">🌍<div>24 countries logged<small>@alex.rivera's Life Map</small></div></div>
+
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="app-chips">
+            <span class="chip on">All</span><span class="chip">Dining</span><span class="chip">Adventure</span><span class="chip">Travel</span>
+          </div>
+          <div class="app-card">
+            <div class="app-card-head">
+              <span class="app-ava" style="background:linear-gradient(140deg,#8a6d5c,#4b3f36)">M</span>
+              <div><div class="who">@marcus.t</div><div class="where">Sedona, AZ · 2h ago</div></div>
+              <span class="app-badge">Trail Running</span>
+            </div>
+            <div class="app-photo">
+              <span class="road"></span><span class="shade"></span>
+              <span class="rate"><span style="color:var(--gold)">★</span> 4.6</span>
+              <span class="title">Cathedral Rock Trail</span>
+            </div>
+            <div class="app-card-body">
+              <p>The Cathedral Rock trail at sunrise is transformative. The air is crisp, and the silence is pure magic before…</p>
+              <div class="app-tags"><span>#outdoors</span><span>#sunrise</span></div>
+              <div class="app-actions">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg> 1.2k</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l2-4.2a8.4 8.4 0 1 1 16-5.3z"/></svg> 48</span>
+                <span style="color:var(--forest)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>
+                <span class="r">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true"><i></i></div>
+</section>
+
+<!-- ================= WHAT IS LIFEMAXXING ================= -->
+<section class="section" id="what">
+  <div class="wrap">
+    <div class="features-head reveal">
+      <span class="kicker">What is LifeMaxxing</span>
+      <h2>Your life, beautifully on record.</h2>
+      <p class="sub">Movies have IMDb. Music has charts. Your actual life — the hikes, the dinners, the cities — deserves the same treatment.</p>
+    </div>
+
+    <!-- Feature 1: Log experiences -->
+    <div class="feature-row">
+      <div class="feature-copy reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <h3>Log every experience</h3>
+        <p>Places, ratings, photos, the story of the moment — capture it in seconds, keep it forever. Your memories become a collection, not a camera-roll graveyard.</p>
+        <ul class="points">
+          <li>Rate places out of 5 — your reviews, your record</li>
+          <li>Attach photos and the story behind them</li>
+          <li>Tag the activity: dining, adventure, wellness, travel</li>
+        </ul>
+      </div>
+      <div class="feature-visual reveal" data-delay="1">
+        <!-- Mockup: log/compose. Swap for real screenshot: <img src="assets/screenshot-log.png"> -->
+        <div class="shot m-compose">
+          <div class="head"><b>Log an experience</b><span class="app-badge" style="margin-left:auto">Hiking</span></div>
+          <div class="m-photo-strip"><i></i><i></i></div>
+          <div class="m-stars">
+            <svg viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#E8E2D6"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
+          </div>
+          <div class="m-field">The Cathedral Rock trail at sunrise is transformative…</div>
+          <div class="m-field" style="display:flex;gap:6px;align-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A7A72" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cathedral Rock Trail, Sedona AZ</div>
+          <div class="m-post">Post experience</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Explore -->
+    <div class="feature-row flip">
+      <div class="feature-copy reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Discover what to do next</h3>
+        <p>Never ask "so… what should we do?" again. Explore experiences ranked by people you actually trust — trending, highest-rated, near you, or picked by friends.</p>
+        <ul class="points">
+          <li>Filter by category, distance and rating</li>
+          <li>"Friends' picks" beats anonymous 5-star strangers</li>
+          <li>From your street to the other side of the world</li>
+        </ul>
+      </div>
+      <div class="feature-visual reveal" data-delay="1">
+        <!-- Mockup: explore list. Swap for real screenshot: <img src="assets/screenshot-explore.png"> -->
+        <div class="shot">
+          <div class="m-search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Search places, people, or…</div>
+          <div class="m-label">RECOMMENDED FOR YOU</div>
+          <div class="m-row">
+            <span class="bar" style="background:var(--forest)"></span>
+            <span class="m-thumb" style="background:linear-gradient(140deg,#DCE3D2,#57724F)"></span>
+            <div><div class="t">Lion's Head</div><div class="d">Hiking · Cape Town summit trail</div><div class="s"><span class="m-star">★</span><b>4.7</b> · Marcus and 3 friends</div></div>
+          </div>
+          <div class="m-row">
+            <span class="bar" style="background:var(--gold)"></span>
+            <span class="m-thumb" style="background:linear-gradient(140deg,#C9986A,#8F5638)"></span>
+            <div><div class="t">Cathedral Rock Trail</div><div class="d">Trail Running · Hiking</div><div class="s"><span class="m-star">★</span><b>4.6</b> · 934 mi · @marcus.t</div></div>
+          </div>
+          <div class="m-row">
+            <span class="bar" style="background:#7E9678"></span>
+            <span class="m-thumb" style="background:linear-gradient(140deg,#9FC4CE,#3E7A74)"></span>
+            <div><div class="t">Ubud Jungle Retreat</div><div class="d">Meditation · guided 5am session</div><div class="s"><span class="m-star">★</span><b>4.9</b> · 8,173 mi · @elena.rdz</div></div>
+          </div>
+          <div class="m-row" style="margin-bottom:0">
+            <span class="bar" style="background:#B4482E"></span>
+            <span class="m-thumb" style="background:linear-gradient(140deg,#E0C39A,#9C6A4B)"></span>
+            <div><div class="t">Pacific Harvest</div><div class="d">Dining · farm-to-table</div><div class="s"><span class="m-star">★</span><b>4.7</b> · 0.0 mi · 28 logs</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3: Life Map -->
+    <div class="feature-row">
+      <div class="feature-copy reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M9 20l-6-3V4l6 3 6-3 6 3v13l-6-3-6 3zM9 7v13M15 4v13"/></svg></div>
+        <h3>Watch your Life Map fill up</h3>
+        <p>Every log drops a pin. Zoom out and your life becomes a map — the cafés on your block, the summits on your bucket list, and every country in between.</p>
+        <ul class="points">
+          <li>Your personal atlas of everywhere you've been</li>
+          <li>Places, cities and countries — counted for you</li>
+          <li>See friends' pins layered over yours</li>
+        </ul>
+      </div>
+      <div class="feature-visual reveal" data-delay="1">
+        <!-- Mockup: life map. Swap for real screenshot: <img src="assets/screenshot-map.png"> -->
+        <div class="shot">
+          <div class="m-map">
+            <span class="river"></span>
+            <span class="park" style="width:70px;height:48px;left:8%;top:12%"></span>
+            <span class="park" style="width:52px;height:40px;right:10%;bottom:14%"></span>
+            <span class="m-pin" style="left:30%;top:34%;background:var(--forest);animation-delay:.2s"><svg viewBox="0 0 24 24" fill="none" stroke="#F7F3EB" stroke-width="2"><path d="M3 11h18M7 11V7a5 5 0 0 1 10 0v4M5 11l1 9h12l1-9"/></svg></span>
+            <span class="m-pin" style="left:52%;top:52%;background:var(--gold);animation-delay:.45s"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg></span>
+            <span class="m-pin" style="left:20%;top:64%;background:#57724F;animation-delay:.7s"><svg viewBox="0 0 24 24" fill="none" stroke="#F7F3EB" stroke-width="2"><path d="M6.5 6.5l11 11M21 21l-1-1M3 3l1 1m0 13l-1 4 4-1m10-13l4-4"/></svg></span>
+            <span class="m-pin" style="left:66%;top:26%;background:#2F4A44;animation-delay:.95s"><svg viewBox="0 0 24 24" fill="none" stroke="#F7F3EB" stroke-width="2"><path d="M8 3v7l-3 8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1l-3-8V3M6 3h12"/></svg></span>
+          </div>
+          <div class="m-stats">
+            <div><b data-anim-num>5</b><span>PLACES</span></div>
+            <div><b data-anim-num>24</b><span>COUNTRIES</span></div>
+            <div><b data-anim-num>8</b><span>CITIES</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4: Profile / life stats -->
+    <div class="feature-row flip">
+      <div class="feature-copy reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg></div>
+        <h3>A profile that proves you live</h3>
+        <p>Your experience count, your streak, your ratings, your places — a living résumé of a life well spent. Followers see where you've been, not just what you post.</p>
+        <ul class="points">
+          <li>Life stats: experiences, followers, streaks</li>
+          <li>Founding Members get a permanent gold badge</li>
+          <li>Your best moments, organized and shareable</li>
+        </ul>
+      </div>
+      <div class="feature-visual reveal" data-delay="1">
+        <!-- Mockup: profile. Swap for real screenshot: <img src="assets/screenshot-profile.png"> -->
+        <div class="shot">
+          <div class="m-cover"></div>
+          <div class="m-pava">A</div>
+          <div class="m-name">Alexandria Rivera <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="4"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+          <div class="m-handle">@alex.rivera · Life is the ultimate sport.</div>
+          <div class="m-streak">🔥 12 day streak</div>
+          <div class="m-pstats">
+            <div><b>385</b><span>EXPERIENCES</span></div>
+            <div><b>1.2k</b><span>FOLLOWERS</span></div>
+            <div><b>340</b><span>FOLLOWING</span></div>
+          </div>
+          <div class="m-row">
+            <span class="bar" style="background:var(--gold)"></span>
+            <span class="m-thumb" style="background:linear-gradient(140deg,#9FB4C7,#3E5A6A)"></span>
+            <div><div class="t">The Alps Summit</div><div class="d">Hiking · Chamonix, FR</div><div class="s"><span class="m-star">★</span><b>4.8</b></div></div>
+          </div>
+          <div class="m-row" style="margin-bottom:0">
+            <span class="bar" style="background:#7E9678"></span>
+            <span class="m-thumb" style="background:linear-gradient(140deg,#D9CDB9,#8a7a62)"></span>
+            <div><div class="t">Nordic Wellness</div><div class="d">Recovery · Oslo, NO</div><div class="s"><span class="m-star">★</span><b>4.5</b></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOWCASE (video + assets drop-zone) ================= -->
+<section class="section" id="showcase" style="padding-top:0">
+  <div class="wrap">
+    <div class="showcase reveal">
+      <div class="showcase-inner">
+        <span class="kicker">See it in motion</span>
+        <h2>Life looks good on you.</h2>
+        <p class="sub">A first look at the app in the wild — the feed, the map, and the moments worth logging.</p>
+
+        <!-- ==========================================================
+             VIDEO SLOT — replace this whole .video-slot div with your
+             embed when the promo video is ready, e.g.:
+
+             <video class="video-slot" style="border-style:solid" controls playsinline
+                    poster="assets/video-poster.jpg" src="assets/promo.mp4"></video>
+
+             …or a YouTube/Vimeo iframe with the same class.
+             ========================================================== -->
+        <div class="video-slot" role="img" aria-label="Promo video coming soon">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <p>Promo video drops here · 16:9</p>
+        </div>
+
+        <!-- ==========================================================
+             IMAGE GRID — designed for the ~50 assets in production.
+             Replace each .asset-slot with:
+             <img class="asset-slot" style="object-fit:cover;border-style:none" src="assets/shot-01.jpg" alt="">
+             Add more slots freely — the grid wraps automatically.
+             ========================================================== -->
+        <div class="asset-grid">
+          <div class="asset-slot">IMAGE 01 · 4:5</div>
+          <div class="asset-slot">IMAGE 02 · 4:5</div>
+          <div class="asset-slot">IMAGE 03 · 4:5</div>
+          <div class="asset-slot">IMAGE 04 · 4:5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOUNDING MEMBER SIGN-UP ================= -->
+<section class="section join" id="join">
+  <div class="wrap">
+    <div class="join-card reveal">
+      <div class="founder-pill"><span class="dot"></span> Founding Member access · Limited</div>
+      <h2>Be a <em>Founding&nbsp;Member.</em></h2>
+      <p class="sub">The first thousand in get the keys: early access before public launch, a permanent gold founding badge on your profile, and a direct line to shape what LifeMaxxing becomes.</p>
+
+      <div class="perks">
+        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg> Early access</span>
+        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg> Gold founding badge</span>
+        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l2-4.2a8.4 8.4 0 1 1 16-5.3z"/></svg> Shape the app</span>
+      </div>
+
+      <div class="form-zone" id="formZone">
+        <form class="subscribe-form" id="subscribeForm" novalidate>
+          <input type="email" id="emailInput" name="email" placeholder="you@email.com"
+                 autocomplete="email" inputmode="email" aria-label="Email address" required>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span class="btn-label">Claim my spot</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p class="form-msg" id="formMsg" role="alert" aria-live="polite"></p>
+
+        <div class="success-state" aria-live="polite">
+          <svg class="success-check" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg>
+          <b>You're on the list.</b>
+          <p>Welcome, Founding Member. Watch your inbox — early access is coming your way first.</p>
+        </div>
+      </div>
+
+      <p class="join-foot">No spam, ever. One email when it's your turn to get in.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOCIAL PROOF ================= -->
+<section class="section proof" id="proof" style="padding-top:0">
+  <div class="wrap reveal">
+    <!-- data-target is the number the counter animates to.
+         Wire it to your backend later: fetch the live count and set
+         el.dataset.target before/after animation, or re-render server-side. -->
+    <div class="count"><span id="waitlistCount" data-target="2847">0</span><sup>+</sup></div>
+    <p class="lbl"><b>people are already on the waitlist</b><br>from 31 cities and counting</p>
+    <div class="city-ticker" aria-hidden="true">
+      <span>Portland</span><span>Lisbon</span><span>Cape Town</span><span>Sedona</span><span>Oslo</span><span>Bali</span><span>Chamonix</span><span>Tenerife</span><span>Kyiv</span><span>Tokyo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="#top" aria-label="LifeMaxxing"><img src="assets/logo.png" alt="LifeMaxxing"></a>
+    <nav>
+      <a href="/privacy">Privacy</a>
+      <a href="mailto:hello@notfit.io">Contact</a>
+      <a href="#join">Waitlist</a>
+    </nav>
+    <p class="copy">© 2026 LifeMaxxing. Life is the ultimate sport.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   1. HEADER — solidify on scroll
+   ============================================================ */
+const header = document.getElementById('header');
+const onScrollHeader = () => header.classList.toggle('scrolled', window.scrollY > 24);
+onScrollHeader();
+window.addEventListener('scroll', onScrollHeader, {passive:true});
+
+/* ============================================================
+   2. REVEAL ON SCROLL
+   ============================================================ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, {threshold: .14, rootMargin: '0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============================================================
+   3. HERO PARALLAX (subtle, rAF-throttled, skipped if reduced motion)
+   ============================================================ */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const pxEls = document.querySelectorAll('[data-parallax]');
+if (!reduceMotion && pxEls.length) {
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      pxEls.forEach(el => {
+        el.style.transform = `translateY(${y * parseFloat(el.dataset.parallax)}px)`;
+      });
+      ticking = false;
+    });
+  }, {passive:true});
+}
+
+/* ============================================================
+   4. WAITLIST COUNTER — animated count-up when scrolled into view.
+      To make it live later: fetch your real count and set
+      countEl.dataset.target before the observer fires (or call
+      animateCount again with the new value).
+   ============================================================ */
+const countEl = document.getElementById('waitlistCount');
+function animateCount(el, target, dur = 1800) {
+  const start = performance.now();
+  const from = parseInt(el.textContent.replace(/\D/g,'')) || 0;
+  function frame(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 4);
+    el.textContent = Math.round(from + (target - from) * eased).toLocaleString('en-US');
+    if (p < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+const countIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCount(countEl, parseInt(countEl.dataset.target, 10));
+      countIO.disconnect();
+    }
+  });
+}, {threshold:.5});
+countIO.observe(countEl);
+
+/* ============================================================
+   5. SIGN-UP FORM — POST /api/subscribe
+   ============================================================ */
+const formZone = document.getElementById('formZone');
+const form     = document.getElementById('subscribeForm');
+const emailIn  = document.getElementById('emailInput');
+const formMsg  = document.getElementById('formMsg');
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function showError(msg) {
+  formMsg.textContent = msg;
+  formMsg.classList.add('show');
+  form.classList.remove('error');      // restart shake animation
+  void form.offsetWidth;
+  form.classList.add('error');
+  emailIn.focus();
+}
+
+form.addEventListener('input', () => {
+  form.classList.remove('error');
+  formMsg.classList.remove('show');
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = emailIn.value.trim();
+
+  if (!EMAIL_RE.test(email)) {
+    showError("Hmm, that email doesn't look right — mind checking it?");
+    return;
+  }
+
+  form.classList.add('loading');
+
+  try {
+    /* ------------------------------------------------------------------
+       BACKEND HOOK — wire this to SendGrid.
+       This POSTs to a placeholder endpoint. On Vercel/Netlify, create a
+       serverless function at /api/subscribe that receives {email} and
+       calls SendGrid's Marketing Contacts API:
+
+         PUT https://api.sendgrid.com/v3/marketing/contacts
+         Authorization: Bearer ${SENDGRID_API_KEY}   // keep server-side!
+         Body: { "list_ids": ["<waitlist-list-id>"],
+                 "contacts": [{ "email": email }] }
+
+       Never call SendGrid directly from this page — the API key must
+       stay on the server.
+       ------------------------------------------------------------------ */
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ email, source: 'waitlist-landing' })
+    });
+
+    // Treat network-reachable non-OK as failure; the catch handles the rest.
+    if (!res.ok) throw new Error('subscribe_failed');
+
+    onSubscribed();
+  } catch (err) {
+    /* DEV MODE: while /api/subscribe doesn't exist yet, we still show the
+       success state so the full UX can be reviewed. REMOVE the next line
+       once the real endpoint is live, and use showError instead. */
+    onSubscribed(); return;
+
+    // eslint-disable-next-line no-unreachable
+    showError("Something went wrong on our end — please try again.");
+  } finally {
+    form.classList.remove('loading');
+  }
+});
+
+function onSubscribed() {
+  form.classList.remove('loading');
+  formZone.classList.add('done');
+  // nudge the public counter up by one for instant feedback
+  const cur = parseInt(countEl.textContent.replace(/\D/g,'')) || 0;
+  countEl.textContent = (cur + 1).toLocaleString('en-US');
+  const inline = document.querySelector('[data-count-inline]');
+  if (inline) inline.textContent = (cur + 1).toLocaleString('en-US');
+}
+</script>
+</body>
+</html>
