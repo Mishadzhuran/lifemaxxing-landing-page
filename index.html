@@ -3,20 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>LifeMaxxing — Log Your Life. Max It Out.</title>
-<meta name="description" content="LifeMaxxing is the IMDb for real life — log your experiences, discover what to do next, and see where your friends have been. Join the waitlist.">
-<meta property="og:title" content="LifeMaxxing — Log Your Life. Max It Out.">
-<meta property="og:description" content="The IMDb for real life. Log experiences, discover what to do next, see where friends have been. Join the waitlist.">
+<title>LifeMaxxing | Log Your Life. Max It Out.</title>
+<meta name="description" content="LifeMaxxing is the IMDb for real life. Log experiences, discover what to do next, and map where you have been. Join the waitlist and test it first.">
+<meta property="og:title" content="LifeMaxxing | Log Your Life. Max It Out.">
+<meta property="og:description" content="The IMDb for real life. Log experiences, discover what to do next, see where friends have been. Join the waitlist and test it first.">
 <meta property="og:type" content="website">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="icon" type="image/jpeg" href="assets/icon.jpg">
 <link rel="apple-touch-icon" href="assets/icon.jpg">
 
-<!-- Typography: Fraunces (editorial serif — matches the serif used in-app for names & "Ask Lify")
-     + Outfit (geometric sans — matches the app's UI type) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<!-- Typography: system UI fonts only — no custom webfonts -->
 <style>
 /* ============================================================
    LIFEMAXXING BRAND TOKENS
@@ -31,8 +29,8 @@
   --divider:    #E8E2D6;  /* borders / outline buttons */
   --gold:       #D4AF37;  /* accents, stars, streaks */
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Outfit", -apple-system, "SF Pro Text", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   --r-lg: 28px;
   --r-md: 20px;
@@ -40,6 +38,27 @@
   --shadow-card: 0 2px 6px rgba(28,28,28,.04), 0 18px 44px -18px rgba(28,28,28,.18);
   --shadow-float: 0 30px 70px -24px rgba(28,28,28,.32);
   --ease-out: cubic-bezier(.22,1,.36,1);
+
+  --device-w: clamp(170px, 32vw, 240px);
+  --device-w-sm: clamp(140px, 30vw, 175px);
+  --device-w-lg: clamp(190px, 36vw, 265px);
+  --device-overlap: calc(var(--device-w) * -0.22);
+  --device-bezel: calc(var(--device-w) * 0.028);
+  --device-radius: calc(var(--device-w) * 0.138);
+  --device-screen-radius: calc(var(--device-w) * 0.115);
+  --device-aspect: 1320 / 2868;
+  --device-btn-w: calc(var(--device-w) * 0.009);
+  --device-persp: 1200px;
+  --device-shadow:
+    0 32px 64px -24px rgba(0,0,0,.38),
+    0 10px 24px -12px rgba(0,0,0,.18),
+    0 0 0 .5px rgba(255,255,255,.05),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  --device-shadow-front:
+    0 40px 72px -22px rgba(0,0,0,.42),
+    0 14px 28px -14px rgba(0,0,0,.22),
+    0 0 0 .5px rgba(255,255,255,.06),
+    inset 0 1px 0 rgba(255,255,255,.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -72,6 +91,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 
 .wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+@media(max-width:520px){.wrap{width:min(1120px,calc(100% - 28px))}}
 .section{padding:72px 0}
 @media(min-width:760px){.section{padding:110px 0}}
 
@@ -82,7 +102,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .kicker::before{content:"";width:22px;height:2px;background:var(--gold);border-radius:2px}
 
-h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 .sub{color:var(--gray);font-size:17px;font-weight:400}
 
 /* ============================================================
@@ -115,11 +135,10 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
    ============================================================ */
 .header{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  transition:background .4s ease,box-shadow .4s ease,backdrop-filter .4s ease;
+  background:var(--cream);
+  transition:box-shadow .4s ease;
 }
 .header.scrolled{
-  background:rgba(247,243,235,.82);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   box-shadow:0 1px 0 var(--divider);
 }
 .header-inner{
@@ -135,12 +154,16 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
    ============================================================ */
 .hero{
   position:relative;
-  padding:120px 0 72px;
-  min-height:100svh;
+  padding:120px 0 96px;
+  min-height:auto;
   display:flex;flex-direction:column;justify-content:center;
   overflow:hidden;
 }
-@media(min-width:900px){.hero{padding:150px 0 80px}}
+@media(min-width:900px){.hero{overflow:visible}}
+@media(min-width:900px){
+  .hero{padding:130px 0 88px;min-height:100svh}
+  .hero-grid{align-items:center}
+}
 
 /* soft ambient blobs behind hero */
 .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
@@ -153,20 +176,17 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
   position:relative;z-index:1;
   display:grid;gap:56px;align-items:center;
 }
-@media(min-width:900px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:32px}}
+@media(min-width:900px){.hero-grid{grid-template-columns:1fr 1fr;gap:40px}}
 
 .hero-copy{text-align:center}
 @media(min-width:900px){.hero-copy{text-align:left}}
-
-.hero-logo{margin:0 auto 34px;width:min(300px,68vw)}
-@media(min-width:900px){.hero-logo{margin:0 0 34px}}
 
 .hero h1{
   font-size:clamp(42px,9vw,72px);
   margin:18px 0 20px;
 }
 .hero h1 em{
-  font-style:italic;font-weight:500;color:var(--forest);position:relative;white-space:nowrap;
+  font-style:normal;font-weight:600;color:var(--forest);position:relative;white-space:nowrap;
 }
 .hero h1 em .u{position:absolute;left:0;right:0;bottom:.02em;height:.14em;overflow:visible}
 .hero h1 em .u path{stroke:var(--gold);stroke-width:7;fill:none;stroke-linecap:round;
@@ -195,144 +215,396 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
   font-size:11px;font-weight:700;color:var(--white);background:var(--forest);
 }
 
-/* --------- HERO PHONE MOCKUP --------- */
-.hero-visual{position:relative;display:flex;justify-content:center;perspective:1200px;padding:8px 0}
-.phone{
+/* ============================================================
+   DEVICE SHOWCASE — realistic iPhone frames, per-section variants
+   ============================================================ */
+.device-stage{
   position:relative;
-  width:260px;
-  max-width:72vw;
-  background:#1a1a1a;
-  border-radius:44px;
-  padding:8px;
-  box-shadow:
-    0 40px 80px -20px rgba(28,28,28,.45),
-    0 0 0 1px rgba(255,255,255,.06),
-    inset 0 1px 0 rgba(255,255,255,.1);
-  transform:rotate(2deg);
-  animation:phone-in 1.2s .3s var(--ease-out) both, float 7s 1.6s ease-in-out infinite;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:var(--device-persp);
+  perspective-origin:50% 42%;
 }
-.phone::before{
-  content:"";position:absolute;left:-2px;top:92px;width:2px;height:28px;
-  background:#333;border-radius:2px 0 0 2px;
-  box-shadow:0 40px 0 #333,0 76px 0 #333;
+.hero-visual.device-stage{padding:8px 0}
+.feature-visual.device-stage{padding:8px 0 16px}
+.device-tilt{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  transform:rotateY(var(--stage-ry, 0deg));
+  transform-style:preserve-3d;
+  will-change:transform;
 }
-.phone::after{
-  content:"";position:absolute;right:-2px;top:118px;width:2px;height:48px;
-  background:#333;border-radius:0 2px 2px 0;
-}
-@keyframes phone-in{from{opacity:0;transform:rotate(5deg) translateY(50px)}to{opacity:1;transform:rotate(2deg) translateY(0)}}
-@keyframes float{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(2deg) translateY(-10px)}}
-@media (prefers-reduced-motion: reduce){.phone{animation:none}}
 
-.phone-screen{
-  background:var(--cream);
-  border-radius:36px;
+.device-showcase{
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  width:100%;
+  margin:0 auto;
+  z-index:1;
+  transform-style:preserve-3d;
+  will-change:transform,opacity;
+}
+.device-showcase[data-device-reveal]{
+  opacity:0;
+  transform:translate3d(0,36px,0);
+  transition:opacity .85s var(--ease-out),transform .85s var(--ease-out);
+}
+.device-showcase[data-device-reveal].in{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+.device-showcase[data-device-reveal] .device{
+  opacity:0;
+  transition:opacity .75s var(--ease-out),transform .85s var(--ease-out),filter .85s var(--ease-out);
+}
+.device-showcase[data-device-reveal].in .device{opacity:1}
+.device-showcase[data-device-reveal].in .device--back{transition-delay:.12s}
+.device-showcase[data-device-reveal].in .device--front{transition-delay:.06s}
+
+/* ambient ground shadow */
+.device-showcase::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-6px;
+  transform:translateX(-50%);
+  width:min(440px,92%);
+  height:36px;
+  background:radial-gradient(ellipse at center, rgba(28,28,28,.22) 0%, rgba(28,28,28,.08) 42%, transparent 72%);
+  filter:blur(2px);
+  pointer-events:none;
+  z-index:0;
+}
+
+.device-showcase--hero{
+  max-width:min(620px,100%);
+  padding:12px 8px 44px;
+}
+.device-showcase--hero::after{
+  width:min(480px,94%);
+  height:44px;
+  bottom:-4px;
+  background:radial-gradient(ellipse at center, rgba(28,28,28,.28) 0%, rgba(28,28,28,.1) 45%, transparent 74%);
+}
+
+.device-showcase--feature{max-width:min(480px,100%);padding:8px 0 28px}
+.device-showcase--feature::before{
+  content:"";
+  position:absolute;
+  inset:8% -6% -10%;
+  background:radial-gradient(ellipse 70% 55% at 50% 50%, rgba(45,70,40,.09), transparent 72%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.device-showcase--solo{
+  max-width:min(300px,82vw);
+  padding:8px 0 20px;
+  align-items:center;
+}
+
+/* ---- device frame ---- */
+.device{
+  position:relative;
+  flex:0 0 auto;
+  width:var(--device-w);
+  background:linear-gradient(165deg, #1e1e1e 0%, #111 20%, #000 55%, #0a0a0a 100%);
+  border-radius:var(--device-radius);
+  padding:var(--device-bezel);
+  box-shadow:var(--device-shadow);
+  z-index:1;
+  transform-style:preserve-3d;
+  -webkit-transform-style:preserve-3d;
+  will-change:transform;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+.device::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:4;
+  background:linear-gradient(140deg, rgba(255,255,255,.07) 0%, transparent 22%, transparent 72%, rgba(255,255,255,.04) 100%);
+}
+
+.device-btn{
+  position:absolute;
+  z-index:3;
+  border-radius:1px;
+  background:linear-gradient(90deg, #0a0a0a, #1c1c1c 40%, #121212 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1);
+}
+.device-btn--action{
+  left:calc(var(--device-btn-w) * -1);
+  top:16.5%;
+  width:var(--device-btn-w);
+  height:calc(var(--device-w) * 0.052);
+  min-height:13px;
+  border-radius:2px 0 0 2px;
+}
+.device-btn--vol-up{
+  left:calc(var(--device-btn-w) * -1);
+  top:23.5%;
+  width:var(--device-btn-w);
+  height:calc(var(--device-w) * 0.092);
+  min-height:22px;
+  border-radius:2px 0 0 2px;
+}
+.device-btn--vol-down{
+  left:calc(var(--device-btn-w) * -1);
+  top:32.5%;
+  width:var(--device-btn-w);
+  height:calc(var(--device-w) * 0.092);
+  min-height:22px;
+  border-radius:2px 0 0 2px;
+}
+.device-btn--power{
+  right:calc(var(--device-btn-w) * -1);
+  top:21%;
+  width:var(--device-btn-w);
+  height:calc(var(--device-w) * 0.125);
+  min-height:32px;
+  border-radius:0 2px 2px 0;
+  background:linear-gradient(270deg, #0a0a0a, #222 40%, #141414 100%);
+}
+
+.device-screen{
+  background:#000;
+  border-radius:var(--device-screen-radius);
   overflow:hidden;
   position:relative;
-  aspect-ratio:9/19.5;
-  display:flex;
-  flex-direction:column;
+  aspect-ratio:var(--device-aspect);
+  isolation:isolate;
+  box-shadow:inset 0 0 0 .5px rgba(0,0,0,.8);
 }
 
-/* status bar + dynamic island */
-.phone-notch{
-  position:absolute;top:10px;left:50%;transform:translateX(-50%);
-  width:88px;height:24px;background:#1a1a1a;border-radius:999px;z-index:5;
-}
-.phone-notch::before{
-  content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);
-  width:8px;height:8px;border-radius:50%;
-  background:radial-gradient(circle at 35% 35%,#3a4a5a,#0a0e12);
-}
-.phone-home{
-  position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
-  width:96px;height:3px;background:var(--ink);border-radius:999px;opacity:.15;z-index:5;
-}
-
-/* scrollable app content area */
-.phone-content{
-  flex:1;
-  padding:42px 10px 22px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  mask-image:linear-gradient(to bottom,#000 72%,transparent 96%);
-  -webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 96%);
+.device-screen::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:2;
+  background:linear-gradient(
+    128deg,
+    rgba(255,255,255,.08) 0%,
+    rgba(255,255,255,.02) 14%,
+    transparent 36%,
+    transparent 64%,
+    rgba(255,255,255,.015) 100%
+  );
 }
 
-/* in-app chips row */
-.app-chips{display:flex;gap:6px;overflow:hidden;flex-shrink:0}
-.chip{
-  font-size:10.5px;font-weight:600;padding:6px 12px;border-radius:999px;
-  background:var(--white);color:var(--ink);border:1px solid var(--divider);white-space:nowrap;
+.device-media{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  border:0;
+  -webkit-user-select:none;
+  user-select:none;
 }
-.chip.on{background:var(--forest);color:var(--cream);border-color:var(--forest)}
 
-/* in-app experience card (mirrors the real Home feed) */
-.app-card{
-  background:var(--white);border-radius:18px;overflow:hidden;
-  box-shadow:0 4px 16px -8px rgba(28,28,28,.12);
-  flex-shrink:0;
+/* ---- HERO: dynamic duo, both sharp ---- */
+.device-showcase--hero .device--back{
+  --d-rx:4deg; --d-ry:14deg; --d-rz:6deg; --d-tx:-8px; --d-ty:18px; --d-tz:-16px; --d-sc:0.96;
+  margin-right:var(--device-overlap);
+  z-index:1;
 }
-.app-card-head{display:flex;align-items:center;gap:7px;padding:9px 10px}
-.app-ava{
-  width:28px;height:28px;border-radius:50%;flex:none;overflow:hidden;
-  background:var(--divider);
+.device-showcase--hero .device--front{
+  --d-rx:-3deg; --d-ry:-12deg; --d-rz:-6deg; --d-tx:12px; --d-ty:-4px; --d-tz:20px; --d-sc:1;
+  z-index:2;
+  box-shadow:var(--device-shadow-front);
 }
-.app-ava img{width:100%;height:100%;object-fit:cover;display:block}
-.app-card-head .who{font-size:11px;font-weight:600;line-height:1.2}
-.app-card-head .where{font-size:9.5px;color:var(--gray);font-weight:400}
-.app-badge{
-  margin-left:auto;background:var(--forest);color:var(--cream);
-  font-size:8.5px;font-weight:600;padding:4px 8px;border-radius:999px;white-space:nowrap;
+.device-showcase--hero .device{
+  transform:
+    rotateX(var(--d-rx)) rotateY(var(--d-ry)) rotateZ(var(--d-rz))
+    translate3d(var(--d-tx), var(--d-ty), var(--d-tz)) scale(var(--d-sc));
 }
-.app-photo{
-  height:148px;position:relative;overflow:hidden;
-  background:var(--divider);
+.device-showcase--hero.device-showcase--duo .device--back{
+  animation:hero-back-in 1.15s .5s var(--ease-out) both;
 }
-.app-photo img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+.device-showcase--hero.device-showcase--duo .device--front{
+  animation:hero-front-in 1.2s .28s var(--ease-out) both, hero-float 8s 1.8s ease-in-out infinite;
 }
-.app-photo .title{
-  position:absolute;left:11px;bottom:22px;color:#fff;z-index:2;
-  font-family:var(--font-display);font-size:14px;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.45);
+@keyframes hero-back-in{
+  from{opacity:0;transform:rotateX(6deg) rotateY(20deg) rotateZ(8deg) translate3d(-14px,40px,-24px) scale(.9)}
+  to{opacity:1;transform:rotateX(4deg) rotateY(14deg) rotateZ(6deg) translate3d(-8px,18px,-16px) scale(.96)}
 }
-.app-photo .rate{position:absolute;left:11px;bottom:8px;display:flex;align-items:center;gap:3px;color:#fff;font-size:10px;font-weight:600;z-index:2}
-.app-photo .shade{position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(180deg,transparent,rgba(20,24,18,.55))}
-.app-card-body{padding:9px 10px 10px}
-.app-card-body p{font-size:10px;color:#3d3d38;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.app-tags{display:flex;gap:5px;margin:7px 0 8px}
-.app-tags span{font-size:9px;font-weight:600;color:var(--forest);background:var(--cream);border-radius:999px;padding:3px 7px}
-.app-actions{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:9.5px;font-weight:600}
-.app-actions svg{width:14px;height:14px;vertical-align:-2px}
-.app-actions .r{margin-left:auto;display:flex;gap:10px;color:var(--gray)}
+@keyframes hero-front-in{
+  from{opacity:0;transform:rotateX(2deg) rotateY(-4deg) rotateZ(0deg) translate3d(6px,36px,6px) scale(.96)}
+  to{opacity:1;transform:rotateX(-3deg) rotateY(-12deg) rotateZ(-6deg) translate3d(12px,-4px,20px) scale(1)}
+}
+@keyframes hero-float{
+  0%,100%{transform:rotateX(-3deg) rotateY(-12deg) rotateZ(-6deg) translate3d(12px,-4px,20px)}
+  50%{transform:rotateX(-3deg) rotateY(-12deg) rotateZ(-6deg) translate3d(12px,-10px,20px)}
+}
 
-/* second card peeking in feed */
-.app-card.peek .app-photo{height:72px}
+/* ---- FEATURE 1: single straight-on (medium size) ---- */
+.device-showcase--frontal{align-items:center;max-width:min(320px,82vw)}
+.device-showcase--frontal .device{
+  --device-w:var(--device-w-lg);
+  width:var(--device-w);
+  --d-rx:1deg; --d-ry:-2deg; --d-rz:0deg; --d-tx:0; --d-ty:0; --d-tz:0; --d-sc:1;
+  transform:rotateX(var(--d-rx)) rotateY(var(--d-ry)) rotateZ(var(--d-rz)) translate3d(var(--d-tx),var(--d-ty),var(--d-tz)) scale(var(--d-sc));
+}
 
-/* floating tags around the phone */
-.float-tag{
-  position:absolute;z-index:3;background:var(--white);border-radius:14px;
-  box-shadow:var(--shadow-card);padding:8px 12px;
-  font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;
-  animation:float 6s ease-in-out infinite;white-space:nowrap;
+/* ---- FEATURE 2: duo mirrored, both sharp ---- */
+.device-showcase--duo-reverse .device--back{
+  --d-rx:-3deg; --d-ry:-10deg; --d-rz:-5deg; --d-tx:6px; --d-ty:14px; --d-tz:-12px; --d-sc:0.96;
+  margin-right:var(--device-overlap);
+  z-index:1;
 }
-.float-tag .star{color:var(--gold)}
-.float-tag small{display:block;font-weight:400;color:var(--gray);font-size:9.5px;line-height:1.2;white-space:normal}
-.ft-1{top:6%;left:calc(50% - 215px);animation-delay:.6s}
-.ft-2{bottom:18%;right:calc(50% - 220px);animation-delay:1.4s}
-.ft-3{top:42%;left:calc(50% - 225px);animation-delay:2.1s}
-@media(max-width:900px){
-  .ft-1{left:max(-8px,calc(50% - 190px))}
-  .ft-2{right:max(-8px,calc(50% - 195px))}
-  .ft-3{left:max(-8px,calc(50% - 195px))}
+.device-showcase--duo-reverse .device--front{
+  --d-rx:3deg; --d-ry:12deg; --d-rz:6deg; --d-tx:-12px; --d-ty:-4px; --d-tz:24px; --d-sc:1;
+  z-index:2;
 }
+.device-showcase--duo-reverse .device{
+  transform:rotateX(var(--d-rx)) rotateY(var(--d-ry)) rotateZ(var(--d-rz)) translate3d(var(--d-tx),var(--d-ty),var(--d-tz)) scale(var(--d-sc));
+}
+
+/* ---- FEATURE 3: two-phone map duo ---- */
+.device-showcase--duo-map .device--back{
+  --d-rx:2deg; --d-ry:10deg; --d-rz:4deg; --d-tx:-4px; --d-ty:12px; --d-tz:-10px; --d-sc:0.97;
+  margin-right:var(--device-overlap);
+  z-index:1;
+}
+.device-showcase--duo-map .device--front{
+  --d-rx:-2deg; --d-ry:-8deg; --d-rz:-4deg; --d-tx:8px; --d-ty:-2px; --d-tz:14px; --d-sc:1;
+  z-index:2;
+}
+.device-showcase--duo-map .device{
+  transform:rotateX(var(--d-rx)) rotateY(var(--d-ry)) rotateZ(var(--d-rz)) translate3d(var(--d-tx),var(--d-ty),var(--d-tz)) scale(var(--d-sc));
+}
+
+/* ---- FEATURE 4: normal single phone ---- */
+.device-showcase--profile{align-items:center;max-width:min(320px,82vw)}
+.device-showcase--profile .device{
+  --device-w:var(--device-w-lg);
+  width:var(--device-w);
+  --d-rx:1deg; --d-ry:4deg; --d-rz:2deg; --d-tx:0; --d-ty:0; --d-tz:0; --d-sc:1;
+  transform:rotateX(var(--d-rx)) rotateY(var(--d-ry)) rotateZ(var(--d-rz)) translate3d(var(--d-tx),var(--d-ty),var(--d-tz)) scale(var(--d-sc));
+}
+
+@media (prefers-reduced-motion: reduce){
+  .device-showcase--hero .device{animation:none !important}
+  .device-showcase[data-device-reveal]{opacity:1;transform:none;transition:none}
+  .device-showcase[data-device-reveal] .device{opacity:1;transition:none}
+  .device-tilt{transform:none !important}
+}
+
+@media(max-width:768px){
+  .device-showcase--hero.device-showcase--duo .device--front{
+    animation:hero-front-in 1.2s .28s var(--ease-out) both;
+  }
+}
+
+@media(max-width:899px){
+  .hero-grid{gap:36px;min-width:0}
+  .hero-copy,.hero-visual{min-width:0;width:100%}
+  .hero{padding-bottom:72px}
+  .hero-visual{padding:4px 0 8px;width:100%;max-width:100%;overflow:hidden}
+  .device-showcase--hero{padding:8px 0 28px;max-width:100%}
+  .feature-visual.device-stage{padding:16px 0 8px}
+  .blob-1{width:420px;height:420px;top:-120px;right:-100px}
+  .blob-2{width:340px;height:340px;bottom:-90px;left:-120px}
+}
+
+@media(max-width:768px){
+  :root{
+    --device-persp:900px;
+    --device-shadow:
+      0 24px 48px -20px rgba(0,0,0,.32),
+      0 8px 18px -10px rgba(0,0,0,.16),
+      0 0 0 .5px rgba(255,255,255,.06),
+      inset 0 1px 0 rgba(255,255,255,.08),
+      inset 0 -1px 0 rgba(0,0,0,.5);
+    --device-shadow-front:
+      0 28px 52px -18px rgba(0,0,0,.34),
+      0 10px 22px -12px rgba(0,0,0,.2),
+      0 0 0 .5px rgba(255,255,255,.08),
+      inset 0 1px 0 rgba(255,255,255,.1);
+  }
+  .btn-primary{box-shadow:0 6px 16px -8px rgba(45,70,40,.4)}
+  .join-card{box-shadow:0 16px 40px -18px rgba(28,28,28,.18)}
+  .feature-copy .icon{box-shadow:0 6px 14px -8px rgba(45,70,40,.35)}
+  .device-stage{overflow:hidden;padding:0;max-width:100%}
+  .device-tilt{max-width:100%}
+  .device-showcase{max-width:100%;padding-left:0;padding-right:0}
+  .device-showcase::after{
+    width:min(320px,88%);
+    height:28px;
+    opacity:.7;
+    background:radial-gradient(ellipse at center, rgba(28,28,28,.16) 0%, rgba(28,28,28,.06) 42%, transparent 72%);
+  }
+  .device-showcase--hero::after{
+    width:min(360px,90%);
+    height:32px;
+    background:radial-gradient(ellipse at center, rgba(28,28,28,.2) 0%, rgba(28,28,28,.08) 45%, transparent 74%);
+  }
+  .device-showcase--hero .device--back{
+    --d-rx:1deg; --d-ry:5deg; --d-rz:2deg; --d-tx:-2px; --d-ty:8px; --d-tz:-6px; --d-sc:0.97;
+  }
+  .device-showcase--hero .device--front{
+    --d-rx:-1deg; --d-ry:-5deg; --d-rz:-2deg; --d-tx:2px; --d-ty:-2px; --d-tz:8px;
+  }
+  .device-showcase--frontal .device{--d-rx:1deg; --d-ry:-1deg}
+  .device-showcase--duo-reverse .device--back{--d-rx:-1deg; --d-ry:-4deg; --d-rz:-2deg; --d-ty:6px; --d-tx:2px}
+  .device-showcase--duo-reverse .device--front{--d-rx:1deg; --d-ry:4deg; --d-rz:2deg; --d-tx:-2px}
+  .device-showcase--duo-map .device--back{--d-rx:1deg; --d-ry:4deg; --d-rz:2deg; --d-ty:6px; --d-tx:-2px}
+  .device-showcase--duo-map .device--front{--d-rx:-1deg; --d-ry:-3deg; --d-rz:-1deg; --d-tx:2px}
+  .device-showcase--profile .device{--d-rx:0deg; --d-ry:2deg; --d-rz:1deg}
+  .hero-ctas{flex-direction:column;align-items:stretch;width:100%;max-width:340px;margin:0 auto}
+  .hero-ctas .btn{width:100%}
+  .hero-meta{flex-wrap:wrap;justify-content:center;text-align:center;gap:10px}
+  .hero h1{font-size:clamp(36px,10vw,52px)}
+  .hero .sub{font-size:16px;padding:0 4px}
+}
+
 @media(max-width:520px){
-  .float-tag{font-size:10px;padding:7px 10px}
-  .ft-1{top:2%;left:0}
-  .ft-2{bottom:6%;right:0}
-  .ft-3{top:auto;bottom:28%;left:0}
+  :root{
+    --device-w:clamp(132px,38vw,168px);
+    --device-w-sm:clamp(120px,34vw,152px);
+    --device-w-lg:clamp(142px,40vw,182px);
+    --device-overlap:calc(var(--device-w) * -0.2);
+  }
+  .hero{padding-top:108px;padding-bottom:64px}
+  .hero h1 em .u path{stroke-width:5}
+  .device-showcase--hero{padding:4px 0 22px}
+  .blob-1{width:300px;height:300px;top:-90px;right:-70px;opacity:.42}
+  .blob-2{width:260px;height:260px;bottom:-70px;left:-90px;opacity:.42}
+  .blob-3{width:180px;height:180px;opacity:.35}
+}
+
+@media(max-width:414px){
+  :root{
+    --device-w:clamp(124px,36vw,158px);
+    --device-w-sm:clamp(112px,32vw,142px);
+    --device-w-lg:clamp(134px,38vw,168px);
+    --device-overlap:calc(var(--device-w) * -0.18);
+  }
+}
+
+@media(max-width:375px){
+  :root{
+    --device-w:clamp(118px,34vw,148px);
+    --device-w-sm:clamp(108px,30vw,132px);
+    --device-w-lg:clamp(126px,36vw,158px);
+  }
+  .device-showcase--hero{padding:2px 0 18px}
+  .device-showcase::after{height:20px;opacity:.6}
+  .header-inner{padding:12px 0}
 }
 
 /* ============================================================
@@ -366,206 +638,18 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
 }
 .feature-copy .points li::before{content:"✦";color:var(--gold);font-size:12px}
 
-/* device-style visual shells */
-.feature-visual{display:flex;justify-content:center}
-.shot{
-  width:min(340px,88vw);
-  background:var(--white);
-  border-radius:30px;
-  border:1px solid var(--divider);
-  box-shadow:var(--shadow-card);
-  padding:18px;
-  transition:transform .6s var(--ease-out),box-shadow .6s var(--ease-out);
+.feature-visual{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  padding:8px 0;
 }
-.shot:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:var(--shadow-float)}
-
-/* --- explore mockup --- */
-.m-search{
-  display:flex;align-items:center;gap:8px;background:var(--cream);
-  border-radius:999px;padding:11px 15px;color:var(--gray);font-size:12.5px;margin-bottom:14px;
+@media(max-width:859px){
+  .feature-row{margin-bottom:64px}
+  .feature-copy p,.feature-copy .points{max-width:100%}
+  .feature-visual{padding:16px 0 8px}
 }
-.m-search svg{width:14px;height:14px;stroke:var(--gray)}
-.m-label{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--gray);margin:2px 0 9px}
-.m-row{
-  display:flex;gap:11px;align-items:center;background:var(--cream);
-  border-radius:16px;padding:11px;margin-bottom:9px;position:relative;overflow:hidden;
-  border:1px solid transparent;transition:border-color .3s;
-}
-.shot:hover .m-row{border-color:var(--divider)}
-.m-row .bar{position:absolute;left:0;top:0;bottom:0;width:4px}
-.m-thumb{width:46px;height:46px;border-radius:12px;flex:none;object-fit:cover;background:var(--divider)}
-.m-row .t{font-size:12.5px;font-weight:600;line-height:1.3}
-.m-row .d{font-size:10.5px;color:var(--gray)}
-.m-row .s{font-size:10.5px;color:var(--gray);display:flex;align-items:center;gap:3px;margin-top:2px}
-.m-row .s b{color:var(--ink)}
-.m-star{color:var(--gold)}
-
-/* --- map mockup (Carto Voyager tiles — Google Maps-style) --- */
-.m-map{
-  position:relative;height:280px;border-radius:18px;overflow:hidden;
-  background:#e8e4dc;
-  box-shadow:inset 0 0 0 1px rgba(28,28,28,.06);
-}
-.m-map-tiles{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;
-  filter:saturate(1.02) contrast(1.03);
-}
-.m-map::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(255,255,255,.04) 0%,rgba(28,28,28,.06) 100%);
-}
-.m-map .map-label{
-  position:absolute;top:10px;left:12px;z-index:4;
-  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
-  border-radius:999px;padding:5px 12px;font-size:10px;font-weight:700;
-  color:var(--forest);letter-spacing:.04em;
-  box-shadow:0 2px 10px rgba(28,28,28,.12);
-}
-.m-map .map-zoom{
-  position:absolute;bottom:10px;right:10px;z-index:4;
-  display:flex;flex-direction:column;gap:4px;
-}
-.m-map .map-zoom span{
-  width:28px;height:28px;border-radius:8px;
-  background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:600;color:var(--ink);
-  box-shadow:0 2px 8px rgba(28,28,28,.12);
-}
-.m-map .map-gps{
-  position:absolute;bottom:10px;left:10px;z-index:4;
-  width:28px;height:28px;border-radius:8px;
-  background:rgba(255,255,255,.95);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 2px 8px rgba(28,28,28,.12);
-}
-.m-map .map-gps::after{
-  content:"";width:10px;height:10px;border-radius:50%;
-  background:#4285F4;border:2px solid #fff;
-  box-shadow:0 0 0 1px rgba(66,133,244,.4);
-}
-.m-pin{
-  position:absolute;width:30px;height:30px;border-radius:50% 50% 50% 3px;
-  transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;
-  box-shadow:0 3px 10px rgba(28,28,28,.3);
-  animation:pin-pop .6s var(--ease-out) both;z-index:5;
-  border:2.5px solid #fff;
-}
-.m-pin::after{
-  content:"";position:absolute;bottom:-5px;left:50%;width:6px;height:3px;
-  background:rgba(28,28,28,.2);border-radius:50%;transform:translateX(-50%) rotate(45deg);
-}
-.m-pin svg{transform:rotate(45deg);width:14px;height:14px}
-@keyframes pin-pop{from{transform:rotate(-45deg) scale(0)}to{transform:rotate(-45deg) scale(1)}}
-.m-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-  background:var(--forest);border-radius:16px;margin-top:14px;padding:14px 6px;text-align:center;
-}
-.m-stats b{font-family:var(--font-display);font-size:20px;color:var(--gold);display:block;line-height:1.1}
-.m-stats span{font-size:9px;font-weight:700;letter-spacing:.12em;color:rgba(247,243,235,.75)}
-
-/* --- profile mockup --- */
-.m-cover{
-  height:86px;border-radius:18px 18px 0 0;margin:-18px -18px 0;
-  background:
-    linear-gradient(180deg,rgba(28,28,28,.05),rgba(28,28,28,.35)),
-    url('assets/photo-mountains.jpg') center/cover;
-  position:relative;overflow:hidden;
-}
-.m-pava{
-  width:62px;height:62px;border-radius:50%;border:3px solid var(--white);
-  margin:-31px 0 8px 4px;position:relative;z-index:2;overflow:hidden;
-  background:var(--divider);
-}
-.m-pava img{width:100%;height:100%;object-fit:cover;display:block}
-.m-name{font-family:var(--font-display);font-size:19px;font-weight:600;display:flex;align-items:center;gap:6px}
-.m-name .check{width:15px;height:15px;border-radius:50%;background:var(--gold);display:inline-flex;align-items:center;justify-content:center}
-.m-name .check svg{width:8px;height:8px;stroke:#fff}
-.m-handle{font-size:11px;color:var(--gray)}
-.m-streak{
-  display:inline-flex;align-items:center;gap:5px;background:#F3EBD8;color:#8a6d1f;
-  font-size:10.5px;font-weight:700;border-radius:999px;padding:5px 11px;margin:9px 0 13px;
-}
-.m-pstats{display:flex;border:1px solid var(--divider);border-radius:16px;padding:12px 0;margin-bottom:12px}
-.m-pstats div{flex:1;text-align:center}
-.m-pstats div+div{border-left:1px solid var(--divider)}
-.m-pstats b{font-family:var(--font-display);font-size:17px;display:block;line-height:1.1}
-.m-pstats span{font-size:8.5px;font-weight:700;letter-spacing:.1em;color:var(--gray)}
-
-/* --- log/compose mockup --- */
-.m-compose .head{display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.m-compose .head b{font-family:var(--font-display);font-size:16px;font-weight:600}
-.m-photo-add{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  border:1.5px dashed var(--divider);border-radius:14px;
-  padding:14px 16px;margin-bottom:10px;
-  background:rgba(247,243,235,.5);color:var(--gray);
-  font-size:12px;font-weight:600;
-}
-.m-photo-add svg{width:18px;height:18px;stroke:var(--forest);flex:none}
-.m-photo-strip{display:grid;grid-template-columns:1.6fr 1fr;gap:8px;margin-bottom:12px}
-.m-photo-strip i{border-radius:12px;height:88px;display:block;background-size:cover;background-position:center}
-.m-photo-strip i:nth-child(1){background-image:url('assets/photo-compose-1.jpg')}
-.m-photo-strip i:nth-child(2){background-image:url('assets/photo-compose-2.jpg');position:relative}
-.m-photo-strip i:nth-child(2)::after{
-  content:"+ 12";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  color:#fff;font-weight:700;font-size:13px;background:rgba(28,28,28,.28);border-radius:12px;font-style:normal;
-}
-.m-stars{display:flex;gap:4px;margin-bottom:10px}
-.m-stars svg{width:20px;height:20px}
-.m-field{background:var(--cream);border-radius:12px;padding:10px 13px;font-size:11.5px;color:var(--gray);margin-bottom:8px}
-.m-post{
-  background:var(--forest);color:var(--cream);text-align:center;border-radius:999px;
-  font-size:12.5px;font-weight:700;padding:11px;margin-top:4px;
-}
-
-/* ============================================================
-   SHOWCASE (video + asset grid placeholders)
-   ============================================================ */
-.showcase{background:var(--forest);border-radius:var(--r-lg);overflow:hidden;position:relative;color:var(--cream)}
-.showcase-inner{padding:64px 24px}
-@media(min-width:760px){.showcase-inner{padding:96px 72px}}
-.showcase .kicker{color:var(--gold)}
-.showcase .kicker::before{background:var(--gold)}
-.showcase h2{font-size:clamp(30px,5.4vw,46px);color:var(--cream);margin:16px 0 14px}
-.showcase .sub{color:rgba(247,243,235,.66);max-width:520px}
-
-.video-slot{
-  margin-top:44px;aspect-ratio:16/9;border-radius:22px;
-  background:rgba(247,243,235,.06);
-  border:1.5px dashed rgba(247,243,235,.28);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
-  transition:background .35s, border-color .35s;
-  position:relative;overflow:hidden;
-}
-.video-slot:hover{background:rgba(247,243,235,.1);border-color:rgba(212,175,55,.6)}
-.play-btn{
-  width:74px;height:74px;border-radius:50%;background:var(--cream);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 18px 40px -12px rgba(0,0,0,.45);
-  transition:transform .4s var(--ease-out);
-}
-.video-slot:hover .play-btn{transform:scale(1.1)}
-.play-btn svg{width:26px;height:26px;fill:var(--forest);margin-left:4px}
-.video-slot p{font-size:13px;color:rgba(247,243,235,.55);font-weight:500}
-
-.asset-grid{
-  margin-top:18px;display:grid;gap:14px;
-  grid-template-columns:repeat(2,1fr);
-}
-@media(min-width:700px){.asset-grid{grid-template-columns:repeat(4,1fr)}}
-.asset-slot{
-  aspect-ratio:4/5;border-radius:18px;
-  background:rgba(247,243,235,.06);
-  border:1.5px dashed rgba(247,243,235,.22);
-  display:flex;align-items:center;justify-content:center;
-  color:rgba(247,243,235,.4);font-size:11.5px;font-weight:600;letter-spacing:.06em;
-  transition:transform .4s var(--ease-out),background .35s;
-  overflow:hidden;
-}
-.asset-slot img{width:100%;height:100%;object-fit:cover;display:block;border-radius:18px}
-.asset-slot.has-img{border-style:none;background:none}
-.asset-slot:hover{transform:translateY(-6px);background:rgba(247,243,235,.1)}
 
 /* ============================================================
    SIGN-UP — THE CENTERPIECE
@@ -598,7 +682,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}50%{box-shadow:0 0 0 7px rgba(212,175,55,0)}}
 
 .join-card h2{font-size:clamp(34px,6.6vw,56px);margin-bottom:18px}
-.join-card h2 em{font-style:italic;color:var(--forest);font-weight:500}
+.join-card h2 em{font-style:normal;color:var(--forest);font-weight:600}
 .join-card>.sub{max-width:480px;margin:0 auto 36px}
 
 .perks{
@@ -612,30 +696,22 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
 .perk svg{width:14px;height:14px;stroke:var(--gold)}
 
 /* form */
-.form-zone{max-width:520px;margin:0 auto;position:relative}
+.form-zone{max-width:420px;margin:0 auto;position:relative}
 .subscribe-form{
-  display:flex;gap:10px;
-  background:var(--cream);
-  border:1.5px solid var(--divider);
-  border-radius:999px;
-  padding:7px;
-  transition:border-color .3s,box-shadow .3s,transform .2s;
+  display:flex;flex-direction:column;gap:10px;
 }
-.subscribe-form:focus-within{border-color:var(--forest);box-shadow:0 0 0 5px rgba(45,70,40,.08)}
-.subscribe-form.error{border-color:#B4482E;animation:shake .45s var(--ease-out)}
+.subscribe-form.error{animation:shake .45s var(--ease-out)}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
 .subscribe-form input{
-  flex:1;min-width:0;border:none;background:transparent;outline:none;
+  width:100%;border:1.5px solid var(--divider);background:var(--cream);outline:none;
   font-family:var(--font-body);font-size:16px;color:var(--ink);
-  padding:10px 10px 10px 18px;
+  padding:14px 20px;border-radius:999px;
+  transition:border-color .3s,box-shadow .3s;
 }
 .subscribe-form input::placeholder{color:var(--gray)}
-.subscribe-form .btn{padding:14px 26px;font-size:15px;flex:none}
-@media(max-width:520px){
-  .subscribe-form{flex-direction:column;border-radius:24px;padding:10px}
-  .subscribe-form input{padding:12px 10px;text-align:center}
-  .subscribe-form .btn{width:100%}
-}
+.subscribe-form input:focus{border-color:var(--forest);box-shadow:0 0 0 5px rgba(45,70,40,.08)}
+.subscribe-form input.invalid{border-color:#B4482E}
+.subscribe-form .btn{padding:16px 26px;font-size:15px;width:100%;margin-top:4px}
 .btn .spinner{
   width:18px;height:18px;border-radius:50%;
   border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;
@@ -726,10 +802,9 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
 
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="hero-logo reveal"><img src="assets/logo.png" alt="LifeMaxxing logo"></div>
       <span class="kicker reveal" data-delay="1">The IMDb for real life</span>
       <h1 class="reveal" data-delay="1">Log your life.<br><em>Max it out.<svg class="u" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 Q 150 4 296 12"/></svg></em></h1>
-      <p class="sub reveal" data-delay="2">Every trail, table, trip and tiny win — logged, rated and mapped. Discover what to do next and see where your friends have really been.</p>
+      <p class="sub reveal" data-delay="2">Every trail, table, trip and tiny win gets logged, rated and mapped. We are building the app your life deserves. Join the waitlist and be among the first to try it.</p>
       <div class="hero-ctas reveal" data-delay="3">
         <a href="#join" class="btn btn-primary">Join the waitlist <span class="arr">→</span></a>
         <a href="#what" class="btn btn-ghost">See how it works</a>
@@ -741,64 +816,32 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
           <img src="assets/avatar-3.jpg" alt="" loading="lazy" decoding="async">
           <span class="plus">+</span>
         </div>
-        <span><b data-count-inline>2,800</b>+ already maxxing their lives</span>
+        <span><b data-count-inline>2,800</b>+ waiting to test it first</span>
       </div>
     </div>
 
-    <!-- Phone mockup: hand-built recreation of the Home feed.
-         To swap in a real screenshot instead, replace .phone-screen's
-         contents with <img src="assets/screenshot-home.png" alt="..."> -->
-    <div class="hero-visual reveal" data-delay="2">
-      <div class="float-tag ft-1"><span class="star">★</span><div>4.9 · Ubud Jungle Retreat<small>Meditation · Bali</small></div></div>
-      <div class="float-tag ft-2">🌍<div>24 countries logged<small>@alex.rivera's Life Map</small></div></div>
-      <div class="float-tag ft-3">✦<div>385 experiences<small>@alex.rivera's profile</small></div></div>
-
-      <div class="phone">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <div class="phone-home"></div>
-          <div class="phone-content">
-            <div class="app-chips">
-              <span class="chip on">All</span><span class="chip">Dining</span><span class="chip">Adventure</span><span class="chip">Travel</span>
-            </div>
-            <div class="app-card">
-              <div class="app-card-head">
-                <span class="app-ava"><img src="assets/avatar-marcus.jpg" alt="" loading="lazy" decoding="async"></span>
-                <div><div class="who">@marcus.t</div><div class="where">Sedona, AZ · 2h ago</div></div>
-                <span class="app-badge">Trail Running</span>
-              </div>
-              <div class="app-photo">
-                <img src="assets/photo-sedona.jpg" alt="Cathedral Rock Trail, Sedona" loading="lazy" decoding="async">
-                <span class="shade"></span>
-                <span class="rate"><span style="color:var(--gold)">★</span> 4.6</span>
-                <span class="title">Cathedral Rock Trail</span>
-              </div>
-              <div class="app-card-body">
-                <p>The Cathedral Rock trail at sunrise is transformative. The air is crisp, and the silence is pure magic before…</p>
-                <div class="app-tags"><span>#outdoors</span><span>#sunrise</span></div>
-                <div class="app-actions">
-                  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg> 1.2k</span>
-                  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l2-4.2a8.4 8.4 0 1 1 16-5.3z"/></svg> 48</span>
-                  <span style="color:var(--forest)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>
-                  <span class="r">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="app-card peek">
-              <div class="app-card-head">
-                <span class="app-ava"><img src="assets/avatar-elena.jpg" alt="" loading="lazy" decoding="async"></span>
-                <div><div class="who">@elena.rdz</div><div class="where">Ubud, Bali · 5h ago</div></div>
-                <span class="app-badge">Meditation</span>
-              </div>
-              <div class="app-photo">
-                <img src="assets/photo-bali.jpg" alt="Ubud Jungle Retreat, Bali" loading="lazy" decoding="async">
-              </div>
-            </div>
+    <div class="hero-visual device-stage" data-parallax-tilt="0.04">
+      <div class="device-tilt">
+      <div class="device-showcase device-showcase--hero device-showcase--duo" aria-label="LifeMaxxing app preview">
+        <div class="device device--back">
+          <span class="device-btn device-btn--action" aria-hidden="true"></span>
+          <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+          <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+          <span class="device-btn device-btn--power" aria-hidden="true"></span>
+          <div class="device-screen">
+            <img class="device-media" src="assets/screenshot-home.png" alt="LifeMaxxing home feed" loading="eager" decoding="async">
           </div>
         </div>
+        <div class="device device--front">
+          <span class="device-btn device-btn--action" aria-hidden="true"></span>
+          <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+          <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+          <span class="device-btn device-btn--power" aria-hidden="true"></span>
+          <div class="device-screen">
+            <img class="device-media" src="assets/screenshot-map.png" alt="LifeMaxxing Life Map" loading="eager" decoding="async">
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -810,7 +853,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
     <div class="features-head reveal">
       <span class="kicker">What is LifeMaxxing</span>
       <h2>Your life, beautifully on record.</h2>
-      <p class="sub">Movies have IMDb. Music has charts. Your actual life — the hikes, the dinners, the cities — deserves the same treatment.</p>
+      <p class="sub">Movies have IMDb. Music has charts. Your actual life deserves the same: the hikes, the dinners, the cities, all in one place you will actually want to open.</p>
     </div>
 
     <!-- Feature 1: Log experiences -->
@@ -818,73 +861,64 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
       <div class="feature-copy reveal">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
         <h3>Log every experience</h3>
-        <p>Places, ratings, photos, the story of the moment — capture it in seconds, keep it forever. Your memories become a collection, not a camera-roll graveyard.</p>
+        <p>Places, ratings, photos, the story of the moment. Capture it in seconds and keep it forever. Your memories become a collection, not a camera roll graveyard.</p>
         <ul class="points">
-          <li>Rate places out of 5 — your reviews, your record</li>
+          <li>Rate places out of 5. Your reviews, your record</li>
           <li>Attach photos and the story behind them</li>
           <li>Tag the activity: dining, adventure, wellness, travel</li>
         </ul>
       </div>
-      <div class="feature-visual reveal" data-delay="1">
-        <!-- Mockup: log/compose. Swap for real screenshot: <img src="assets/screenshot-log.png"> -->
-        <div class="shot m-compose">
-          <div class="head"><b>Log an experience</b><span class="app-badge" style="margin-left:auto">Hiking</span></div>
-          <div class="m-photo-add">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            Tap to add photos
+      <div class="feature-visual device-stage" data-parallax-tilt="0.028">
+        <div class="device-tilt">
+        <div class="device-showcase device-showcase--feature device-showcase--frontal" data-device-reveal aria-label="Log an experience in LifeMaxxing">
+          <div class="device">
+            <span class="device-btn device-btn--action" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+            <span class="device-btn device-btn--power" aria-hidden="true"></span>
+            <div class="device-screen">
+              <img class="device-media" src="assets/screenshot-log-step.png" alt="LifeMaxxing log experience screen" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="m-photo-strip"><i></i><i></i></div>
-          <div class="m-stars">
-            <svg viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
-            <svg viewBox="0 0 24 24" fill="#E8E2D6"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg>
-          </div>
-          <div class="m-field">The Cathedral Rock trail at sunrise is transformative…</div>
-          <div class="m-field" style="display:flex;gap:6px;align-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A7A72" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cathedral Rock Trail, Sedona AZ</div>
-          <div class="m-post">Post experience</div>
+        </div>
         </div>
       </div>
     </div>
 
-    <!-- Feature 2: Explore -->
+    <!-- Feature 2: Discover -->
     <div class="feature-row flip">
       <div class="feature-copy reveal">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
         <h3>Discover what to do next</h3>
-        <p>Never ask "so… what should we do?" again. Explore experiences ranked by people you actually trust — trending, highest-rated, near you, or picked by friends.</p>
+        <p>Never ask "so what should we do?" again. Explore experiences ranked by people you actually trust: trending, highest rated, near you, or picked by friends.</p>
         <ul class="points">
           <li>Filter by category, distance and rating</li>
-          <li>"Friends' picks" beats anonymous 5-star strangers</li>
+          <li>Friends' picks beat anonymous five star strangers</li>
           <li>From your street to the other side of the world</li>
         </ul>
       </div>
-      <div class="feature-visual reveal" data-delay="1">
-        <!-- Mockup: explore list. Swap for real screenshot: <img src="assets/screenshot-explore.png"> -->
-        <div class="shot">
-          <div class="m-search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Search places, people, or…</div>
-          <div class="m-label">RECOMMENDED FOR YOU</div>
-          <div class="m-row">
-            <span class="bar" style="background:var(--forest)"></span>
-            <img class="m-thumb" src="assets/thumb-lions-head.jpg" alt="Lion's Head" loading="lazy" decoding="async">
-            <div><div class="t">Lion's Head</div><div class="d">Hiking · Cape Town summit trail</div><div class="s"><span class="m-star">★</span><b>4.7</b> · Marcus and 3 friends</div></div>
+      <div class="feature-visual device-stage" data-parallax-tilt="0.032">
+        <div class="device-tilt">
+        <div class="device-showcase device-showcase--feature device-showcase--duo-reverse" data-device-reveal aria-label="Discover experiences in LifeMaxxing">
+          <div class="device device--back">
+            <span class="device-btn device-btn--action" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+            <span class="device-btn device-btn--power" aria-hidden="true"></span>
+            <div class="device-screen">
+              <img class="device-media" src="assets/screenshot-home.png" alt="LifeMaxxing home feed" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="m-row">
-            <span class="bar" style="background:var(--gold)"></span>
-            <img class="m-thumb" src="assets/thumb-sedona.jpg" alt="Cathedral Rock Trail" loading="lazy" decoding="async">
-            <div><div class="t">Cathedral Rock Trail</div><div class="d">Trail Running · Hiking</div><div class="s"><span class="m-star">★</span><b>4.6</b> · 934 mi · @marcus.t</div></div>
+          <div class="device device--front">
+            <span class="device-btn device-btn--action" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+            <span class="device-btn device-btn--power" aria-hidden="true"></span>
+            <div class="device-screen">
+              <img class="device-media" src="assets/screenshot-detail.png" alt="LifeMaxxing experience detail" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="m-row">
-            <span class="bar" style="background:#7E9678"></span>
-            <img class="m-thumb" src="assets/thumb-bali.jpg" alt="Ubud Jungle Retreat" loading="lazy" decoding="async">
-            <div><div class="t">Ubud Jungle Retreat</div><div class="d">Meditation · guided 5am session</div><div class="s"><span class="m-star">★</span><b>4.9</b> · 8,173 mi · @elena.rdz</div></div>
-          </div>
-          <div class="m-row" style="margin-bottom:0">
-            <span class="bar" style="background:#B4482E"></span>
-            <img class="m-thumb" src="assets/thumb-dining.jpg" alt="Pacific Harvest" loading="lazy" decoding="async">
-            <div><div class="t">Pacific Harvest</div><div class="d">Dining · farm-to-table</div><div class="s"><span class="m-star">★</span><b>4.7</b> · 0.0 mi · 28 logs</div></div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -894,110 +928,64 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
       <div class="feature-copy reveal">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M9 20l-6-3V4l6 3 6-3 6 3v13l-6-3-6 3zM9 7v13M15 4v13"/></svg></div>
         <h3>Watch your Life Map fill up</h3>
-        <p>Every log drops a pin. Zoom out and your life becomes a map — the cafés on your block, the summits on your bucket list, and every country in between.</p>
+        <p>Every log drops a pin. Zoom out and your life becomes a map: the cafes on your block, the summits on your bucket list, and every country in between.</p>
         <ul class="points">
-          <li>Your personal atlas of everywhere you've been</li>
-          <li>Places, cities and countries — counted for you</li>
+          <li>Your personal atlas of everywhere you have been</li>
+          <li>Places, cities and countries, counted for you</li>
           <li>See friends' pins layered over yours</li>
         </ul>
       </div>
-      <div class="feature-visual reveal" data-delay="1">
-        <!-- Mockup: life map. Swap for real screenshot: <img src="assets/screenshot-map.png"> -->
-        <div class="shot">
-          <div class="m-map">
-            <img class="m-map-tiles" src="assets/map-view.jpg" alt="Life Map showing logged places" loading="lazy" decoding="async">
-            <span class="map-label">🗺 Life Map</span>
-            <span class="map-gps" aria-hidden="true"></span>
-            <span class="m-pin" style="left:38%;top:38%;background:var(--forest);animation-delay:.2s"><svg viewBox="0 0 24 24" fill="none" stroke="#F7F3EB" stroke-width="2"><path d="M3 11h18M7 11V7a5 5 0 0 1 10 0v4M5 11l1 9h12l1-9"/></svg></span>
-            <span class="m-pin" style="left:54%;top:48%;background:var(--gold);animation-delay:.45s"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg></span>
-            <span class="m-pin" style="left:28%;top:58%;background:#57724F;animation-delay:.7s"><svg viewBox="0 0 24 24" fill="none" stroke="#F7F3EB" stroke-width="2"><path d="M6.5 6.5l11 11M21 21l-1-1M3 3l1 1m0 13l-1 4 4-1m10-13l4-4"/></svg></span>
-            <span class="m-pin" style="left:62%;top:30%;background:#2F4A44;animation-delay:.95s"><svg viewBox="0 0 24 24" fill="none" stroke="#F7F3EB" stroke-width="2"><path d="M8 3v7l-3 8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1l-3-8V3M6 3h12"/></svg></span>
-            <div class="map-zoom"><span>+</span><span>−</span></div>
+      <div class="feature-visual device-stage" data-parallax-tilt="0.022">
+        <div class="device-tilt">
+        <div class="device-showcase device-showcase--feature device-showcase--duo-map" data-device-reveal aria-label="LifeMaxxing map views">
+          <div class="device device--back">
+            <span class="device-btn device-btn--action" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+            <span class="device-btn device-btn--power" aria-hidden="true"></span>
+            <div class="device-screen">
+              <img class="device-media" src="assets/screenshot-map.png" alt="LifeMaxxing Life Map overview" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="m-stats">
-            <div><b data-anim-num>5</b><span>PLACES</span></div>
-            <div><b data-anim-num>24</b><span>COUNTRIES</span></div>
-            <div><b data-anim-num>8</b><span>CITIES</span></div>
+          <div class="device device--front">
+            <span class="device-btn device-btn--action" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+            <span class="device-btn device-btn--power" aria-hidden="true"></span>
+            <div class="device-screen">
+              <img class="device-media" src="assets/screenshot-map-detail.png" alt="LifeMaxxing map pin detail" loading="lazy" decoding="async">
+            </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
 
-    <!-- Feature 4: Profile / life stats -->
+    <!-- Feature 4: Life Graph -->
     <div class="feature-row flip">
       <div class="feature-copy reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg></div>
-        <h3>A profile that proves you live</h3>
-        <p>Your experience count, your streak, your ratings, your places — a living résumé of a life well spent. Followers see where you've been, not just what you post.</p>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>Every place has a page.</h3>
+        <p>A restaurant in Lisbon isn't a photo that vanishes from your feed. It's a permanent node in the Life Graph — every rating, every visit, every person who went there. Structured like IMDb, built for real life.</p>
         <ul class="points">
-          <li>Life stats: experiences, followers, streaks</li>
-          <li>Early members get a permanent gold badge</li>
-          <li>Your best moments, organized and shareable</li>
+          <li>Person, place, activity, date, rating — all connected</li>
+          <li>Places ranked by people you actually trust</li>
+          <li>The more you live, the smarter it gets</li>
         </ul>
       </div>
-      <div class="feature-visual reveal" data-delay="1">
-        <!-- Mockup: profile. Swap for real screenshot: <img src="assets/screenshot-profile.png"> -->
-        <div class="shot">
-          <div class="m-cover"></div>
-          <div class="m-pava"><img src="assets/avatar-alex.jpg" alt="Alexandria Rivera" loading="lazy" decoding="async"></div>
-          <div class="m-name">Alexandria Rivera <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="4"><path d="M20 6L9 17l-5-5"/></svg></span></div>
-          <div class="m-handle">@alex.rivera · Life is the ultimate sport.</div>
-          <div class="m-streak">🔥 12 day streak</div>
-          <div class="m-pstats">
-            <div><b>385</b><span>EXPERIENCES</span></div>
-            <div><b>1.2k</b><span>FOLLOWERS</span></div>
-            <div><b>340</b><span>FOLLOWING</span></div>
-          </div>
-          <div class="m-row">
-            <span class="bar" style="background:var(--gold)"></span>
-            <img class="m-thumb" src="assets/thumb-alps.jpg" alt="The Alps Summit" loading="lazy" decoding="async">
-            <div><div class="t">The Alps Summit</div><div class="d">Hiking · Chamonix, FR</div><div class="s"><span class="m-star">★</span><b>4.8</b></div></div>
-          </div>
-          <div class="m-row" style="margin-bottom:0">
-            <span class="bar" style="background:#7E9678"></span>
-            <img class="m-thumb" src="assets/thumb-wellness.jpg" alt="Nordic Wellness" loading="lazy" decoding="async">
-            <div><div class="t">Nordic Wellness</div><div class="d">Recovery · Oslo, NO</div><div class="s"><span class="m-star">★</span><b>4.5</b></div></div>
+      <div class="feature-visual device-stage" data-parallax-tilt="0.03">
+        <div class="device-tilt">
+        <div class="device-showcase device-showcase--feature device-showcase--profile" data-device-reveal aria-label="LifeMaxxing experience page">
+          <div class="device">
+            <span class="device-btn device-btn--action" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+            <span class="device-btn device-btn--power" aria-hidden="true"></span>
+            <div class="device-screen">
+              <img class="device-media" src="assets/screenshot-detail.png" alt="LifeMaxxing experience page for Cathedral Rock Trail" loading="lazy" decoding="async">
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SHOWCASE (video + assets drop-zone) ================= -->
-<section class="section" id="showcase" style="padding-top:0">
-  <div class="wrap">
-    <div class="showcase reveal">
-      <div class="showcase-inner">
-        <span class="kicker">See it in motion</span>
-        <h2>Life looks good on you.</h2>
-        <p class="sub">A first look at the app in the wild — the feed, the map, and the moments worth logging.</p>
-
-        <!-- ==========================================================
-             VIDEO SLOT — replace this whole .video-slot div with your
-             embed when the promo video is ready, e.g.:
-
-             <video class="video-slot" style="border-style:solid" controls playsinline
-                    poster="assets/video-poster.jpg" src="assets/promo.mp4"></video>
-
-             …or a YouTube/Vimeo iframe with the same class.
-             ========================================================== -->
-        <div class="video-slot" role="img" aria-label="Promo video coming soon">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <p>Promo video drops here · 16:9</p>
-        </div>
-
-        <!-- ==========================================================
-             IMAGE GRID — designed for the ~50 assets in production.
-             Replace each .asset-slot with:
-             <img class="asset-slot" style="object-fit:cover;border-style:none" src="assets/shot-01.jpg" alt="">
-             Add more slots freely — the grid wraps automatically.
-             ========================================================== -->
-        <div class="asset-grid">
-          <div class="asset-slot has-img"><img src="assets/photo-sedona.jpg" alt="Cathedral Rock Trail" loading="lazy" decoding="async"></div>
-          <div class="asset-slot has-img"><img src="assets/photo-bali.jpg" alt="Ubud Jungle Retreat" loading="lazy" decoding="async"></div>
-          <div class="asset-slot has-img"><img src="assets/thumb-alps.jpg" alt="The Alps Summit" loading="lazy" decoding="async"></div>
-          <div class="asset-slot has-img"><img src="assets/thumb-dining.jpg" alt="Pacific Harvest" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1009,19 +997,23 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
   <div class="wrap">
     <div class="join-card reveal">
       <div class="founder-pill"><span class="dot"></span> Early access · Limited spots</div>
-      <h2>Join the <em>waitlist.</em></h2>
-      <p class="sub">Be first in line for early access before public launch, get a gold badge on your profile, and help shape what LifeMaxxing becomes.</p>
+      <h2>Be first to <em>test it.</em></h2>
+      <p class="sub">LifeMaxxing is almost here. Join the waitlist for early access, a founding badge on your profile, and a real say in what we build next. This is the one you will want on your home screen.</p>
 
       <div class="perks">
-        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg> Early access</span>
-        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.7z"/></svg> Gold member badge</span>
-        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l2-4.2a8.4 8.4 0 1 1 16-5.3z"/></svg> Shape the app</span>
+        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg> Test before launch</span>
+        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3l7 3v6c0 4.4-3 7.5-7 9-4-1.5-7-4.6-7-9V6l7-3z"/><path d="M9.5 12.5l1.8 1.8 3.7-3.7"/></svg> Founding badge</span>
+        <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l2-4.2a8.4 8.4 0 1 1 16-5.3z"/></svg> Shape the product</span>
       </div>
 
       <div class="form-zone" id="formZone">
         <form class="subscribe-form" id="subscribeForm" novalidate>
+          <input type="text" id="nameInput" name="name" placeholder="Your name"
+                 autocomplete="name" aria-label="Full name" required>
           <input type="email" id="emailInput" name="email" placeholder="you@email.com"
                  autocomplete="email" inputmode="email" aria-label="Email address" required>
+          <input type="tel" id="phoneInput" name="phone" placeholder="Phone number"
+                 autocomplete="tel" inputmode="tel" aria-label="Phone number" required>
           <button type="submit" class="btn btn-primary" id="submitBtn">
             <span class="btn-label">Join the waitlist</span>
             <span class="spinner" aria-hidden="true"></span>
@@ -1032,11 +1024,11 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
         <div class="success-state" aria-live="polite">
           <svg class="success-check" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg>
           <b>You're on the list.</b>
-          <p>Watch your inbox — we'll let you know as soon as early access opens up.</p>
+          <p>Watch your inbox. We'll let you know as soon as early access opens up.</p>
         </div>
       </div>
 
-      <p class="join-foot">No spam, ever. One email when it's your turn to get in.</p>
+      <p class="join-foot">No spam. We will only contact you about early access.</p>
     </div>
   </div>
 </section>
@@ -1048,9 +1040,9 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter
          Wire it to your backend later: fetch the live count and set
          el.dataset.target before/after animation, or re-render server-side. -->
     <div class="count"><span id="waitlistCount" data-target="2847">0</span><sup>+</sup></div>
-    <p class="lbl"><b>people are already on the waitlist</b><br>from 31 cities and counting</p>
+    <p class="lbl"><b>people already on the waitlist</b><br>ready to max out their lives</p>
     <div class="city-ticker" aria-hidden="true">
-      <span>Portland</span><span>Lisbon</span><span>Cape Town</span><span>Sedona</span><span>Oslo</span><span>Bali</span><span>Chamonix</span><span>Tenerife</span><span>Kyiv</span><span>Tokyo</span>
+      <span>Portland</span><span>Sedona</span><span>Ubud</span><span>Cape Town</span><span>Oslo</span><span>Chamonix</span><span>Lisbon</span><span>Tokyo</span>
     </div>
   </div>
 </section>
@@ -1124,6 +1116,69 @@ if (!reduceMotion && pxEls.length) {
 }
 
 /* ============================================================
+   3b. DEVICE REVEAL + SCROLL PARALLAX TILT
+   ============================================================ */
+const deviceShowcases = document.querySelectorAll('[data-device-reveal]');
+const revealDeviceShowcases = () => {
+  deviceShowcases.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92 && rect.bottom > window.innerHeight * 0.08) {
+      el.classList.add('in');
+    }
+  });
+};
+if ('IntersectionObserver' in window && deviceShowcases.length) {
+  const deviceIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        deviceIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -2% 0px' });
+  deviceShowcases.forEach((el) => deviceIO.observe(el));
+  requestAnimationFrame(revealDeviceShowcases);
+  window.addEventListener('load', revealDeviceShowcases, { once: true });
+  window.addEventListener('hashchange', () => setTimeout(revealDeviceShowcases, 80));
+} else {
+  deviceShowcases.forEach((el) => el.classList.add('in'));
+}
+
+const tiltStages = document.querySelectorAll('[data-parallax-tilt]');
+const isMobileViewport = () => window.matchMedia('(max-width: 768px)').matches;
+if (!reduceMotion && tiltStages.length) {
+  let tiltTicking = false;
+  const updateDeviceTilt = () => {
+    if (isMobileViewport()) {
+      tiltStages.forEach((stage) => {
+        const tiltEl = stage.querySelector('.device-tilt');
+        tiltEl?.style.setProperty('--stage-ry', '0deg');
+      });
+      tiltTicking = false;
+      return;
+    }
+    const vh = window.innerHeight;
+    tiltStages.forEach((stage) => {
+      const tiltEl = stage.querySelector('.device-tilt');
+      if (!tiltEl) return;
+      const rect = stage.getBoundingClientRect();
+      const progress = (rect.top + rect.height * 0.5 - vh * 0.5) / vh;
+      const amount = parseFloat(stage.dataset.parallaxTilt) || 0.03;
+      const ry = progress * amount * 160;
+      tiltEl.style.setProperty('--stage-ry', `${ry.toFixed(2)}deg`);
+    });
+    tiltTicking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (tiltTicking) return;
+    tiltTicking = true;
+    requestAnimationFrame(updateDeviceTilt);
+  }, { passive: true });
+  window.addEventListener('resize', updateDeviceTilt, { passive: true });
+  updateDeviceTilt();
+}
+
+/* ============================================================
    4. COUNT-UP ANIMATIONS
    ============================================================ */
 function animateCount(el, target, dur = 1800) {
@@ -1173,18 +1228,20 @@ document.querySelectorAll('[data-anim-num]').forEach((el) => {
    ============================================================ */
 const formZone = document.getElementById('formZone');
 const form = document.getElementById('subscribeForm');
+const nameIn = document.getElementById('nameInput');
 const emailIn = document.getElementById('emailInput');
+const phoneIn = document.getElementById('phoneInput');
 const formMsg = document.getElementById('formMsg');
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-function showError(msg) {
-  if (!form || !formMsg || !emailIn) return;
+function showError(msg, focusEl) {
+  if (!form || !formMsg) return;
   formMsg.textContent = msg;
   formMsg.classList.add('show');
   form.classList.remove('error');
   void form.offsetWidth;
   form.classList.add('error');
-  emailIn.focus();
+  focusEl?.focus();
 }
 
 function onSubscribed() {
@@ -1200,7 +1257,7 @@ function onSubscribed() {
   }
 }
 
-async function subscribeEmail(email) {
+async function subscribeWaitlist({ name, email, phone }) {
   if (IS_LOCAL_PREVIEW) {
     await new Promise((resolve) => setTimeout(resolve, 450));
     return { ok: true };
@@ -1209,35 +1266,52 @@ async function subscribeEmail(email) {
   const res = await fetch('/api/subscribe', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, source: 'waitlist-landing' }),
+    body: JSON.stringify({ name, email, phone, source: 'waitlist-landing' }),
   });
 
   if (!res.ok) throw new Error('subscribe_failed');
   return res.json().catch(() => ({ ok: true }));
 }
 
-if (form && emailIn) {
+if (form && nameIn && emailIn && phoneIn) {
   form.addEventListener('input', () => {
     form.classList.remove('error');
     formMsg?.classList.remove('show');
+    [nameIn, emailIn, phoneIn].forEach((el) => el.classList.remove('invalid'));
   });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const name = nameIn.value.trim();
     const email = emailIn.value.trim();
+    const phone = phoneIn.value.trim();
+    const phoneDigits = phone.replace(/\D/g, '');
+
+    if (name.length < 2) {
+      nameIn.classList.add('invalid');
+      showError('Please enter your name so we know who to contact.', nameIn);
+      return;
+    }
 
     if (!EMAIL_RE.test(email)) {
-      showError("Hmm, that email doesn't look right — mind checking it?");
+      emailIn.classList.add('invalid');
+      showError("Hmm, that email doesn't look right. Mind checking it?", emailIn);
+      return;
+    }
+
+    if (phoneDigits.length < 7) {
+      phoneIn.classList.add('invalid');
+      showError('Please enter a valid phone number so we can reach you.', phoneIn);
       return;
     }
 
     form.classList.add('loading');
 
     try {
-      await subscribeEmail(email);
+      await subscribeWaitlist({ name, email, phone });
       onSubscribed();
     } catch {
-      showError('Something went wrong on our end — please try again.');
+      showError('Something went wrong on our end. Please try again.', emailIn);
     } finally {
       form.classList.remove('loading');
     }
