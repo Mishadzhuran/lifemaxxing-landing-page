@@ -70,6 +70,7 @@ html{
   scroll-behavior:smooth;
   -webkit-text-size-adjust:100%;
   scroll-padding-top:calc(72px + env(safe-area-inset-top, 0px));
+  max-width:100%;
 }
 body{
   font-family:var(--font-body);
@@ -80,11 +81,14 @@ body{
   padding-right:env(safe-area-inset-right, 0px);
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
+  max-width:100%;
+  overscroll-behavior-y:auto;
+  -webkit-overflow-scrolling:touch;
 }
 .page{
-  overflow-x:hidden;
   width:100%;
   max-width:100%;
+  overflow:visible;
 }
 body::before{
   content:"";
@@ -218,16 +222,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   background:rgba(247,243,235,.96);
   box-shadow:0 1px 0 var(--divider),0 8px 32px -20px rgba(28,28,28,.12);
 }
-@media(max-width:899px){
-  .header{
-    background:rgba(247,243,235,.96);
-    box-shadow:0 1px 0 var(--divider);
-  }
-  .header.scrolled{
-    background:rgba(247,243,235,.98);
-    box-shadow:0 1px 0 var(--divider),0 6px 24px -16px rgba(28,28,28,.1);
-  }
-}
 .header-inner{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:14px 0;
@@ -236,32 +230,48 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 }
 .header .wrap{width:min(1120px,calc(100% - 40px));max-width:100%;margin:0 auto}
 @media(max-width:899px){
+  html{overflow-x:clip}
+  .header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(247,243,235,.98);
+    box-shadow:0 1px 0 var(--divider),0 6px 24px -16px rgba(28,28,28,.1);
+  }
   .header .wrap{width:calc(100% - 28px);max-width:100%}
   .hero-visual,
-  .feature-visual.device-stage,
-  .device-stage{
-    overflow:visible;
-    max-width:100%;
-    perspective:none;
+  .feature-visual,
+  .device-stage,
+  .device-tilt,
+  .device-showcase,
+  .device-showcase .device,
+  .device-showcase .device-btn,
+  .device-showcase .mockup-img,
+  .device-showcase .device-media{
     touch-action:pan-y;
+    pointer-events:none;
     -webkit-user-select:none;
     user-select:none;
   }
-  .device-tilt{transform:none !important;touch-action:pan-y}
+  .hero-visual,
+  .feature-visual,
+  .device-stage,
+  .device-tilt,
   .device-showcase{
-    overflow:visible;
+    overflow:visible !important;
     max-width:100%;
-    transform-style:flat;
-    touch-action:pan-y;
   }
-  .device-showcase .device,
-  .device-showcase .mockup-img,
-  .device-showcase .device-media{
-    pointer-events:none;
-    touch-action:pan-y;
-    transform-style:flat;
-    --d-tz:0px;
-    will-change:auto;
+  .hero-bg{overflow:hidden}
+  .device-showcase[data-device-reveal]{
+    opacity:1;
+    transform:none;
+    filter:none;
+    transition:none;
+  }
+  .device-showcase[data-device-reveal] .device,
+  .device-showcase[data-device-reveal] .mockup-img{
+    opacity:1;
+    transition:none;
   }
 }
 .header.scrolled .header-inner{padding:10px 0}
@@ -834,35 +844,29 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   .join-card{box-shadow:0 16px 40px -18px rgba(28,28,28,.18)}
   .feature-copy .icon{box-shadow:0 6px 14px -8px rgba(45,70,40,.35)}
   .device-stage{
-    overflow:visible;
+    overflow:visible !important;
     padding:4px 6px 8px;
     max-width:100%;
-    perspective:none;
+    touch-action:pan-y;
+    pointer-events:none;
+  }
+  .device-tilt{
+    max-width:100%;
+    padding:0 2px;
+    pointer-events:none;
     touch-action:pan-y;
   }
-  .device-tilt{max-width:100%;padding:0 2px;transform:none !important}
   .device-showcase{
     max-width:100%;
     padding-left:4px;
     padding-right:4px;
     padding-bottom:12px;
+    overflow:visible !important;
+    pointer-events:none;
+    touch-action:pan-y;
   }
   .device-showcase--feature{padding-bottom:12px}
   .device-showcase--hero{padding-bottom:12px}
-  .device-showcase--hero .device--back,
-  .device-showcase--feature.device-showcase--duo .device--back{
-    --d-rx:1deg; --d-ry:5deg; --d-rz:2deg; --d-tx:-2px; --d-ty:8px; --d-tz:-6px; --d-sc:0.97;
-  }
-  .device-showcase--hero .device--front,
-  .device-showcase--feature.device-showcase--duo .device--front{
-    --d-rx:-1deg; --d-ry:-5deg; --d-rz:-2deg; --d-tx:2px; --d-ty:-2px; --d-tz:8px;
-  }
-  .device-showcase--frontal .device{--d-rx:1deg; --d-ry:-1deg}
-  .device-showcase--duo-reverse .device--back{--d-rx:-1deg; --d-ry:-4deg; --d-rz:-2deg; --d-ty:6px; --d-tx:2px}
-  .device-showcase--duo-reverse .device--front{--d-rx:1deg; --d-ry:4deg; --d-rz:2deg; --d-tx:-2px}
-  .device-showcase--duo-map .device--back{--d-rx:1deg; --d-ry:4deg; --d-rz:2deg; --d-ty:6px; --d-tx:-2px}
-  .device-showcase--duo-map .device--front{--d-rx:-1deg; --d-ry:-3deg; --d-rz:-1deg; --d-tx:2px}
-  .device-showcase--profile .device{--d-rx:0deg; --d-ry:2deg; --d-rz:1deg}
   .hero-ctas{flex-direction:column;align-items:stretch;width:100%;max-width:340px;margin:0 auto}
   .hero-ctas .btn{width:100%}
   .hero-cta-note{max-width:100%}
