@@ -483,7 +483,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 
 /* ambient ground shadow — desktop only; clipped badly on mobile overflow containers */
 .device-showcase::after{
-  display:none;
+  content:none;
 }
 @media(max-width:768px){
   .device-showcase::after{display:none}
@@ -601,10 +601,10 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   position:relative;
   flex:0 0 auto;
   width:var(--device-w);
-  background:transparent;
-  border-radius:var(--device-screen-radius);
-  padding:0;
-  box-shadow:none;
+  background:linear-gradient(165deg, #1e1e1e 0%, #111 20%, #000 55%, #0a0a0a 100%);
+  border-radius:var(--device-radius);
+  padding:var(--device-bezel);
+  box-shadow:var(--device-shadow);
   z-index:1;
   transform-style:preserve-3d;
   -webkit-transform-style:preserve-3d;
@@ -614,11 +614,21 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 }
 
 .device::after{
-  display:none;
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:4;
+  background:linear-gradient(140deg, rgba(255,255,255,.04) 0%, transparent 26%, transparent 74%, rgba(255,255,255,.03) 100%);
 }
 
 .device-btn{
-  display:none;
+  position:absolute;
+  z-index:3;
+  border-radius:1px;
+  background:linear-gradient(90deg, #0a0a0a, #1c1c1c 40%, #121212 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1);
 }
 .device-btn--action{
   left:calc(var(--device-btn-w) * -1);
@@ -655,12 +665,12 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 }
 
 .device-screen{
+  background:#000;
   border-radius:var(--device-screen-radius);
   overflow:hidden;
   position:relative;
   aspect-ratio:var(--device-aspect);
   isolation:isolate;
-  background:transparent;
   box-shadow:none;
 }
 
@@ -692,7 +702,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 .device-showcase--feature.device-showcase--duo .device--front{
   --d-rx:-3deg; --d-ry:-12deg; --d-rz:-6deg; --d-tx:12px; --d-ty:-4px; --d-tz:20px; --d-sc:1;
   z-index:2;
-  box-shadow:none;
+  box-shadow:var(--device-shadow-front);
 }
 .device-showcase--hero .device,
 .device-showcase--feature.device-showcase--duo .device{
