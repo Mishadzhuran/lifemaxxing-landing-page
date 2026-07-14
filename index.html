@@ -283,8 +283,8 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   transition:transform var(--dur-micro) var(--ease-premium),opacity var(--dur-micro) ease;
 }
 .header .logo:hover{transform:scale(1.03)}
-.header .logo img{height:30px;width:auto;max-width:min(220px,50vw);transition:height .5s var(--ease-premium)}
-.header.scrolled .logo img{height:28px}
+.header .logo img{height:24px;width:auto;max-width:min(180px,44vw);transition:height .5s var(--ease-premium)}
+.header.scrolled .logo img{height:22px}
 .header .btn{
   padding:11px 22px;font-size:14px;
   flex-shrink:0;white-space:nowrap;
@@ -297,7 +297,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 }
 @media(max-width:479px){
   .header .btn{padding:9px 12px;font-size:11px}
-  .header .logo img{height:28px;max-width:min(200px,46vw)}
+  .header .logo img{height:22px;max-width:min(168px,42vw)}
 }
 
 /* ============================================================
@@ -693,6 +693,11 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 .device-media--video{
   background:#000;
   pointer-events:none;
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+.blob,.marquee-track{
+  animation-play-state:running;
 }
 
 /* ---- HERO & FEATURE LOG: dynamic duo, both sharp ---- */
@@ -800,8 +805,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   position:relative;
   padding:16px 0 72px;
   overflow:hidden;
-  content-visibility:auto;
-  contain-intrinsic-size:auto 420px;
 }
 .screen-marquee::before,
 .screen-marquee::after{
@@ -832,7 +835,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   backface-visibility:hidden;
 }
 .marquee-track:hover{animation-play-state:paused}
-.marquee-track.is-paused{animation-play-state:paused}
 @keyframes marquee-scroll{
   from{transform:translate3d(0,0,0)}
   to{transform:translate3d(-50%,0,0)}
@@ -842,7 +844,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   position:relative;
   flex:none;
   overflow:hidden;
-  contain:content;
   width:calc(var(--marquee-full-w) * var(--k));
   height:calc(var(--marquee-full-h) * var(--k));
   border-radius:calc(var(--marquee-radius) * var(--k));
@@ -1254,7 +1255,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 .footer.in{opacity:1;transform:none}
 .footer-inner{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
 @media(min-width:700px){.footer-inner{flex-direction:row;justify-content:space-between;text-align:left}}
-.footer .logo img{height:32px;width:auto;max-width:min(220px,65vw)}
+.footer .logo img{height:26px;width:auto;max-width:min(180px,58vw)}
 .footer nav{display:flex;gap:26px;font-size:14px;color:var(--gray)}
 .footer nav a{transition:color .25s}
 .footer nav a:hover{color:var(--forest)}
@@ -1307,7 +1308,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
       </div>
     </div>
 
-    <div class="hero-visual device-stage" data-parallax-tilt="0.04">
+    <div class="hero-visual device-stage">
       <div class="device-tilt">
       <div class="device-showcase device-showcase--hero device-showcase--frontal" data-device-reveal aria-label="LifeMaxxing app preview">
         <div class="device">
@@ -1316,7 +1317,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
           <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
           <span class="device-btn device-btn--power" aria-hidden="true"></span>
           <div class="device-screen">
-            <video class="device-media device-media--video" src="assets/app-demo.mp4" poster="assets/poster-demo.jpg" autoplay muted loop playsinline preload="metadata" aria-label="LifeMaxxing app demo"></video>
+            <video class="device-media device-media--video" src="assets/app-demo.mp4" poster="assets/poster-demo.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="LifeMaxxing app demo"></video>
           </div>
         </div>
       </div>
@@ -1590,11 +1591,27 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 const heroVideo = document.querySelector('.device-media--video');
 if (heroVideo) {
+  const resumeHeroVideoIfVisible = () => {
+    if (reduceMotion || document.hidden) return;
+    const rect = heroVideo.getBoundingClientRect();
+    const inView = rect.bottom > 0 && rect.top < window.innerHeight;
+    if (inView && heroVideo.paused) heroVideo.play().catch(() => {});
+  };
+
   if (reduceMotion) {
     heroVideo.removeAttribute('autoplay');
     heroVideo.pause();
   } else {
     heroVideo.play().catch(() => {});
+    heroVideo.addEventListener('pause', () => {
+      requestAnimationFrame(resumeHeroVideoIfVisible);
+    });
+    let resumeTimer;
+    window.addEventListener('scroll', () => {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(resumeHeroVideoIfVisible, 80);
+    }, { passive: true });
+    document.addEventListener('visibilitychange', resumeHeroVideoIfVisible);
   }
 }
 
@@ -1736,7 +1753,7 @@ if (!reduceMotion && !isMobileViewport() && (pxEls.length || tiltStages.length))
 resetMobileMotion();
 
 /* ============================================================
-   3a. SCREEN MARQUEE — build phones, loop, pause while scrolling
+   3a. SCREEN MARQUEE — build phones and loop
    ============================================================ */
 const MARQUEE_SCREENS = [
   { src: 'assets/screens/home-feed.png', alt: 'LifeMaxxing home feed' },
@@ -1786,13 +1803,6 @@ if (screenMarquee && MARQUEE_SCREENS.length) {
     Array.from(screenMarquee.children).forEach((slot) => {
       screenMarquee.appendChild(slot.cloneNode(true));
     });
-
-    let marqueePauseTimer;
-    window.addEventListener('scroll', () => {
-      if (!screenMarquee.classList.contains('is-paused')) screenMarquee.classList.add('is-paused');
-      clearTimeout(marqueePauseTimer);
-      marqueePauseTimer = setTimeout(() => screenMarquee.classList.remove('is-paused'), 200);
-    }, { passive: true });
   }
 }
 
