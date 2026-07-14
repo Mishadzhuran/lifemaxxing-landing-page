@@ -2,3 +2,5 @@
 .claude/
 *.log
 assets-original/
+assets/app-demo.mov
+assets/*.mov

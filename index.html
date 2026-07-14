@@ -690,6 +690,10 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   -webkit-user-select:none;
   user-select:none;
 }
+.device-media--video{
+  background:#000;
+  pointer-events:none;
+}
 
 /* ---- HERO & FEATURE LOG: dynamic duo, both sharp ---- */
 .device-showcase--hero .device--back,
@@ -715,6 +719,22 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 }
 .device-showcase--hero.device-showcase--duo .device--front{
   animation:hero-front-in 1.2s .28s var(--ease-out) both;
+}
+.device-showcase--hero.device-showcase--frontal{
+  max-width:min(340px,84vw);
+  padding:12px 8px 36px;
+  align-items:center;
+}
+.device-showcase--hero.device-showcase--frontal .device{
+  --device-w:clamp(200px,38vw,280px);
+  width:var(--device-w);
+  --d-rx:2deg; --d-ry:-4deg; --d-rz:0deg; --d-tx:0; --d-ty:0; --d-tz:0; --d-sc:1;
+  transform:rotateX(var(--d-rx)) rotateY(var(--d-ry)) rotateZ(var(--d-rz)) translate3d(var(--d-tx),var(--d-ty),var(--d-tz)) scale(var(--d-sc));
+  animation:hero-solo-in 1.1s .35s var(--ease-out) both;
+}
+@keyframes hero-solo-in{
+  from{opacity:0;transform:rotateX(4deg) rotateY(-6deg) translate3d(0,32px,0) scale(.94)}
+  to{opacity:1;transform:rotateX(2deg) rotateY(-4deg) translate3d(0,0,0) scale(1)}
 }
 @keyframes hero-back-in{
   from{opacity:0;transform:rotateX(6deg) rotateY(20deg) rotateZ(8deg) translate3d(-14px,40px,-24px) scale(.9)}
@@ -770,6 +790,100 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   transform:rotateX(var(--d-rx)) rotateY(var(--d-ry)) rotateZ(var(--d-rz)) translate3d(var(--d-tx),var(--d-ty),var(--d-tz)) scale(var(--d-sc));
 }
 
+/* ---- SCREEN MARQUEE — scrolling row of iPhone previews ---- */
+.screen-marquee{
+  --marquee-device-w:250px;
+  --marquee-full-w:var(--marquee-device-w);
+  --marquee-full-h:calc(var(--marquee-device-w) * 2868 / 1320 + var(--marquee-device-w) * 0.056);
+  --marquee-radius:calc(var(--marquee-device-w) * 0.138);
+  --marquee-slot-k:.58;
+  position:relative;
+  padding:16px 0 72px;
+  overflow:hidden;
+  content-visibility:auto;
+  contain-intrinsic-size:auto 420px;
+}
+.screen-marquee::before,
+.screen-marquee::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:min(120px,18vw);
+  z-index:3;
+  pointer-events:none;
+}
+.screen-marquee::before{
+  left:0;
+  background:linear-gradient(90deg,var(--cream),transparent);
+}
+.screen-marquee::after{
+  right:0;
+  background:linear-gradient(270deg,var(--cream),transparent);
+}
+.marquee-track{
+  display:flex;
+  width:max-content;
+  gap:22px;
+  align-items:flex-start;
+  animation:marquee-scroll 72s linear infinite;
+  will-change:transform;
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-track.is-paused{animation-play-state:paused}
+@keyframes marquee-scroll{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-50%,0,0)}
+}
+.marquee-slot{
+  --k:var(--marquee-slot-k);
+  position:relative;
+  flex:none;
+  overflow:hidden;
+  contain:content;
+  width:calc(var(--marquee-full-w) * var(--k));
+  height:calc(var(--marquee-full-h) * var(--k));
+  border-radius:calc(var(--marquee-radius) * var(--k));
+  box-shadow:0 34px 66px -30px rgba(0,0,0,.78);
+}
+.marquee-slot:nth-child(even){margin-top:32px}
+.marquee-slot .device--marquee{
+  --device-w:var(--marquee-device-w);
+  width:var(--device-w);
+  transform:scale(var(--k));
+  transform-origin:top left;
+  box-shadow:none;
+  margin:0;
+  z-index:auto;
+}
+.device--marquee .device-btn{display:none}
+@media(max-width:768px){
+  .screen-marquee{
+    --marquee-slot-k:.52;
+    padding:10px 0 52px;
+  }
+  .marquee-slot:nth-child(even){margin-top:26px}
+}
+@media(max-width:520px){
+  .screen-marquee{--marquee-slot-k:.48}
+}
+@media (prefers-reduced-motion: reduce){
+  .marquee-track{
+    animation:none;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:auto;
+    max-width:min(1120px,calc(100% - 40px));
+    margin:0 auto;
+    gap:16px;
+    padding:0 20px;
+  }
+  .marquee-slot:nth-child(even){margin-top:0}
+  .marquee-slot:nth-child(n+7){display:none}
+}
+
 @media (prefers-reduced-motion: reduce){
   .device-showcase--hero .device{animation:none !important}
   .device-showcase[data-device-reveal]{opacity:1;transform:none;filter:none;transition:none}
@@ -785,6 +899,9 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   .device-showcase--hero.device-showcase--duo .device--back,
   .device-showcase--hero.device-showcase--duo .device--front{
     animation:none !important;
+  }
+  .device-showcase--hero.device-showcase--frontal .device{
+    --device-w:clamp(170px,44vw,220px);
   }
 }
 
@@ -1192,29 +1309,25 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 
     <div class="hero-visual device-stage" data-parallax-tilt="0.04">
       <div class="device-tilt">
-      <div class="device-showcase device-showcase--hero device-showcase--duo" data-device-reveal aria-label="LifeMaxxing app preview">
-        <div class="device device--back">
+      <div class="device-showcase device-showcase--hero device-showcase--frontal" data-device-reveal aria-label="LifeMaxxing app preview">
+        <div class="device">
           <span class="device-btn device-btn--action" aria-hidden="true"></span>
           <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
           <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
           <span class="device-btn device-btn--power" aria-hidden="true"></span>
           <div class="device-screen">
-            <img class="device-media" src="assets/screens/home-feed.png" alt="LifeMaxxing home feed" width="471" height="1024" loading="eager" decoding="async">
-          </div>
-        </div>
-        <div class="device device--front">
-          <span class="device-btn device-btn--action" aria-hidden="true"></span>
-          <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
-          <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
-          <span class="device-btn device-btn--power" aria-hidden="true"></span>
-          <div class="device-screen">
-            <img class="device-media" src="assets/screens/life-map.png" alt="LifeMaxxing Life Map" width="471" height="1024" loading="eager" decoding="async">
+            <video class="device-media device-media--video" src="assets/app-demo.mp4" poster="assets/poster-demo.jpg" autoplay muted loop playsinline preload="metadata" aria-label="LifeMaxxing app demo"></video>
           </div>
         </div>
       </div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- ================= APP SCREENS MARQUEE ================= -->
+<section class="screen-marquee reveal" aria-label="LifeMaxxing app screens">
+  <div class="marquee-track" id="screenMarquee"></div>
 </section>
 
 <!-- ================= WHAT IS LIFEMAXXING ================= -->
@@ -1256,7 +1369,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/experience-detail.png" alt="LifeMaxxing experience detail for Pacific Harvest" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/filters.png" alt="LifeMaxxing explore filters for category, distance and rating" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1285,7 +1398,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/life-map.png" alt="LifeMaxxing Life Map with friend experiences" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/map-friend-experience.png" alt="LifeMaxxing map with nearby places and friends" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="device device--front">
@@ -1294,7 +1407,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/map-detail.png" alt="LifeMaxxing map pin detail for The Roastery" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/map-place-detail.png" alt="LifeMaxxing map place detail for Lion's Head" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1323,7 +1436,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/place-page.png" alt="LifeMaxxing place page for Pacific Harvest" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/place-page.png" alt="LifeMaxxing place page for The Roastery" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="device device--front">
@@ -1332,7 +1445,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/profile.png" alt="LifeMaxxing profile and life graph" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/achievements.png" alt="LifeMaxxing profile achievements and badges" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1361,7 +1474,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screenshot-log-step.png" alt="LifeMaxxing log experience flow" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/log-step.png" alt="LifeMaxxing log experience flow" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="device device--front">
@@ -1474,6 +1587,16 @@ if (header) {
 }
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const heroVideo = document.querySelector('.device-media--video');
+if (heroVideo) {
+  if (reduceMotion) {
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.pause();
+  } else {
+    heroVideo.play().catch(() => {});
+  }
+}
 
 function revealEl(el) {
   if (!el || el.classList.contains('in')) return;
@@ -1611,6 +1734,67 @@ if (!reduceMotion && !isMobileViewport() && (pxEls.length || tiltStages.length))
   window.addEventListener('resize', resetMobileMotion, { passive: true });
 }
 resetMobileMotion();
+
+/* ============================================================
+   3a. SCREEN MARQUEE — build phones, loop, pause while scrolling
+   ============================================================ */
+const MARQUEE_SCREENS = [
+  { src: 'assets/screens/home-feed.png', alt: 'LifeMaxxing home feed' },
+  { src: 'assets/screens/notifications.png', alt: 'LifeMaxxing social updates' },
+  { src: 'assets/screens/explore.png', alt: 'LifeMaxxing explore screen' },
+  { src: 'assets/screens/filters.png', alt: 'LifeMaxxing explore filters' },
+  { src: 'assets/screens/experience-detail.png', alt: 'LifeMaxxing experience detail' },
+  { src: 'assets/screens/experience-feed.png', alt: 'LifeMaxxing experience page' },
+  { src: 'assets/screens/map-friend-experience.png', alt: 'LifeMaxxing map discovery' },
+  { src: 'assets/screens/map-place-detail.png', alt: 'LifeMaxxing map place detail' },
+  { src: 'assets/screens/place-page.png', alt: 'LifeMaxxing place page' },
+  { src: 'assets/screens/place-hero.png', alt: 'LifeMaxxing place hero' },
+  { src: 'assets/screens/profile.png', alt: 'LifeMaxxing profile' },
+  { src: 'assets/screens/achievements.png', alt: 'LifeMaxxing achievements' },
+  { src: 'assets/screens/streak.png', alt: 'LifeMaxxing streak' },
+  { src: 'assets/screens/log-step.png', alt: 'LifeMaxxing log flow' },
+  { src: 'assets/screens/log-flow.png', alt: 'LifeMaxxing log step' },
+  { src: 'assets/screens/logged.png', alt: 'LifeMaxxing logged experience' },
+];
+
+const screenMarquee = document.getElementById('screenMarquee');
+if (screenMarquee && MARQUEE_SCREENS.length) {
+  const buildMarqueePhone = ({ src, alt }) => {
+    const phone = document.createElement('div');
+    phone.className = 'marquee-phone';
+    phone.innerHTML = `
+      <div class="device device--marquee">
+        <div class="device-screen">
+          <img class="device-media" src="${src}" alt="${alt}" width="471" height="1024" loading="lazy" decoding="async">
+        </div>
+      </div>`;
+    return phone;
+  };
+
+  MARQUEE_SCREENS.forEach((screen) => {
+    screenMarquee.appendChild(buildMarqueePhone(screen));
+  });
+
+  Array.from(screenMarquee.children).forEach((phone) => {
+    const slot = document.createElement('div');
+    slot.className = 'marquee-slot';
+    screenMarquee.replaceChild(slot, phone);
+    slot.appendChild(phone);
+  });
+
+  if (!reduceMotion) {
+    Array.from(screenMarquee.children).forEach((slot) => {
+      screenMarquee.appendChild(slot.cloneNode(true));
+    });
+
+    let marqueePauseTimer;
+    window.addEventListener('scroll', () => {
+      if (!screenMarquee.classList.contains('is-paused')) screenMarquee.classList.add('is-paused');
+      clearTimeout(marqueePauseTimer);
+      marqueePauseTimer = setTimeout(() => screenMarquee.classList.remove('is-paused'), 200);
+    }, { passive: true });
+  }
+}
 
 /* ============================================================
    3b. DEVICE REVEAL ON SCROLL
