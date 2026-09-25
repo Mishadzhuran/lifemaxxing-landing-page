@@ -11,8 +11,8 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="icon" type="image/jpeg" href="assets/icon.jpg">
-<link rel="apple-touch-icon" href="assets/icon.jpg">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <!-- Typography: system UI fonts only — no custom webfonts -->
 <style>
@@ -29,7 +29,7 @@
   --gray:       #98948E;  /* subtext */
   --white:      #FFFFFF;
   --divider:    #2C2C32;  /* borders / outline buttons */
-  --gold:       #D4B896;  /* champagne secondary */
+  --gold:       #8B9BB8;  /* silver secondary (was champagne) */
 
   --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -324,7 +324,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   will-change:transform;
 }
 .blob-1{width:520px;height:520px;background:rgba(82,148,212,.16);top:-160px;right:-140px;animation-duration:24s}
-.blob-2{width:420px;height:420px;background:rgba(212,184,150,.08);bottom:-120px;left:-160px;animation-duration:28s;animation-delay:-6s}
+.blob-2{width:420px;height:420px;background:rgba(82,148,212,.08);bottom:-120px;left:-160px;animation-duration:28s;animation-delay:-6s}
 .blob-3{width:260px;height:260px;background:rgba(69,136,204,.14);top:34%;left:52%;animation-duration:20s;animation-delay:-3s}
 @keyframes blob-drift{
   0%,100%{transform:translate3d(0,0,0) scale(1)}
@@ -348,10 +348,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 .hero h1 em{
   font-style:normal;font-weight:600;color:var(--forest);position:relative;white-space:nowrap;
 }
-.hero h1 em .u{position:absolute;left:0;right:0;bottom:.02em;height:.14em;overflow:visible}
-.hero h1 em .u path{stroke:var(--gold);stroke-width:7;fill:none;stroke-linecap:round;
-  stroke-dasharray:320;stroke-dashoffset:320;animation:draw 1.2s 1.1s var(--ease-premium) forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
 
 .avatar-stack span,.avatar-stack img{
   transition:transform var(--dur-micro) var(--ease-spring);
@@ -982,7 +978,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
     --device-overlap:calc(var(--device-w) * -0.2);
   }
   .hero{padding-top:calc(104px + env(safe-area-inset-top, 0px));padding-bottom:56px}
-  .hero h1 em .u path{stroke-width:5}
   .device-showcase--hero{padding:4px 6px 8px}
   .blob-1{width:300px;height:300px;top:-90px;right:-70px;opacity:.42}
   .blob-2{width:260px;height:260px;bottom:-70px;left:-90px;opacity:.42}
@@ -1091,7 +1086,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 @media(min-width:760px){.join-card{padding:88px 80px}}
 .join-card::before{
   content:"";position:absolute;top:0;left:0;right:0;height:6px;
-  background:linear-gradient(90deg,var(--forest),var(--gold),var(--forest));
+  background:linear-gradient(90deg,var(--forest),var(--forest-deep),var(--forest));
   background-size:200% 100%;animation:shimmer 6s linear infinite;
 }
 @keyframes shimmer{to{background-position:200% 0}}
@@ -1110,7 +1105,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   text-transform:uppercase;letter-spacing:.1em;
   font-size:11px;font-weight:700;padding:7px 14px;
 }
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,184,150,.45)}50%{box-shadow:0 0 0 7px rgba(212,184,150,0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(82,148,212,.45)}50%{box-shadow:0 0 0 7px rgba(82,148,212,0)}}
 
 .join-card h2{font-size:clamp(34px,6.6vw,56px);margin-bottom:14px}
 .join-card .join-cta-text{font-size:16px;max-width:480px;margin:0 auto 32px}
@@ -1180,8 +1175,8 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 
 /* success state */
 .success-state{
-  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
-  background:var(--card);
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:radial-gradient(ellipse at 50% 20%, rgba(82,148,212,.12), transparent 55%), var(--card);
   opacity:0;pointer-events:none;transform:scale(.92);
   filter:blur(4px);
   transition:
@@ -1191,14 +1186,17 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 }
 .form-zone.done .subscribe-form,.form-zone.done .form-msg{visibility:hidden}
 .form-zone.done .success-state{opacity:1;pointer-events:auto;transform:scale(1);filter:none}
-.success-check{width:60px;height:60px;margin-bottom:8px}
+.success-check{width:64px;height:64px;margin-bottom:6px}
 .success-check circle{fill:none;stroke:var(--forest);stroke-width:2.4;stroke-dasharray:166;stroke-dashoffset:166}
 .success-check path{fill:none;stroke:var(--forest);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:48;stroke-dashoffset:48}
 .form-zone.done .success-check circle{animation:draw-c .7s var(--ease-out) forwards}
 .form-zone.done .success-check path{animation:draw-c .5s .5s var(--ease-out) forwards}
 @keyframes draw-c{to{stroke-dashoffset:0}}
-.success-state b{font-family:var(--font-display);font-size:21px;font-weight:600}
-.success-state p{font-size:14px;color:var(--gray);max-width:320px}
+.success-eyebrow{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;
+}
+.success-state b{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--ink)}
+.success-state p{font-size:14px;color:var(--gray);max-width:320px;line-height:1.5}
 
 .join-foot{margin-top:26px;font-size:12.5px;color:var(--gray)}
 .join-foot a{color:var(--forest);text-decoration:underline;text-underline-offset:2px}
@@ -1248,18 +1246,52 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
    ============================================================ */
 .footer{
   border-top:1px solid var(--divider);
-  padding:44px 0 calc(34px + env(safe-area-inset-bottom));
+  padding:56px 0 calc(36px + env(safe-area-inset-bottom));
   opacity:0;transform:translate3d(0,16px,0);
   transition:opacity .9s var(--ease-premium),transform .9s var(--ease-premium);
 }
 .footer.in{opacity:1;transform:none}
-.footer-inner{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
-@media(min-width:700px){.footer-inner{flex-direction:row;justify-content:space-between;text-align:left}}
+.footer-top{
+  display:grid;
+  gap:36px;
+  padding-bottom:36px;
+  border-bottom:1px solid var(--divider);
+}
+@media(min-width:800px){
+  .footer-top{
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:28px 40px;
+    align-items:start;
+  }
+}
+.footer-brand{display:flex;flex-direction:column;gap:12px;max-width:280px}
 .footer .logo img{height:26px;width:auto;max-width:min(180px,58vw)}
-.footer nav{display:flex;gap:26px;font-size:14px;color:var(--gray)}
-.footer nav a{transition:color .25s}
-.footer nav a:hover{color:var(--forest)}
-.footer .copy{font-size:12.5px;color:var(--gray)}
+.footer-tagline{font-size:14px;line-height:1.5;color:var(--gray);margin:0}
+.footer-col h3{
+  margin:0 0 14px;
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);
+}
+.footer-col nav{
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  font-size:14px;color:var(--gray);
+}
+.footer-col a{color:var(--gray);transition:color .25s}
+.footer-col a:hover{color:var(--forest)}
+.footer-bottom{
+  display:flex;flex-direction:column;gap:10px;align-items:flex-start;
+  padding-top:22px;
+}
+@media(min-width:700px){
+  .footer-bottom{flex-direction:row;justify-content:space-between;align-items:center}
+}
+.footer .copy{font-size:12.5px;color:var(--gray);margin:0}
+.footer-meta{font-size:12.5px;color:var(--gray);margin:0}
+.footer-meta a{color:var(--forest)}
+.footer-meta a:hover{text-decoration:underline;text-underline-offset:2px}
+@media(max-width:799px){
+  .footer-brand{max-width:none}
+}
 </style>
 </head>
 <body>
@@ -1290,7 +1322,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <span class="kicker reveal" data-delay="1"><span class="kicker-text kicker-text--long">Imagine IMDb and Instagram were combined — for real life</span><span class="kicker-text kicker-text--short">IMDb × Instagram for real life</span></span>
-      <h1 class="reveal" data-delay="1">Log your life.<br><em>Max it out.<svg class="u" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 Q 150 4 296 12"/></svg></em></h1>
+      <h1 class="reveal" data-delay="1">Log your life.<br><em>Max it out.</em></h1>
       <p class="sub reveal" data-delay="2">Every trail, table, trip and tiny win gets logged, rated and mapped. We are building the app your life deserves. Become a founding member and be among the first to download it.</p>
       <div class="hero-ctas reveal" data-delay="3">
         <a href="#join" class="btn btn-primary">Become a founding member <span class="arr">→</span></a>
@@ -1317,7 +1349,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
           <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
           <span class="device-btn device-btn--power" aria-hidden="true"></span>
           <div class="device-screen">
-            <video class="device-media device-media--video" src="assets/app-demo.mp4" poster="assets/poster-demo.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="LifeMaxxing app demo"></video>
+            <video class="device-media device-media--video" src="assets/app-demo.mp4?v=11" poster="assets/poster-demo.jpg?v=11" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="LifeMaxxing app demo"></video>
           </div>
         </div>
       </div>
@@ -1361,7 +1393,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/explore.png" alt="LifeMaxxing explore screen with recommended places" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/explore.png?v=11" alt="LifeMaxxing explore with trending life logs and categories" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="device device--front">
@@ -1370,7 +1402,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/filters.png" alt="LifeMaxxing explore filters for category, distance and rating" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/filters.png?v=11" alt="LifeMaxxing map filters for category, sort and distance" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1399,7 +1431,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/map-friend-experience.png" alt="LifeMaxxing map with nearby places and friends" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/map-friend-experience.png?v=11" alt="LifeMaxxing map with nearby places from friends" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="device device--front">
@@ -1408,7 +1440,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/map-place-detail.png" alt="LifeMaxxing map place detail for Lion's Head" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/map-place-detail.png?v=11" alt="LifeMaxxing map place detail for Hidden Garden Brunch" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1437,7 +1469,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/place-page.png" alt="LifeMaxxing place page for The Roastery" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/place-page.png?v=11" alt="LifeMaxxing meditation log with directions" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="device device--front">
@@ -1446,7 +1478,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/achievements.png" alt="LifeMaxxing profile achievements and badges" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/achievements.png?v=11" alt="LifeMaxxing profile physical achievements" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1475,7 +1507,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/log-step.png" alt="LifeMaxxing log experience flow" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/log-step.png?v=11" alt="LifeMaxxing rate a log" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="device device--front">
@@ -1484,7 +1516,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/logged.png" alt="LifeMaxxing logged experience confirmation" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/logged.png?v=11" alt="LifeMaxxing pick a log date" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1526,14 +1558,15 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
         </form>
         <p class="form-msg" id="formMsg" role="alert" aria-live="polite"></p>
 
-        <div class="success-state" aria-live="polite">
+        <div class="success-state" aria-live="polite" id="successState">
           <svg class="success-check" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg>
-          <b>You're registered.</b>
-          <p>Watch your inbox. We'll let you know as soon as your founding member spot opens up.</p>
+          <span class="success-eyebrow">Founding member</span>
+          <b id="successTitle">You're in.</b>
+          <p id="successBody">You're on the list. We'll email you the moment early access opens.</p>
         </div>
       </div>
 
-      <p class="join-foot">No spam. We will only contact you about early access. By registering, you agree to our <a href="privacy.html">Privacy Policy</a>, <a href="terms.html">Terms &amp; Conditions</a>, and <a href="payment-terms.html">Payment Terms</a>.</p>
+      <p class="join-foot">No spam. We will only contact you about early access. By registering, you agree to our <a href="https://lifemaxxing.io/legal/privacy/">Privacy Policy</a>, <a href="https://lifemaxxing.io/legal/terms/">Terms of Service</a>, and <a href="payment-terms.html">Payment Terms</a>. You must be 16 or older.</p>
     </div>
   </div>
 </section>
@@ -1554,16 +1587,43 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12}
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <a class="logo" href="#top" aria-label="LifeMaxxing"><img src="assets/logo.png?v=6" alt="LifeMaxxing"></a>
-    <nav>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="payment-terms.html">Payment Terms</a>
-      <a href="mailto:hello@notfit.io">Contact</a>
-      <a href="#join">Founding members</a>
-    </nav>
-    <p class="copy">© 2026 LifeMaxxing. Life is the ultimate sport.</p>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#top" aria-label="LifeMaxxing"><img src="assets/logo.png?v=6" alt="LifeMaxxing"></a>
+        <p class="footer-tagline">Log your life. Max it out. Life is the ultimate sport.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Product</h3>
+        <nav aria-label="Product">
+          <a href="#join">Founding members</a>
+          <a href="#what">What is LifeMaxxing</a>
+          <a href="https://lifemaxxing.io/support/">Support</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h3>Legal</h3>
+        <nav aria-label="Legal">
+          <a href="https://lifemaxxing.io/legal/privacy/">Privacy Policy</a>
+          <a href="https://lifemaxxing.io/legal/terms/">Terms of Service</a>
+          <a href="https://lifemaxxing.io/legal/eula/">EULA</a>
+          <a href="https://lifemaxxing.io/legal/community/">Community Guidelines</a>
+          <a href="https://lifemaxxing.io/legal/data-collection/">Data collection</a>
+          <a href="payment-terms.html">Payment Terms</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h3>Account</h3>
+        <nav aria-label="Account">
+          <a href="https://lifemaxxing.io/account/delete/">Delete account</a>
+          <a href="mailto:hello@lifemaxxing.com">hello@lifemaxxing.com</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="copy">© 2026 LifeMaxxing. 16+ · Policies match the LifeMaxxing app.</p>
+      <p class="footer-meta">Questions? <a href="mailto:hello@lifemaxxing.com">hello@lifemaxxing.com</a></p>
+    </div>
   </div>
 </footer>
 
@@ -1756,22 +1816,22 @@ resetMobileMotion();
    3a. SCREEN MARQUEE — build phones and loop
    ============================================================ */
 const MARQUEE_SCREENS = [
-  { src: 'assets/screens/home-feed.png', alt: 'LifeMaxxing home feed' },
-  { src: 'assets/screens/notifications.png', alt: 'LifeMaxxing social updates' },
-  { src: 'assets/screens/explore.png', alt: 'LifeMaxxing explore screen' },
-  { src: 'assets/screens/filters.png', alt: 'LifeMaxxing explore filters' },
-  { src: 'assets/screens/experience-detail.png', alt: 'LifeMaxxing experience detail' },
-  { src: 'assets/screens/experience-feed.png', alt: 'LifeMaxxing experience page' },
-  { src: 'assets/screens/map-friend-experience.png', alt: 'LifeMaxxing map discovery' },
-  { src: 'assets/screens/map-place-detail.png', alt: 'LifeMaxxing map place detail' },
-  { src: 'assets/screens/place-page.png', alt: 'LifeMaxxing place page' },
-  { src: 'assets/screens/place-hero.png', alt: 'LifeMaxxing place hero' },
-  { src: 'assets/screens/profile.png', alt: 'LifeMaxxing profile' },
-  { src: 'assets/screens/achievements.png', alt: 'LifeMaxxing achievements' },
-  { src: 'assets/screens/streak.png', alt: 'LifeMaxxing streak' },
-  { src: 'assets/screens/log-step.png', alt: 'LifeMaxxing log flow' },
-  { src: 'assets/screens/log-flow.png', alt: 'LifeMaxxing log step' },
-  { src: 'assets/screens/logged.png', alt: 'LifeMaxxing logged experience' },
+  { src: 'assets/screens/home-feed.png?v=11', alt: 'LifeMaxxing home feed' },
+  { src: 'assets/screens/notifications.png?v=11', alt: 'LifeMaxxing comments on a log' },
+  { src: 'assets/screens/explore.png?v=11', alt: 'LifeMaxxing explore screen' },
+  { src: 'assets/screens/filters.png?v=11', alt: 'LifeMaxxing map filters' },
+  { src: 'assets/screens/experience-detail.png?v=11', alt: 'LifeMaxxing experience detail' },
+  { src: 'assets/screens/experience-feed.png?v=11', alt: 'LifeMaxxing life log playlist' },
+  { src: 'assets/screens/map-friend-experience.png?v=11', alt: 'LifeMaxxing map discovery' },
+  { src: 'assets/screens/map-place-detail.png?v=11', alt: 'LifeMaxxing map place detail' },
+  { src: 'assets/screens/place-page.png?v=11', alt: 'LifeMaxxing place page' },
+  { src: 'assets/screens/place-hero.png?v=11', alt: 'LifeMaxxing place hero' },
+  { src: 'assets/screens/profile.png?v=11', alt: 'LifeMaxxing profile' },
+  { src: 'assets/screens/achievements.png?v=11', alt: 'LifeMaxxing achievements' },
+  { src: 'assets/screens/streak.png?v=11', alt: 'LifeMaxxing ambition quests' },
+  { src: 'assets/screens/log-step.png?v=11', alt: 'LifeMaxxing rate a log' },
+  { src: 'assets/screens/log-flow.png?v=11', alt: 'LifeMaxxing pick an activity' },
+  { src: 'assets/screens/logged.png?v=11', alt: 'LifeMaxxing logged experience' },
 ];
 
 const screenMarquee = document.getElementById('screenMarquee');
@@ -1907,9 +1967,22 @@ function showError(msg, focusEl) {
   focusEl?.focus();
 }
 
-function onSubscribed() {
+function onSubscribed({ emailed } = {}) {
   if (!formZone) return;
   form?.classList.remove('loading');
+  const title = document.getElementById('successTitle');
+  const body = document.getElementById('successBody');
+  if (title && body) {
+    if (emailed) {
+      title.textContent = "You're in. Check your inbox.";
+      body.textContent =
+        "We just sent a confirmation. We'll email you again the moment early access opens.";
+    } else {
+      title.textContent = "You're in.";
+      body.textContent =
+        "You're on the list. We'll email you the moment early access opens.";
+    }
+  }
   formZone.classList.add('done');
   if (countEl) {
     const cur = parseInt(countEl.textContent.replace(/\D/g, ''), 10) || 0;
@@ -1921,15 +1994,32 @@ function onSubscribed() {
 }
 
 async function subscribeWaitlist({ name, email, phone }) {
+  const payload = { name, email, phone, source: 'founding-member-landing' };
+
+  // Local: hit Supabase edge function directly (Vercel /api isn't available).
   if (IS_LOCAL_PREVIEW) {
-    await new Promise((resolve) => setTimeout(resolve, 450));
-    return { ok: true };
+    const res = await fetch(
+      'https://wxyoaxyksrxnojnevbgc.supabase.co/functions/v1/landing-waitlist',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind4eW9heHlrc3J4bm9qbmV2YmdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA1NzI5MzAsImV4cCI6MjA5NjE0ODkzMH0.UiWn3dEnY73jq1SnDHAXKIdpacF1l8FpvudhC6n-mQ8',
+          apikey:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind4eW9heHlrc3J4bm9qbmV2YmdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA1NzI5MzAsImV4cCI6MjA5NjE0ODkzMH0.UiWn3dEnY73jq1SnDHAXKIdpacF1l8FpvudhC6n-mQ8',
+        },
+        body: JSON.stringify(payload),
+      },
+    );
+    if (!res.ok) throw new Error('subscribe_failed');
+    return res.json().catch(() => ({ ok: true }));
   }
 
   const res = await fetch('/api/subscribe', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, phone, source: 'founding-member-landing' }),
+    body: JSON.stringify(payload),
   });
 
   if (!res.ok) throw new Error('subscribe_failed');
@@ -1971,8 +2061,8 @@ if (form && nameIn && emailIn && phoneIn) {
     form.classList.add('loading');
 
     try {
-      await subscribeWaitlist({ name, email, phone });
-      onSubscribed();
+      const result = await subscribeWaitlist({ name, email, phone });
+      onSubscribed({ emailed: Boolean(result?.emailed) });
     } catch {
       showError('Something went wrong on our end. Please try again.', emailIn);
     } finally {
