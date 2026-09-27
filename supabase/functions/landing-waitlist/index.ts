@@ -12,8 +12,9 @@ const cors = {
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+// Hosted on lifemaxxing.io (email clients load these reliably; GitHub/jsDelivr often blocked).
 const DEFAULT_LOGO_URL = "https://lifemaxxing.io/assets/logo.png";
-const DEFAULT_ICON_URL = "https://lifemaxxing.io/assets/app-icon.png";
+const DEFAULT_ICON_URL = "https://lifemaxxing.io/assets/icon.jpg";
 
 function json(status: number, body: Record<string, unknown>) {
   return new Response(JSON.stringify(body), {
@@ -35,80 +36,82 @@ function firstName(name: string): string {
   return part || "there";
 }
 
-function buildWelcomeEmail(name: string, logoUrl: string, iconUrl: string) {
+function buildWelcomeEmail(name: string, logoUrl: string, _iconUrl: string) {
   const safeFirst = escapeHtml(firstName(name));
   const subject = "You're on the LifeMaxxing founding list";
   const text = [
     `Hey ${firstName(name)},`,
     "",
-    "Thanks for registering as a LifeMaxxing founding member.",
-    "We're putting the finishing touches on the app.",
-    "We'll email you as soon as early access is ready so you can download it.",
+    "You're in as a LifeMaxxing founding member.",
+    "Thanks for registering — spots are limited, and you're on the list.",
+    "",
+    "What happens next",
+    "- We'll email you the moment early access opens",
+    "- You'll get the download link when it's your turn",
+    "- No spam. Just one note when it's ready",
     "",
     "The LifeMaxxing team",
-    "Life is the ultimate sport.",
+    "",
+    "Questions? hello@lifemaxxing.com",
   ].join("\n");
 
-  // App Main 2 tokens: black / #121214 / #5B9AE8 / #2F6BC4
+  // Brand tokens: black / #121214 / #5B9AE8 / #2F6BC4 / #F4F2EF
+  // Logo only (no app-icon) — icon.jpg/CDN often fail or look broken in Apple Mail.
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
 <title>${subject}</title>
 </head>
 <body style="margin:0;padding:0;background:#000000;color:#F4F2EF;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;">
     You're in as a founding member. We'll tell you when early access is ready.
   </div>
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#000000;padding:40px 16px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#000000;padding:40px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#121214;border:1px solid #2A2A2E;border-radius:24px;overflow:hidden;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:520px;background:#121214;border:1px solid #2A2A2E;border-radius:24px;overflow:hidden;">
           <tr>
             <td style="height:3px;background:#2F6BC4;font-size:0;line-height:0;">&nbsp;</td>
           </tr>
           <tr>
-            <td style="padding:36px 32px 0;text-align:center;">
-              <img src="${escapeHtml(iconUrl)}" alt="LifeMaxxing" width="72" height="72" style="display:inline-block;border-radius:18px;border:0;background:#FFFFFF;">
-            </td>
-          </tr>
-          <tr>
-            <td style="padding:20px 32px 0;text-align:center;">
-              <img src="${escapeHtml(logoUrl)}" alt="LifeMaxxing" width="180" style="display:inline-block;height:auto;max-width:180px;border:0;">
+            <td style="padding:40px 32px 0;text-align:center;">
+              <img src="${escapeHtml(logoUrl)}" alt="LifeMaxxing" width="200" height="37" style="display:inline-block;height:auto;max-width:200px;border:0;outline:none;text-decoration:none;">
             </td>
           </tr>
           <tr>
             <td style="padding:28px 32px 8px;text-align:center;">
-              <p style="margin:0 0 12px;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8B9BB8;font-weight:600;">Founding member</p>
-              <h1 style="margin:0 0 14px;font-size:28px;line-height:1.2;font-weight:650;color:#F4F2EF;">You're in, ${safeFirst}.</h1>
-              <p style="margin:0 auto 8px;max-width:400px;font-size:16px;line-height:1.6;color:#98948E;">Thanks for registering your interest in LifeMaxxing. Spots are limited, and you're on the list.</p>
+              <p style="margin:0 0 10px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8B9BB8;font-weight:700;">Founding member</p>
+              <h1 style="margin:0 0 12px;font-size:28px;line-height:1.2;font-weight:700;color:#F4F2EF;">You're in, ${safeFirst}.</h1>
+              <p style="margin:0 auto;max-width:400px;font-size:16px;line-height:1.6;color:#98948E;">Thanks for registering your interest in LifeMaxxing. Spots are limited, and you're on the list.</p>
             </td>
           </tr>
           <tr>
-            <td style="padding:16px 32px 8px;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#000000;border:1px solid #2A2A2E;border-radius:16px;">
+            <td style="padding:22px 32px 8px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#000000;border:1px solid #2A2A2E;border-radius:16px;">
                 <tr>
-                  <td style="padding:18px 20px;">
-                    <p style="margin:0 0 10px;font-size:15px;line-height:1.55;color:#F4F2EF;"><span style="color:#5B9AE8;">●</span>&nbsp; We'll email you the moment early access opens</p>
-                    <p style="margin:0 0 10px;font-size:15px;line-height:1.55;color:#F4F2EF;"><span style="color:#5B9AE8;">●</span>&nbsp; Download link and founding badge on your profile</p>
-                    <p style="margin:0;font-size:15px;line-height:1.55;color:#F4F2EF;"><span style="color:#5B9AE8;">●</span>&nbsp; No spam. Just one note when it's your turn</p>
+                  <td style="padding:20px 22px;">
+                    <p style="margin:0 0 14px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#8B9BB8;font-weight:700;">What happens next</p>
+                    <p style="margin:0 0 12px;font-size:15px;line-height:1.55;color:#F4F2EF;"><span style="color:#5B9AE8;">●</span>&nbsp; We'll email you the moment early access opens</p>
+                    <p style="margin:0 0 12px;font-size:15px;line-height:1.55;color:#F4F2EF;"><span style="color:#5B9AE8;">●</span>&nbsp; You'll get the download link when it's your turn</p>
+                    <p style="margin:0;font-size:15px;line-height:1.55;color:#F4F2EF;"><span style="color:#5B9AE8;">●</span>&nbsp; No spam. Just one note when it's ready</p>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td style="padding:24px 32px 8px;text-align:center;">
-              <p style="margin:0;font-size:15px;line-height:1.5;color:#F4F2EF;">The LifeMaxxing team</p>
-              <p style="margin:8px 0 0;font-size:13px;color:#98948E;">Life is the ultimate sport.</p>
+            <td style="padding:26px 32px 8px;text-align:center;">
+              <p style="margin:0;font-size:15px;line-height:1.5;font-weight:600;color:#F4F2EF;">The LifeMaxxing team</p>
             </td>
           </tr>
           <tr>
             <td style="padding:22px 32px 28px;text-align:center;border-top:1px solid #2A2A2E;">
               <p style="margin:0;font-size:12px;line-height:1.5;color:#98948E;">Questions? Reply to this email or write<br>
-              <a href="mailto:hello@lifemaxxing.io" style="color:#5B9AE8;text-decoration:none;">hello@lifemaxxing.io</a></p>
+              <a href="mailto:hello@lifemaxxing.com" style="color:#5B9AE8;text-decoration:none;">hello@lifemaxxing.com</a></p>
             </td>
           </tr>
         </table>
@@ -308,8 +311,8 @@ Deno.serve(async (req) => {
   const { subject, text, html } = buildWelcomeEmail(name, logoUrl, iconUrl);
 
   const fromName = Deno.env.get("LANDING_FROM_NAME") ?? "LifeMaxxing Team";
-    const fromEmail =
-      Deno.env.get("LANDING_FROM_EMAIL") ?? "hello@lifemaxxing.io";
+  const fromEmail =
+    Deno.env.get("LANDING_FROM_EMAIL") ?? "hello@lifemaxxing.com";
   const replyTo = Deno.env.get("LANDING_REPLY_TO") ?? fromEmail;
   const resendKey = Deno.env.get("RESEND_API_KEY") ?? "";
 
