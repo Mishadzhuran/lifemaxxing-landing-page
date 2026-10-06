@@ -7,3 +7,5 @@ assets-original/
 assets/app-demo.mov
 assets/*.mov
 supabase/.temp/
+tools/waitlist-export.csv
+api/config.php

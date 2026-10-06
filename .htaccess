@@ -1,0 +1,34 @@
+# LifeMaxxing landing — cPanel / LiteSpeed / Apache
+DirectoryIndex index.html index.php
+Options -Indexes
+
+# Pretty /api/subscribe → PHP (cPanel has no Vercel serverless)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Keep /api/subscribe working without .php in the URL
+  RewriteRule ^api/subscribe/?$ api/subscribe.php [L,QSA]
+
+  # Serve directory indexes with or without trailing slash
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.+[^/])$ $1/ [R=301,L]
+</IfModule>
+
+# Block PHP config with secrets
+<Files "config.php">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</Files>
+
+# Basic hardening (matches headers already used in production)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
