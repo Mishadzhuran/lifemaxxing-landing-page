@@ -6,6 +6,8 @@
 assets-original/
 assets/app-demo.mov
 assets/*.mov
+assets/*-src.jpg
+assets/hero-peak-src.jpg
 supabase/.temp/
 tools/waitlist-export.csv
 api/config.php

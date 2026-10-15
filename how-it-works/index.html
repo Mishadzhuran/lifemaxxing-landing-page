@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>How it works | LifeMaxxing</title>
+<meta name="description" content="Discover places, log the moments that matter, and watch your Life Map grow. See how LifeMaxxing works in three simple steps.">
+<meta name="theme-color" content="#22372E">
+<link rel="canonical" href="https://lifemaxxing.io/how-it-works/">
+<link rel="icon" type="image/png" href="/assets/favicon.png?v=41">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=41">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#F7F4ED;--ink:#17201B;--forest:#22372E;--forest-deep:#1A2B24;
+  --stone:#DAD8D0;--sand:#B39A74;--muted:#5C655F;--divider:rgba(23,32,27,.1);
+  --font-display:"Cormorant Garamond",Georgia,serif;
+  --font-body:"Instrument Sans",system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --device-w:clamp(180px,42vw,240px);
+  --device-bezel:calc(var(--device-w)*0.028);
+  --device-radius:calc(var(--device-w)*0.138);
+  --device-screen-radius:calc(var(--device-w)*0.115);
+  --device-aspect:1320/2868;
+  --device-btn-w:calc(var(--device-w)*0.009);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--ivory)}
+body{font-family:var(--font-body);background:var(--ivory);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1100px,calc(100% - 40px));margin:0 auto}
+.header{position:sticky;top:0;z-index:20;background:rgba(247,244,237,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--divider);padding:12px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:inline-flex;align-items:center;gap:10px}
+.logo img{width:28px;height:28px}
+.logo span{font-family:var(--font-display);letter-spacing:.28em;text-transform:uppercase;font-size:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;font-size:14px;font-weight:600;border-radius:2px;background:var(--forest);color:var(--ivory);transition:transform .25s var(--ease),background .25s}
+.btn:hover{background:var(--forest-deep);transform:translateY(-1px)}
+.btn:focus-visible{outline:2px solid var(--sand);outline-offset:3px}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid rgba(23,32,27,.22)}
+.hero{padding:72px 0 40px;text-align:center}
+.kicker{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:14px}
+h1{font-family:var(--font-display);font-weight:500;font-size:clamp(40px,7vw,68px);line-height:1.08;margin:0 0 16px}
+.lead{max-width:520px;margin:0 auto;color:var(--muted);font-size:17px}
+.steps{padding:24px 0 80px;display:flex;flex-direction:column;gap:72px}
+.step{display:grid;gap:28px;align-items:center}
+@media(min-width:860px){
+  .step{grid-template-columns:1fr 1fr;gap:56px}
+  .step:nth-child(even) .step-copy{order:2}
+}
+.step-num{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:10px}
+.step h2{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.5vw,40px);margin:0 0 12px}
+.step p{color:var(--muted);max-width:420px}
+.device{position:relative;width:var(--device-w);margin:0 auto;background:#0a0a0a;border-radius:var(--device-radius);padding:var(--device-bezel);box-shadow:0 28px 56px -24px rgba(23,32,27,.28)}
+.device-btn{position:absolute;z-index:3;background:#121212;border-radius:1px}
+.device-btn--action{left:calc(var(--device-btn-w)*-1);top:16.5%;width:var(--device-btn-w);height:calc(var(--device-w)*.052)}
+.device-btn--vol-up{left:calc(var(--device-btn-w)*-1);top:23.5%;width:var(--device-btn-w);height:calc(var(--device-w)*.092)}
+.device-btn--vol-down{left:calc(var(--device-btn-w)*-1);top:32.5%;width:var(--device-btn-w);height:calc(var(--device-w)*.092)}
+.device-btn--power{right:calc(var(--device-btn-w)*-1);top:21%;width:var(--device-btn-w);height:calc(var(--device-w)*.125)}
+.device-screen{background:#000;border-radius:var(--device-screen-radius);overflow:hidden;aspect-ratio:var(--device-aspect);position:relative}
+.device-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.faq{padding:0 0 96px}
+.faq h2{font-family:var(--font-display);font-size:clamp(32px,4vw,48px);text-align:center;margin:0 0 28px}
+.faq-list{max-width:720px;margin:0 auto;border-top:1px solid var(--divider)}
+details{border-bottom:1px solid var(--divider)}
+summary{list-style:none;cursor:pointer;padding:18px 4px;font-weight:600;font-size:16px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--sand);font-weight:400;font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 4px 18px;color:var(--muted);max-width:60ch}
+.cta{background:var(--forest);color:var(--ivory);text-align:center;padding:72px 20px}
+.cta h2{font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4vw,48px);margin:0 0 12px}
+.cta p{color:rgba(247,244,237,.72);margin:0 auto 24px;max-width:440px}
+.store-badges{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.store-badge img{height:48px;width:auto}
+.store-badge--google img{height:66px;margin:-9px 0}
+.footer{padding:40px 20px;text-align:center;font-size:13px;color:var(--muted)}
+.footer a{color:var(--forest)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="wrap header-inner">
+    <a class="logo" href="/" aria-label="LifeMaxxing home">
+      <img src="/assets/logo-mark-sm.png?v=41" alt="" width="28" height="28">
+      <span>LifeMaxxing</span>
+    </a>
+    <a class="btn" href="/download/">Get the app</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <span class="kicker">How it works</span>
+    <h1>Three steps to a life on record.</h1>
+    <p class="lead">Discover what is next, log what mattered, and watch your world fill in on the map — honestly, without the noise.</p>
+  </section>
+
+  <section class="steps wrap">
+    <article class="step">
+      <div class="step-copy">
+        <div class="step-num">Step 01</div>
+        <h2>Discover places worth your time.</h2>
+        <p>Browse experiences near you or further afield. Filter by category, distance and rating — and lean on recommendations from people you trust.</p>
+      </div>
+      <div class="device" aria-hidden="false">
+        <span class="device-btn device-btn--action" aria-hidden="true"></span>
+        <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+        <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+        <span class="device-btn device-btn--power" aria-hidden="true"></span>
+        <div class="device-screen">
+          <img src="/assets/screens/explore.webp?v=15" alt="LifeMaxxing explore screen" width="471" height="1024" loading="lazy">
+        </div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="step-copy">
+        <div class="step-num">Step 02</div>
+        <h2>Log the moment while it is fresh.</h2>
+        <p>Capture the place, rating, photos and a short story in seconds. Good moments deserve more than a camera roll.</p>
+      </div>
+      <div class="device">
+        <span class="device-btn device-btn--action" aria-hidden="true"></span>
+        <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+        <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+        <span class="device-btn device-btn--power" aria-hidden="true"></span>
+        <div class="device-screen">
+          <img src="/assets/screens/log-step.webp?v=15" alt="LifeMaxxing logging screen" width="471" height="1024" loading="lazy">
+        </div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="step-copy">
+        <div class="step-num">Step 03</div>
+        <h2>See your world on the Life Map.</h2>
+        <p>Every log drops a pin. Zoom out and your life becomes a map — from the corner café to cities you return to.</p>
+      </div>
+      <div class="device">
+        <span class="device-btn device-btn--action" aria-hidden="true"></span>
+        <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+        <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+        <span class="device-btn device-btn--power" aria-hidden="true"></span>
+        <div class="device-screen">
+          <img src="/assets/screens/map-friend-experience.webp?v=15" alt="LifeMaxxing Life Map screen" width="471" height="1024" loading="lazy">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="faq wrap" id="faq">
+    <h2>Questions</h2>
+    <div class="faq-list">
+      <details>
+        <summary>Is LifeMaxxing free?</summary>
+        <p>Yes. LifeMaxxing is free to download on iOS and Android. Any paid features, if introduced, will be described clearly in the app and store listings.</p>
+      </details>
+      <details>
+        <summary>Do I need an account?</summary>
+        <p>You create an account to save logs, build your map and connect with friends. You can delete your account at any time from the account deletion page.</p>
+      </details>
+      <details>
+        <summary>What can I log?</summary>
+        <p>Places and experiences across dining, adventure, wellness, travel and more — with ratings, photos and notes so the moment stays findable later.</p>
+      </details>
+      <details>
+        <summary>Where do recommendations come from?</summary>
+        <p>From people whose taste you trust, plus ratings and discovery tools in the app. We do not invent fake social proof on this site.</p>
+      </details>
+      <details>
+        <summary>Need help with your account?</summary>
+        <p>Visit <a href="/support/">Support</a> or email <a href="mailto:hello@lifemaxxing.com">hello@lifemaxxing.com</a>. For account removal, use <a href="/account/delete/">Delete account</a>.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready when you are.</h2>
+    <p>Download LifeMaxxing and start building your own record of a life explored.</p>
+    <div class="store-badges">
+      <a class="store-badge" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/badge-app-store-white.svg?v=36" alt="Download on the App Store" width="120" height="40">
+      </a>
+      <a class="store-badge store-badge--google" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/badge-google-play.svg?v=36" alt="Get it on Google Play" width="135" height="40">
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p><a href="/">Home</a> · <a href="/download/">Download</a> · <a href="/support/">Support</a> · <a href="/legal/privacy/">Privacy</a> · <a href="/account/delete/">Delete account</a></p>
+  <p style="margin-top:10px">© 2026 LifeMaxxing · Explore more</p>
+</footer>
+</body>
+</html>

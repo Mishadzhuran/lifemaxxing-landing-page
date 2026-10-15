@@ -3,97 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>LifeMaxxing | Log Your Life. Max It Out.</title>
-<meta name="description" content="Imagine IMDb and Instagram were combined for real life. Log experiences, discover what to do next, and map where you have been. Available on iOS and Android.">
-<meta name="theme-color" content="#030304">
-<meta name="color-scheme" content="dark">
+<title>LifeMaxxing | Explore More</title>
+<meta name="description" content="Find remarkable places. Remember the moments. Build your own map of a life well lived. Free on iOS and Android.">
+<meta name="theme-color" content="#22372E">
+<meta name="color-scheme" content="light">
 <link rel="canonical" href="https://lifemaxxing.io/">
-<meta property="og:title" content="LifeMaxxing | Log Your Life. Max It Out.">
-<meta property="og:description" content="Imagine IMDb and Instagram were combined for real life. Log, rate, and map every experience. Free on iOS and Android.">
+<meta property="og:title" content="LifeMaxxing | Explore More">
+<meta property="og:description" content="A life worth discovering. Find remarkable places, remember the moments, and map a life well lived.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lifemaxxing.io/">
-<meta property="og:image" content="https://lifemaxxing.io/assets/poster-demo.webp">
-<meta property="og:image:width" content="750">
-<meta property="og:image:height" content="1626">
+<meta property="og:image" content="https://lifemaxxing.io/assets/hero-cinematic-1600.webp">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1063">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="LifeMaxxing | Log Your Life. Max It Out.">
-<meta name="twitter:description" content="Imagine IMDb and Instagram were combined for real life. Log, rate, and map every experience. Free on iOS and Android.">
-<meta name="twitter:image" content="https://lifemaxxing.io/assets/poster-demo.webp">
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="twitter:title" content="LifeMaxxing | Explore More">
+<meta name="twitter:description" content="A life worth discovering. Find remarkable places, remember the moments, and map a life well lived.">
+<meta name="twitter:image" content="https://lifemaxxing.io/assets/hero-cinematic-1600.webp">
+<link rel="icon" type="image/png" href="assets/favicon.png?v=41">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=41">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/logo-mark-sm.png?v=21" type="image/png">
-<link rel="preload" as="image" href="assets/poster-demo-480.webp" type="image/webp" imagesrcset="assets/poster-demo-360.webp 360w, assets/poster-demo-480.webp 480w, assets/poster-demo.webp 750w" imagesizes="(max-width:899px) 46vw, 280px">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Sora:wght@600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Sora:wght@600&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="image" href="assets/hero-cinematic-1600.webp?v=42" type="image/webp" imagesrcset="assets/hero-cinematic-mobile.webp?v=42 1080w, assets/hero-cinematic-960.webp?v=42 960w, assets/hero-cinematic-1600.webp?v=42 1600w, assets/hero-cinematic.webp?v=42 2400w" imagesizes="100vw">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 <style>
-/* ============================================================
-   LIFEMAXXING BRAND TOKENS — Main 2 (lib/theme.dart)
-   ============================================================ */
 :root{
-  --cream:      #030304;  /* page background */
-  --card:       #101014;  /* cards, panels */
-  --surface:    #17171C;  /* chips, inputs */
-  --forest:     #7BB4E8;  /* primary blue accent */
-  --forest-deep:#4A8FD4;  /* CTA hover */
-  --logo-blue:  #2F6BC4;  /* LM mark blue */
-  --ink:        #F5F3F0;  /* headlines */
-  --gray:       #8E8A84;  /* subtext */
-  --muted:      #6F6B66;
-  --white:      #FFFFFF;
-  --divider:    rgba(255,255,255,.07);
-  --gold:       #C9CFDA;
-  --join-edge:  rgba(255,255,255,.12);
-  --glass:      rgba(255,255,255,.035);
-  --glass-border: rgba(255,255,255,.08);
+  --ivory:#F7F4ED;
+  --ink:#17201B;
+  --forest:#22372E;
+  --forest-deep:#1A2B24;
+  --stone:#DAD8D0;
+  --sand:#B39A74;
+  --sand-soft:rgba(179,154,116,.22);
+  --ocean:#25343B;
+  --muted:#5C655F;
+  --white:#FFFFFF;
+  --divider:rgba(23,32,27,.1);
+  --overlay:rgba(23,32,27,.42);
 
-  --font-display: "Sora", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body:"Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --r-lg: 36px;
-  --r-md: 22px;
-  --r-sm: 14px;
-  --shadow-card: 0 2px 6px rgba(0,0,0,.24), 0 18px 44px -18px rgba(0,0,0,.45);
-  --shadow-float: 0 30px 70px -24px rgba(0,0,0,.55);
-  --ease-out: cubic-bezier(.22,1,.36,1);
-  --ease-premium: cubic-bezier(.16,1,.3,1);
-  --ease-spring: cubic-bezier(.34,1.56,.64,1);
-  --ease-smooth: cubic-bezier(.33,1,.68,1);
-  --dur-reveal: .55s;
-  --dur-micro: .28s;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --ease-premium:cubic-bezier(.16,1,.3,1);
+  --dur-reveal:.7s;
+  --dur-micro:.32s;
 
-  --device-w: clamp(170px, 32vw, 240px);
-  --device-w-sm: clamp(140px, 30vw, 175px);
-  --device-w-lg: clamp(190px, 36vw, 265px);
-  --device-overlap: calc(var(--device-w) * -0.22);
-  --device-bezel: calc(var(--device-w) * 0.028);
-  --device-radius: calc(var(--device-w) * 0.138);
-  --device-screen-radius: calc(var(--device-w) * 0.115);
-  --device-aspect: 1320 / 2868;
-  --device-btn-w: calc(var(--device-w) * 0.009);
-  --device-persp: 1200px;
+  /* Shared UI scale — one size language across the page */
+  --space-1:8px;
+  --space-2:16px;
+  --space-3:24px;
+  --space-4:32px;
+  --space-5:48px;
+  --space-6:64px;
+  --space-7:96px;
+  --btn-h:52px;
+  --btn-pad-x:26px;
+  --btn-radius:999px;
+  --radius-soft:16px;
+  --nav-h:72px;
+  --fs-kicker:11px;
+  --fs-body:17px;
+  --fs-small:14px;
+  --fs-h1:clamp(44px, 7.2vw, 84px);
+  --fs-h2:clamp(36px, 4.8vw, 56px);
+  --fs-h3:clamp(28px, 3vw, 36px);
+
+  --device-w:clamp(168px, 30vw, 220px);
+  --device-w-sm:clamp(140px, 28vw, 168px);
+  --device-w-lg:clamp(188px, 34vw, 240px);
+  --device-overlap:calc(var(--device-w) * -0.22);
+  --device-bezel:calc(var(--device-w) * 0.028);
+  --device-radius:calc(var(--device-w) * 0.138);
+  --device-screen-radius:calc(var(--device-w) * 0.115);
+  --device-aspect:1320 / 2868;
+  --device-btn-w:calc(var(--device-w) * 0.009);
+  --device-persp:1200px;
   --device-shadow:
-    0 32px 64px -24px rgba(0,0,0,.38),
-    0 10px 24px -12px rgba(0,0,0,.18);
+    0 32px 64px -24px rgba(23,32,27,.28),
+    0 10px 24px -12px rgba(23,32,27,.14);
   --device-shadow-front:
-    0 40px 72px -22px rgba(0,0,0,.42),
-    0 14px 28px -14px rgba(0,0,0,.22);
+    0 40px 72px -22px rgba(23,32,27,.32),
+    0 14px 28px -14px rgba(23,32,27,.16);
+
+  --max:1200px;
+  --text-max:560px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{
   scroll-behavior:smooth;
   -webkit-text-size-adjust:100%;
-  scroll-padding-top:calc(72px + env(safe-area-inset-top, 0px));
+  scroll-padding-top:calc(80px + env(safe-area-inset-top, 0px));
   max-width:100%;
   overflow-x:clip;
-  color-scheme:dark;
-  background:#030304;
+  color-scheme:light;
+  background:var(--ivory);
 }
 body{
   font-family:var(--font-body);
-  background:#07080C;
+  background:var(--ivory);
   color:var(--ink);
   line-height:1.65;
   letter-spacing:-.011em;
@@ -101,573 +110,544 @@ body{
   padding-right:env(safe-area-inset-right, 0px);
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
-  max-width:100%;
-  overflow-x:clip;
-  overscroll-behavior-y:auto;
-  overscroll-behavior-x:none;
-  -webkit-overflow-scrolling:touch;
 }
-.page{
-  width:100%;
-  max-width:100%;
-  position:relative;
-  overflow-x:clip;
-}
-body::before{
-  content:"";
-  position:fixed;inset:0;z-index:50;pointer-events:none;
-  opacity:.03;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:160px 160px;
-}
-body::after{
-  content:"";
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.5) 100%);
-}
-img{max-width:100%;display:block}
+img,video{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
-::selection{background:var(--forest);color:var(--white)}
+ul{list-style:none}
+.wrap{width:min(var(--max), calc(100% - 40px)); margin:0 auto}
+@media(min-width:900px){.wrap{width:min(var(--max), calc(100% - 80px))}}
 
-/* ============================================================
-   REVEAL-ON-SCROLL (elements start hidden, JS adds .in)
-   ============================================================ */
+.page{overflow-x:clip}
+.section{padding:var(--space-7) 0;overflow:visible}
+@media(min-width:760px){.section{padding:120px 0}}
+.section-dark{background:var(--forest);color:var(--ivory)}
+.section-ocean{background:var(--ocean);color:var(--ivory)}
+
+h1,h2,h3{
+  font-family:var(--font-display);
+  font-weight:500;
+  line-height:1.05;
+  letter-spacing:-.015em;
+  text-wrap:balance;
+  color:var(--ink);
+}
+h1{font-size:var(--fs-h1)}
+h2{font-size:var(--fs-h2)}
+h3{font-size:var(--fs-h3)}
+.sub{
+  font-size:var(--fs-body);
+  line-height:1.55;
+  color:var(--muted);
+  max-width:var(--text-max);
+  font-weight:400;
+}
+.section-dark .sub,.section-ocean .sub,.hero .sub{color:rgba(247,244,237,.86)}
+.kicker{
+  display:inline-block;
+  font-family:var(--font-body);
+  font-size:var(--fs-kicker);
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--sand);
+  margin-bottom:var(--space-2);
+}
+.section-dark .kicker,.section-ocean .kicker,.hero .kicker{color:rgba(247,244,237,.62)}
+
 .reveal{
   opacity:0;
-  transform:translate3d(0,28px,0);
+  transform:translate3d(0,22px,0);
   transition:
-    opacity var(--dur-reveal) var(--ease-out),
-    transform var(--dur-reveal) var(--ease-out);
+    opacity var(--dur-reveal) var(--ease-premium),
+    transform var(--dur-reveal) var(--ease-premium);
+  will-change:opacity, transform;
 }
-.reveal.in{
-  opacity:1;
+.reveal.in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.08s}
+.reveal[data-delay="2"]{transition-delay:.18s}
+.reveal[data-delay="3"]{transition-delay:.3s}
+.reveal[data-delay="4"]{transition-delay:.42s}
+
+/* Buttons — one shared size language */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  height:var(--btn-h);min-height:var(--btn-h);padding:0 var(--btn-pad-x);
+  font-family:var(--font-body);
+  font-size:var(--fs-small);font-weight:600;letter-spacing:-.01em;
+  border-radius:var(--btn-radius);
+  border:1px solid transparent;
+  transition:
+    background var(--dur-micro) var(--ease-out),
+    color var(--dur-micro) var(--ease-out),
+    border-color var(--dur-micro) var(--ease-out),
+    transform var(--dur-micro) var(--ease-out),
+    box-shadow var(--dur-micro) var(--ease-out);
+}
+.btn:focus-visible{outline:2px solid var(--sand);outline-offset:3px}
+.btn-primary{
+  background:var(--forest);color:var(--ivory);
+  box-shadow:0 10px 28px -16px rgba(23,32,27,.45);
+}
+.btn-primary:hover{background:var(--forest-deep);transform:translateY(-1px)}
+.btn-on-dark{
+  background:var(--ivory);color:var(--ink);
+  box-shadow:0 12px 32px -14px rgba(0,0,0,.45);
+}
+.btn-on-dark:hover{background:#fff;transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;color:var(--ivory);
+  border-color:rgba(247,244,237,.28);
+}
+.btn-ghost:hover{border-color:rgba(247,244,237,.7);background:rgba(247,244,237,.06);transform:translateY(-1px)}
+.btn-ghost-dark{
+  background:transparent;color:var(--ink);
+  border-color:rgba(23,32,27,.18);
+}
+.btn-ghost-dark:hover{border-color:rgba(23,32,27,.4)}
+.btn-text{
+  height:auto;min-height:var(--btn-h);padding:0;
+  background:none;border:none;border-radius:0;
+  color:inherit;
+  text-decoration:underline;
+  text-underline-offset:5px;
+  text-decoration-thickness:1px;
+  text-decoration-color:rgba(247,244,237,.45);
+  box-shadow:none;
+}
+.btn-text:hover{
+  text-decoration-color:currentColor;
   transform:none;
 }
-/* Hero staggered entrance */
-.hero .reveal{
-  opacity:0;
-  transform:translate3d(0,24px,0);
-  transition:none;
-  animation:hero-copy-in .65s var(--ease-out) both;
+.feature-copy .btn-text,
+.manifesto .btn-text{
+  color:var(--ink);
+  text-decoration-color:rgba(23,32,27,.28);
 }
-.hero .reveal.in{
-  opacity:1;
-  transform:none;
+.feature-copy .btn-text:hover,
+.manifesto .btn-text:hover{color:var(--forest);text-decoration-color:var(--sand)}
+.btn-text .arr{
+  display:inline-block;
+  transition:transform var(--dur-micro) var(--ease-out);
+  text-decoration:none;
 }
-.hero .reveal[data-delay="1"]{animation-delay:.05s}
-.hero .reveal[data-delay="2"]{animation-delay:.12s}
-.hero .reveal[data-delay="3"]{animation-delay:.2s}
-.hero .device-showcase[data-device-reveal]{
-  opacity:0;
-  transform:translate3d(0,32px,0);
-  transition:none;
-  animation:hero-phone-in .75s .18s var(--ease-out) both;
+.btn-text:hover .arr{transform:translateX(4px)}
+.btn .arr{font-size:1.05em;line-height:1}
+.btn-label-short{display:none}
+@media(max-width:520px){
+  .btn-label-long{display:none}
+  .btn-label-short{display:inline}
 }
-.hero .device-showcase[data-device-reveal].in{
-  opacity:1;
-  transform:none;
+
+/* Header — same chrome over hero and light sections */
+.header{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  height:calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  display:flex;align-items:flex-end;
+  padding-bottom:14px;
+  background:transparent;
+  transition:background .4s var(--ease-out), backdrop-filter .4s, border-color .4s, box-shadow .4s;
+  border-bottom:1px solid transparent;
 }
-.hero .device-showcase[data-device-reveal] .device,
-.hero .device-showcase[data-device-reveal] .mockup-img{
-  opacity:1;
-  transition:none;
+.header.scrolled,.header.on-light{
+  background:rgba(247,244,237,.92);
+  backdrop-filter:saturate(1.1) blur(16px);
+  -webkit-backdrop-filter:saturate(1.1) blur(16px);
+  border-bottom-color:var(--divider);
+  box-shadow:0 8px 30px -24px rgba(23,32,27,.35);
 }
-@keyframes hero-copy-in{
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);
+  width:min(var(--max), calc(100% - 40px));
+  margin:0 auto;
+}
+@media(min-width:900px){.header-inner{width:min(var(--max), calc(100% - 80px))}}
+.logo{
+  display:inline-flex;align-items:center;gap:10px;
+  transition:opacity var(--dur-micro) var(--ease-out);
+  flex-shrink:0;
+}
+.logo:hover{opacity:.82}
+.logo-mark{width:26px;height:26px;object-fit:contain}
+.logo-wordmark{
+  font-family:var(--font-body);
+  font-size:15px;font-weight:600;
+  letter-spacing:.04em;
+  text-transform:none;
+  color:var(--ivory);
+  white-space:nowrap;
+}
+.header.scrolled .logo-wordmark,
+.header.on-light .logo-wordmark{color:var(--ink)}
+.nav-desktop{
+  display:none;align-items:center;gap:28px;
+  margin-left:auto;margin-right:var(--space-3);
+  font-size:var(--fs-small);font-weight:500;
+  color:rgba(247,244,237,.78);
+}
+.header.scrolled .nav-desktop,
+.header.on-light .nav-desktop{color:rgba(23,32,27,.68)}
+.nav-desktop a{
+  position:relative;
+  padding:6px 0;
+  transition:color var(--dur-micro) var(--ease-out);
+}
+.nav-desktop a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:currentColor;opacity:0;transform:scaleX(.4);
+  transition:opacity var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+.nav-desktop a:hover{color:var(--ivory)}
+.nav-desktop a:hover::after{opacity:.7;transform:scaleX(1)}
+.header.scrolled .nav-desktop a:hover,
+.header.on-light .nav-desktop a:hover{color:var(--forest)}
+.header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.header-actions .btn{height:44px;min-height:44px;padding:0 18px;font-size:13px}
+@media(min-width:900px){
+  .header-actions .btn{height:48px;min-height:48px;padding:0 22px;font-size:13.5px}
+}
+.header-cta-light{display:inline-flex}
+.header-cta-dark{display:none}
+.header.scrolled .header-cta-light,
+.header.on-light .header-cta-light{display:none}
+.header.scrolled .header-cta-dark,
+.header.on-light .header-cta-dark{display:inline-flex}
+.menu-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:var(--btn-radius);
+  color:var(--ivory);
+}
+.header.scrolled .menu-toggle,
+.header.on-light .menu-toggle{color:var(--ink)}
+.menu-toggle svg{width:22px;height:22px}
+@media(min-width:900px){
+  .nav-desktop{display:flex}
+  .menu-toggle{display:none}
+}
+@media(max-width:420px){
+  .logo-wordmark{font-size:14px;letter-spacing:.02em}
+}
+
+/* Mobile menu */
+.nav-overlay{
+  position:fixed;inset:0;z-index:60;
+  background:rgba(23,32,27,.45);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s var(--ease-out);
+}
+.nav-overlay.open{opacity:1;pointer-events:auto}
+.nav-drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:61;
+  width:min(340px, 88vw);
+  background:var(--ivory);
+  color:var(--ink);
+  padding:88px 28px 40px;
+  transform:translateX(100%);
+  transition:transform .35s var(--ease-premium);
+  display:flex;flex-direction:column;gap:8px;
+  box-shadow:-20px 0 50px rgba(23,32,27,.18);
+}
+.nav-drawer.open{transform:none}
+.nav-drawer a{
+  font-family:var(--font-display);
+  font-size:28px;padding:10px 0;
+  border-bottom:1px solid var(--divider);
+}
+.nav-drawer .btn{margin-top:20px;width:100%}
+.nav-close{
+  position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;
+  width:44px;height:44px;display:grid;place-items:center;
+}
+
+/* ===== HERO — cinematic left stack, reference-like hierarchy ===== */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  color:var(--ivory);
+  overflow:hidden;
+  isolation:isolate;
+  background:var(--forest-deep);
+}
+.hero-media{
+  position:absolute;inset:0;z-index:0;
+  overflow:hidden;
+}
+.hero-media picture,
+.hero-media img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 40%;
+  transform:scale(1.06);
+  animation:hero-ken 14s var(--ease-out) both;
+}
+@keyframes hero-ken{
+  from{transform:scale(1.08)}
+  to{transform:scale(1.02)}
+}
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(105deg, rgba(26,43,36,.82) 0%, rgba(26,43,36,.55) 38%, rgba(26,43,36,.18) 68%, rgba(26,43,36,.28) 100%),
+    linear-gradient(180deg, rgba(26,43,36,.45) 0%, transparent 28%, rgba(26,43,36,.55) 72%, rgba(26,43,36,.82) 100%);
+  pointer-events:none;
+}
+.hero-content{
+  position:relative;z-index:2;
+  width:min(var(--max), calc(100% - 40px));
+  margin:0 auto;
+  padding:calc(var(--nav-h) + 48px) 0 64px;
+  padding-bottom:calc(64px + env(safe-area-inset-bottom, 0px));
+}
+@media(min-width:900px){
+  .hero-content{
+    width:min(var(--max), calc(100% - 80px));
+    padding:calc(var(--nav-h) + 72px) 0 88px;
+  }
+}
+.hero-copy{
+  max-width:560px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.hero .kicker{margin-bottom:18px;color:rgba(247,244,237,.58)}
+.hero h1{
+  color:var(--ivory);
+  margin:0 0 18px;
+  font-family:var(--font-body);
+  font-weight:600;
+  letter-spacing:-.035em;
+  line-height:1.02;
+  font-size:clamp(40px, 6.5vw, 72px);
+  text-shadow:0 8px 40px rgba(0,0,0,.28);
+}
+.hero .sub{
+  margin:0 0 32px;
+  max-width:420px;
+  font-size:clamp(16px, 1.5vw, 19px);
+  line-height:1.5;
+  color:rgba(247,244,237,.88);
+}
+.hero-ctas{
+  display:flex;flex-wrap:wrap;gap:18px 22px;align-items:center;
+}
+.hero-ctas .btn-text{color:var(--ivory)}
+.hero-note{
+  margin-top:22px;
+  font-size:13px;
+  color:rgba(247,244,237,.5);
+  letter-spacing:.01em;
+}
+.scroll-cue{display:none}
+@keyframes device-in{
   from{opacity:0;transform:translate3d(0,24px,0)}
   to{opacity:1;transform:none}
 }
 @keyframes hero-phone-in{
-  from{opacity:0;transform:translate3d(0,32px,0)}
+  from{opacity:0;transform:translate3d(0,28px,0) scale(.98)}
   to{opacity:1;transform:none}
 }
 @keyframes phone-float{
   0%,100%{transform:translate3d(0,0,0)}
   50%{transform:translate3d(0,-8px,0)}
 }
-@keyframes arr-nudge{
-  0%,70%,100%{transform:translateX(0)}
-  85%{transform:translateX(4px)}
-}
-@keyframes device-in{
-  from{opacity:0;transform:translate3d(0,32px,0)}
-  to{opacity:1;transform:none}
-}
-.reveal[data-delay="1"]{transition-delay:.04s}
-.reveal[data-delay="2"]{transition-delay:.08s}
-.reveal[data-delay="3"]{transition-delay:.12s}
-.reveal[data-delay="4"]{transition-delay:.16s}
-.reveal[data-delay="5"]{transition-delay:.2s}
 
-.reveal-stagger > *{
-  opacity:0;
-  transform:translate3d(0,16px,0);
-  transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);
+/* Manifesto */
+.manifesto{padding:var(--space-7) 0}
+@media(min-width:760px){.manifesto{padding:128px 0}}
+.manifesto-inner{
+  max-width:640px;margin:0 auto;text-align:left;
 }
-.reveal-stagger.in > *{opacity:1;transform:none}
-.reveal-stagger.in > *:nth-child(1){transition-delay:.04s}
-.reveal-stagger.in > *:nth-child(2){transition-delay:.08s}
-.reveal-stagger.in > *:nth-child(3){transition-delay:.12s}
-.reveal-stagger.in > *:nth-child(4){transition-delay:.16s}
-.reveal-stagger.in > *:nth-child(5){transition-delay:.2s}
-.reveal-stagger.in > *:nth-child(6){transition-delay:.24s}
-.reveal-stagger.in > *:nth-child(7){transition-delay:.28s}
-.reveal-stagger.in > *:nth-child(8){transition-delay:.32s}
+@media(min-width:760px){.manifesto-inner{text-align:center}}
+.manifesto h2{margin:0 0 var(--space-3)}
+.manifesto p{
+  font-size:var(--fs-body);
+  line-height:1.65;
+  color:var(--muted);
+  max-width:520px;
+}
+@media(min-width:760px){.manifesto p{margin:0 auto}}
 
-@media (prefers-reduced-motion: reduce){
-  .reveal,.reveal-stagger > *,
-  .device-showcase[data-device-reveal],
-  .device-showcase[data-device-reveal] .device,
-  .device-showcase[data-device-reveal] .mockup-img{
-    opacity:1 !important;transform:none !important;filter:none !important;transition:none !important;animation:none !important;
-  }
-  html{scroll-behavior:auto}
-  body::before,body::after{display:none}
-  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+/* Features — shared copy column rhythm */
+.features-head{max-width:560px;margin:0 0 var(--space-5)}
+@media(min-width:760px){.features-head{margin-bottom:var(--space-6)}}
+.features-head h2{margin:0 0 var(--space-2)}
+.features-head .sub{margin:0}
+.feature-row{
+  display:grid;gap:var(--space-4);align-items:center;
+  margin-bottom:var(--space-6);
+  padding:var(--space-4) 0;
 }
-
-.wrap{width:min(1140px,calc(100% - 48px));margin:0 auto;max-width:100%}
-@media(max-width:899px){.wrap{width:calc(100% - 28px)}}
-@media(max-width:520px){.wrap{width:calc(100% - 20px)}}
-.section{padding:56px 0;overflow:visible;max-width:100%}
-@media(min-width:760px){.section{padding:88px 0}}
-
-.kicker{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:#A9D0F2;
-}
-.kicker::before{content:none;display:none}
-.kicker-text--short{display:none}
-
-h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter-spacing:-.04em}
-.sub{color:var(--gray);font-size:17px;font-weight:400;letter-spacing:-.015em;line-height:1.6}
-
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:var(--font-body);font-weight:600;font-size:15px;
-  letter-spacing:-.015em;
-  padding:15px 28px;border-radius:999px;
-  transition:
-    transform var(--dur-micro) var(--ease-spring),
-    box-shadow var(--dur-micro) var(--ease-premium),
-    background .35s ease,
-    border-color .35s ease,
-    color .35s ease,
-    filter .35s ease;
-  will-change:auto;
-  -webkit-tap-highlight-color:transparent;
-}
-.btn:active{transform:scale(.97)}
-.btn-primary{
-  background:#FFFFFF;
-  color:#0A0A0C;
-  border:0;
-  outline:none;
-  -webkit-appearance:none;
-  appearance:none;
-  background-clip:padding-box;
-  box-shadow:0 12px 28px -14px rgba(0,0,0,.45);
-}
-.btn-primary:hover{
-  background:#F5F3F0;
-  transform:translateY(-2px);
-  box-shadow:0 18px 36px -16px rgba(0,0,0,.5);
-}
-.btn-primary:focus-visible{
-  outline:2px solid rgba(255,255,255,.55);
-  outline-offset:2px;
-}
-.btn-primary .arr{
-  transition:transform var(--dur-micro) var(--ease-spring);
-  opacity:.85;
-  display:inline-block;
-  animation:arr-nudge 2.8s ease-in-out 2s infinite;
-}
-.btn-primary:hover .arr{transform:translateX(5px);opacity:1;animation:none}
-.btn-ghost{
-  background:transparent;color:var(--ink);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:none;
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-}
-.btn-ghost:hover{
-  color:var(--ink);
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.2);
-  transform:translateY(-2px);
-}
-
-/* ============================================================
-   HEADER
-   ============================================================ */
-.section,.features-head,.feature-copy h3{scroll-margin-top:calc(80px + env(safe-area-inset-top, 0px))}
-
-.header{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  width:100%;max-width:100%;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top, 0px);
-  padding-left:env(safe-area-inset-left, 0px);
-  padding-right:env(safe-area-inset-right, 0px);
-  background:rgba(3,3,4,.55);
-  backdrop-filter:blur(12px) saturate(1.2);
-  -webkit-backdrop-filter:blur(12px) saturate(1.2);
-  border-bottom:1px solid transparent;
-  transition:
-    box-shadow .5s var(--ease-premium),
-    background .5s var(--ease-premium),
-    border-color .5s var(--ease-premium),
-    backdrop-filter .5s var(--ease-premium);
-  -webkit-transform:translate3d(0,0,0);
-  transform:translate3d(0,0,0);
-  -webkit-backface-visibility:hidden;
-  backface-visibility:hidden;
-}
-.header.scrolled{
-  background:rgba(3,3,4,.88);
-  border-bottom-color:transparent;
-  box-shadow:0 12px 40px -24px rgba(0,0,0,.55);
-}
-.header-inner{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:16px 0;
-  min-width:0;width:100%;
-  transition:padding .5s var(--ease-premium);
-}
-.header .wrap{width:min(1140px,calc(100% - 48px));max-width:100%;margin:0 auto}
-@media(max-width:899px){
-  .header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(0,0,0,.96);
-    backdrop-filter:none;
-    -webkit-backdrop-filter:none;
-    box-shadow:none;
-    border-bottom:none;
-  }
-  .header .wrap{width:calc(100% - 20px);max-width:100%}
-  .hero-visual,
-  .feature-visual,
-  .device-stage,
-  .device-tilt,
-  .device-showcase,
-  .device-showcase .device,
-  .device-showcase .device-btn,
-  .device-showcase .mockup-img,
-  .device-showcase .device-media{
-    touch-action:pan-y;
-    pointer-events:none;
-    -webkit-user-select:none;
-    user-select:none;
-  }
-  /* Don't clip stages — clipping the backlight paints hard top/bottom light lines */
-  .hero-visual,
-  .feature-visual,
-  .device-stage{
-    overflow:visible;
-    max-width:100%;
-  }
-  .device-tilt,
-  .device-showcase{
-    overflow:visible;
-    max-width:100%;
-  }
-  .hero-bg{overflow:hidden}
-  .device-showcase[data-device-reveal]{
-    opacity:1;
-    transform:none;
-    filter:none;
-    transition:none;
-  }
-  .device-showcase[data-device-reveal] .device,
-  .device-showcase[data-device-reveal] .mockup-img{
-    opacity:1;
-    transition:none;
-  }
-}
-.header.scrolled .header-inner{padding:10px 0}
-.logo{
-  display:inline-flex;align-items:center;gap:3px;flex-shrink:0;
-  text-decoration:none;color:var(--ink);
-  transition:opacity var(--dur-micro) ease,transform var(--dur-micro) var(--ease-premium);
-}
-.logo:hover{opacity:.88;transform:translateY(-1px)}
-.logo-mark{
-  height:1em;width:auto;aspect-ratio:84 / 66;
-  flex-shrink:0;
-  font-size:17px;
-  object-fit:contain;object-position:center;
-  background:transparent;
-  filter:none;box-shadow:none;border-radius:0;
-  transition:height .45s var(--ease-premium),font-size .45s var(--ease-premium);
-}
-.logo-wordmark{
-  font-family:var(--font-display);
-  font-weight:600;font-size:17px;letter-spacing:-.04em;line-height:1;
-  color:var(--logo-blue);white-space:nowrap;
-  display:block;
-}
-.logo-wordmark span{color:var(--logo-blue)}
-.header.scrolled .logo-mark{font-size:16px;height:1em}
-.header.scrolled .logo-wordmark{font-size:16px}
-.header .btn{
-  padding:11px 22px;font-size:14px;
-  flex-shrink:0;white-space:nowrap;
-}
-.header .btn-label-short{display:none}
-@media(max-width:899px){
-  .header .btn{padding:10px 16px;font-size:13px}
-  .header .btn-label-long{display:none}
-  .header .btn-label-short{display:inline}
-}
-@media(max-width:479px){
-  .header .btn{padding:9px 14px;font-size:12px}
-  .logo-mark{font-size:15.5px;height:1em}
-  .logo-wordmark{font-size:15.5px}
-  .logo{gap:2px}
-}
-
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero{
-  position:relative;
-  padding:calc(96px + env(safe-area-inset-top, 0px)) 0 64px;
-  min-height:auto;
-  display:flex;flex-direction:column;justify-content:center;
-  overflow-x:clip;
-  max-width:100%;
-}
+.feature-row:last-child{margin-bottom:0}
 @media(min-width:900px){
-  .hero{padding:112px 0 64px;min-height:100svh}
-  .hero-grid{align-items:center}
+  .feature-row{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:var(--space-6);
+    margin-bottom:96px;
+    padding:0;
+  }
+  .feature-row.flip .feature-copy{order:2}
+  .feature-row.flip .feature-visual{order:1}
 }
+.feature-copy{max-width:440px}
+.feature-copy .kicker{margin-bottom:12px}
+.feature-copy h3{margin:0 0 12px}
+.feature-copy .sub{margin:0}
+.feature-copy .points{
+  margin:var(--space-3) 0 var(--space-3);
+  display:flex;flex-direction:column;gap:10px;
+}
+.feature-copy .points li{
+  position:relative;padding-left:16px;
+  font-size:var(--fs-small);color:var(--muted);line-height:1.45;
+}
+.feature-copy .points li::before{
+  content:"";position:absolute;left:0;top:.7em;
+  width:6px;height:1px;background:var(--sand);
+}
+.feature-visual{
+  display:flex;justify-content:center;
+  min-width:0;
+}
+.device-stage{position:relative;perspective:var(--device-persp)}
 
-/* hero ambient layer kept empty — single blue halo lives behind the phone only */
-.hero-bg{
-  position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;
-  transition:transform .7s var(--ease-smooth);
-}
-.hero-bg::before{content:none;display:none}
-.blob{display:none}
-
-.hero-grid{
-  position:relative;z-index:1;
-  display:grid;gap:40px;align-items:center;
-}
-@media(min-width:900px){.hero-grid{grid-template-columns:1fr 1fr;gap:48px}}
-
-.hero-copy{
-  position:relative;
-  text-align:center;
-}
-.hero-copy::before{
-  content:"";
-  position:absolute;
-  left:50%;top:18%;
-  width:min(520px,120%);height:70%;
-  transform:translate(-50%,-10%);
-  background:radial-gradient(ellipse at center, rgba(74,143,212,.16) 0%, rgba(74,143,212,.04) 45%, transparent 72%);
-  pointer-events:none;z-index:0;
-}
-.hero-copy > *{position:relative;z-index:1}
-@media(min-width:900px){
-  .hero-copy{text-align:left}
-  .hero-copy::before{left:0;transform:translate(-8%,-10%)}
-}
-
-.hero h1{
-  font-size:clamp(44px,8.5vw,76px);
-  margin:16px 0 20px;
-  letter-spacing:-.045em;
-  font-weight:600;
-}
-.hero h1 em{
-  font-style:normal;font-weight:600;position:relative;white-space:nowrap;
-  background:linear-gradient(120deg, #C5DCF2 0%, var(--forest) 48%, #8BB8E8 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-
-.hero .sub{
-  max-width:440px;margin:0 auto 22px;
-  font-size:18px;line-height:1.55;
-  color:#E8E4DF;
-}
-@media(min-width:900px){.hero .sub{margin:0 0 22px}}
-
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center}
-@media(min-width:900px){.hero-ctas{justify-content:flex-start}}
-.store-cta{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:14px;
-  width:100%;
-  max-width:340px;
-}
-.store-cta::before{
-  content:"";
-  position:absolute;
-  left:50%;top:42%;
-  width:140%;height:160%;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(ellipse at center, rgba(74,143,212,.22) 0%, rgba(74,143,212,.06) 42%, transparent 70%);
-  pointer-events:none;z-index:0;
-}
-.store-cta > *{position:relative;z-index:1}
-@media(min-width:900px){
-  .store-cta{align-items:flex-start;max-width:360px}
-  .store-cta::before{left:0;transform:translate(0,-50%)}
-}
-.store-badges{
+/* Editorial band */
+.editorial{padding:0;background:var(--forest-deep)}
+.editorial-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:10px;
-  width:100%;
+  grid-template-columns:1fr;
 }
+@media(min-width:800px){
+  .editorial-grid{grid-template-columns:repeat(3,1fr)}
+}
+.editorial-item{
+  position:relative;min-height:300px;
+  overflow:hidden;
+}
+@media(min-width:800px){.editorial-item{min-height:480px}}
+.editorial-item img{
+  width:100%;height:100%;object-fit:cover;
+  position:absolute;inset:0;
+  transform:scale(1.04);
+  transition:transform 1s var(--ease-premium);
+}
+.editorial-item:hover img{transform:scale(1.08)}
+.editorial-item figcaption{
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  padding:var(--space-4) var(--space-3);
+  background:linear-gradient(180deg, transparent, rgba(26,43,36,.85));
+  color:var(--ivory);
+  font-family:var(--font-display);
+  font-size:clamp(22px, 2.2vw, 28px);
+  letter-spacing:.01em;
+}
+.editorial-head{
+  text-align:left;
+  padding:var(--space-6) 0 var(--space-4);
+  background:var(--ivory);color:var(--ink);
+}
+@media(min-width:760px){.editorial-head{text-align:center}}
+.editorial-head .wrap{width:min(var(--max), calc(100% - 40px));margin:0 auto}
+@media(min-width:900px){.editorial-head .wrap{width:min(var(--max), calc(100% - 80px))}}
+.editorial-head h2{margin:0}
+
+/* Download / conversion */
+.download{
+  background:var(--forest);
+  color:var(--ivory);
+  text-align:left;
+}
+@media(min-width:760px){.download{text-align:center}}
+.download-inner{max-width:560px;margin:0 auto}
+.download h2{margin:0 0 14px;color:var(--ivory);font-family:var(--font-body);font-weight:600;letter-spacing:-.03em;font-size:clamp(32px,4.5vw,48px)}
+.download .sub{margin:0 0 28px;color:rgba(247,244,237,.75)}
+@media(min-width:760px){.download .sub{margin-left:auto;margin-right:auto}}
+.store-badges{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+@media(min-width:760px){.store-badges{justify-content:center}}
 .store-badge{
-  height:52px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  line-height:0;
-  text-decoration:none;
-  border:0;background:transparent;padding:0;
-  border-radius:10px;
-  transition:transform .28s var(--ease-premium),filter .28s ease;
+  display:inline-flex;height:48px;transition:transform var(--dur-micro) var(--ease-out), filter var(--dur-micro);
 }
-.store-badge:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.store-badge:active{transform:translateY(0)}
-.store-badge img{
-  display:block;
-  height:52px;
-  width:auto;
-  max-width:100%;
-  object-fit:contain;
-  object-position:center;
+.store-badge:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.store-badge img{height:48px;width:auto}
+.store-badge--google img{height:66px;margin:-9px 0}
+.download-qr{
+  margin:32px auto 0;
+  display:none;
+  flex-direction:column;align-items:center;gap:12px;
 }
-/* Google SVG includes outer padding; scale so visual pill matches Apple */
-.store-badge--google img{
-  height:72px;
-  margin:-10px 0;
+@media(min-width:900px){.download-qr{display:flex}}
+.download-qr img{
+  width:132px;height:132px;
+  background:var(--ivory);padding:10px;border-radius:var(--radius-soft);
+}
+.download-qr span{
+  font-size:var(--fs-kicker);letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(247,244,237,.55);
 }
 .store-cta-note{
-  margin:0;
-  font-size:13.5px;
-  font-weight:500;
-  color:#C5DCF2;
-  line-height:1.4;
-  letter-spacing:.01em;
-  text-align:center;
-  width:100%;
-}
-@media(max-width:899px){
-  .hero{
-    padding:calc(84px + env(safe-area-inset-top, 0px)) 0 36px;
-  }
-  .hero-grid{gap:28px}
-  .hero h1{
-    font-size:clamp(34px,9.2vw,48px);
-    margin:12px 0 14px;
-    letter-spacing:-.04em;
-  }
-  .hero .sub{
-    font-size:16.5px;line-height:1.55;
-    margin:0 auto 22px;max-width:32ch;
-    color:#EDE9E4;
-  }
-  .hero-copy .kicker{
-    display:flex;justify-content:center;text-align:center;
-    max-width:min(280px,100%);margin-inline:auto;
-    font-size:10.5px;letter-spacing:.1em;line-height:1.45;
-    color:#9EC4EB;
-  }
-  .kicker-text--long{display:none}
-  .kicker-text--short{display:inline}
-  .store-cta{max-width:min(300px,100%);gap:12px}
-  .store-badges{gap:8px}
-  .store-badge{height:48px}
-  .store-badge img{height:48px}
-  .store-badge--google img{height:66px;margin:-9px 0}
-  .store-cta-note{font-size:13px;color:#D0E4F7}
-  .feature-copy{text-align:center}
-  .feature-copy .icon,.feature-copy .icon-3d{margin-inline:auto}
-  .feature-copy p,.feature-copy .points{margin-inline:auto}
-  .feature-copy .points li{justify-content:center}
+  margin-top:16px;font-size:13px;color:rgba(247,244,237,.55);
 }
 
-/* ============================================================
-   DEVICE SHOWCASE — realistic iPhone frames, per-section variants
-   ============================================================ */
-.device-stage{
-  position:relative;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  perspective:var(--device-persp);
-  perspective-origin:50% 42%;
+/* Sticky mobile CTA */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+  background:rgba(247,244,237,.94);
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--divider);
+  transform:translateY(110%);
+  transition:transform .4s var(--ease-premium);
+  display:flex;justify-content:center;
 }
-/*
-  Phone backlight — single soft radial behind the phone (no second page-level glow).
-*/
-.device-stage::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:48%;
-  width:min(920px,190%);
-  height:min(920px,170%);
-  transform:translate(-50%,-50%);
-  background:radial-gradient(
-    circle at 50% 50%,
-    rgba(155,215,255,.7) 0%,
-    rgba(120,190,255,.4) 22%,
-    rgba(90,160,230,.18) 42%,
-    rgba(60,120,190,.06) 62%,
-    transparent 78%
-  );
-  filter:none;
-  pointer-events:none;
-  z-index:0;
-  -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 0%, #000 58%, transparent 80%);
-  mask-image:radial-gradient(circle at 50% 50%, #000 0%, #000 58%, transparent 80%);
+.sticky-cta.show{transform:none}
+.sticky-cta .btn{width:100%;max-width:420px;border-radius:var(--btn-radius)}
+@media(min-width:900px){.sticky-cta{display:none}}
+
+/* Footer */
+.footer{
+  background:var(--forest-deep);
+  color:rgba(247,244,237,.7);
+  padding:64px 0 40px;
 }
-.hero-visual.device-stage::before{
-  width:min(980px,200%);
-  height:min(980px,180%);
-  background:radial-gradient(
-    circle at 50% 48%,
-    rgba(160,220,255,.74) 0%,
-    rgba(125,195,255,.42) 24%,
-    rgba(90,160,230,.18) 44%,
-    rgba(60,120,190,.06) 64%,
-    transparent 80%
-  );
-  -webkit-mask-image:radial-gradient(circle at 50% 48%, #000 0%, #000 55%, transparent 78%);
-  mask-image:radial-gradient(circle at 50% 48%, #000 0%, #000 55%, transparent 78%);
+.footer-top{
+  display:grid;gap:36px;
+  padding-bottom:36px;
+  border-bottom:1px solid rgba(247,244,237,.1);
 }
-.hero-visual.device-stage{
-  padding:8px 0;
-  overflow:visible;
-  max-width:100%;
+@media(min-width:800px){
+  .footer-top{grid-template-columns:1.4fr repeat(3,1fr);gap:28px}
 }
-.feature-visual.device-stage{
-  padding:8px 0 16px;
-  overflow:visible;
-  max-width:100%;
+.footer .logo-wordmark{color:var(--ivory);letter-spacing:.22em;font-size:15px}
+.footer-tagline{
+  margin-top:12px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sand);
 }
-/* Feature phones: glow lives on .feature-row so it can wash onto copy text */
-.feature-visual.device-stage::before{content:none;display:none}
-.feature-visual.device-stage::after{content:none;display:none}
+.footer-col h3{
+  font-family:var(--font-body);
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(247,244,237,.45);margin-bottom:14px;
+}
+.footer-col nav{display:flex;flex-direction:column;gap:10px;font-size:14px}
+.footer-col a:hover{color:var(--sand)}
+.footer-bottom{
+  display:flex;flex-direction:column;gap:10px;
+  padding-top:22px;font-size:12.5px;
+}
+@media(min-width:700px){
+  .footer-bottom{flex-direction:row;justify-content:space-between;align-items:center}
+}
+.footer-meta a{color:var(--sand)}
+@media(max-width:799px){
+  .footer{text-align:center}
+  .footer-brand{align-items:center}
+  .footer .logo{justify-content:center}
+  .footer-col nav{align-items:center}
+  .footer-bottom{align-items:center}
+}
+
+/* Device CSS (preserved phone models) */
 .device-tilt{
   position:relative;
   z-index:1;
@@ -691,12 +671,13 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
 }
 .device-showcase[data-device-reveal]{
   opacity:0;
-  transform:translate3d(0,32px,0);
+  transform:translate3d(0,28px,0);
+  transition:opacity .75s var(--ease-premium), transform .75s var(--ease-premium);
 }
 .device-showcase[data-device-reveal].in{
   opacity:1;
   transform:none;
-  animation:device-in .6s var(--ease-out) both;
+  animation:none;
 }
 .hero .device-showcase[data-device-reveal],
 .hero .device-showcase[data-device-reveal].in{
@@ -729,10 +710,10 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
     height:min(900px,190%);
     background:radial-gradient(
       circle at 50% 48%,
-      rgba(160,220,255,.72) 0%,
-      rgba(125,195,255,.4) 18%,
-      rgba(90,160,230,.18) 36%,
-      rgba(60,120,190,.06) 52%,
+      rgba(179,154,116,.72) 0%,
+      rgba(179,154,116,.4) 18%,
+      rgba(34,55,46,.18) 36%,
+      rgba(23,32,27,.06) 52%,
       transparent 68%
     );
     -webkit-mask-image:radial-gradient(circle at 50% 48%, #000 0%, #000 50%, transparent 74%);
@@ -1055,1169 +1036,125 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
   transform:rotateX(var(--d-rx)) rotateY(var(--d-ry)) rotateZ(var(--d-rz)) translate3d(var(--d-tx),var(--d-ty),var(--d-tz)) scale(var(--d-sc));
 }
 
-/* ---- SCREEN MARQUEE — auto-scrolling previews (never user-scrollable) ---- */
-.screen-marquee{
-  --marquee-device-w:250px;
-  --marquee-full-w:var(--marquee-device-w);
-  --marquee-full-h:calc(var(--marquee-device-w) * 2868 / 1320 + var(--marquee-device-w) * 0.056);
-  --marquee-radius:calc(var(--marquee-device-w) * 0.138);
-  --marquee-slot-k:.72;
-  --marquee-fade: #07080C;
-  position:relative;
-  z-index:1;
-  padding:36px 0 40px;
-  min-height:calc(var(--marquee-full-h) * var(--marquee-slot-k) + 48px);
-  overflow:hidden;
-  max-width:100%;
-  width:100%;
-  background:none;
-  touch-action:pan-y;
-  overscroll-behavior-x:none;
-  pointer-events:none;
-  contain:inline-size;
-  /* Side fades only — top/bottom fades created the hard light bands */
-  -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
-  mask-image:linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
-}
-/* Marquee backlight — soft radial, no blur (blur = hard clipped rectangle) */
-.screen-marquee::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:min(1200px,120vw);
-  height:min(800px,100%);
-  transform:translate(-50%,-50%);
-  background:radial-gradient(
-    ellipse 70% 55% at 50% 50%,
-    rgba(155,215,255,.62) 0%,
-    rgba(120,190,255,.3) 24%,
-    rgba(90,160,230,.1) 48%,
-    transparent 68%
-  );
-  -webkit-mask-image:radial-gradient(ellipse 75% 60% at 50% 50%, #000 0%, #000 50%, transparent 78%);
-  mask-image:radial-gradient(ellipse 75% 60% at 50% 50%, #000 0%, #000 50%, transparent 78%);
-  filter:none;
-  pointer-events:none;
-  z-index:0;
-}
-/* Soft left/right fades matching page bg */
-.screen-marquee::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:3;
-  pointer-events:none;
-  background:linear-gradient(90deg, var(--marquee-fade) 0%, rgba(7,8,12,0) 16%, rgba(7,8,12,0) 84%, var(--marquee-fade) 100%);
-}
-.screen-marquee .marquee-track{
-  position:relative;
-  z-index:1;
-  overflow:visible;
-  pointer-events:none;
-}
-.marquee-track{
-  display:flex;
-  width:max-content;
-  max-width:none;
-  gap:28px;
-  align-items:flex-start;
-  padding:8px 0 20px;
-  animation:marquee-scroll 55s linear infinite;
-  transform:translateZ(0);
-  backface-visibility:hidden;
-}
-.marquee-track:hover{animation-play-state:paused}
-@keyframes marquee-scroll{
-  from{transform:translate3d(0,0,0)}
-  to{transform:translate3d(-50%,0,0)}
-}
-.marquee-slot{
-  --k:var(--marquee-slot-k);
-  position:relative;
-  flex:none;
-  overflow:hidden;
-  width:calc(var(--marquee-full-w) * var(--k));
-  height:calc(var(--marquee-full-h) * var(--k));
-  border-radius:calc(var(--marquee-radius) * var(--k));
-  box-shadow:0 16px 28px -12px rgba(0,0,0,.45);
-  opacity:0;
-  transform:translate3d(0,24px,0);
-}
-.screen-marquee.in .marquee-slot{
-  animation:device-in .5s var(--ease-out) both;
-}
-.screen-marquee.in .marquee-slot:nth-child(1){animation-delay:.03s}
-.screen-marquee.in .marquee-slot:nth-child(2){animation-delay:.07s}
-.screen-marquee.in .marquee-slot:nth-child(3){animation-delay:.11s}
-.screen-marquee.in .marquee-slot:nth-child(4){animation-delay:.15s}
-.screen-marquee.in .marquee-slot:nth-child(5){animation-delay:.19s}
-.screen-marquee.in .marquee-slot:nth-child(6){animation-delay:.23s}
-.screen-marquee.in .marquee-slot:nth-child(n+7){animation-delay:.27s}
-.marquee-slot:nth-child(even){margin-top:18px}
-.marquee-slot .device--marquee{
-  --device-w:var(--marquee-device-w);
-  width:var(--device-w);
-  transform:scale(var(--k));
-  transform-origin:top left;
-  box-shadow:none !important;
-  filter:none;
-  margin:0;
-  z-index:auto;
-}
-.marquee-slot::before,
-.marquee-slot::after,
-.marquee-phone::before,
-.marquee-phone::after{
-  content:none !important;
-  display:none !important;
-}
-.device--marquee .device-btn{display:none}
-@media(max-width:768px){
-  .screen-marquee{
-    --marquee-slot-k:.62;
-    padding:28px 0 32px;
-    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-    mask-image:linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  }
-  .screen-marquee::before{
-    width:min(820px,120vw);
-    height:min(560px,85%);
-    background:radial-gradient(
-      ellipse 70% 55% at 50% 50%,
-      rgba(155,215,255,.6) 0%,
-      rgba(120,190,255,.3) 30%,
-      rgba(90,160,230,.1) 54%,
-      transparent 74%
-    );
-  }
-  .screen-marquee::after{
-    background:linear-gradient(90deg, var(--marquee-fade) 0%, rgba(7,8,12,0) 18%, rgba(7,8,12,0) 82%, var(--marquee-fade) 100%);
-  }
-  .marquee-track{
-    gap:20px;
-    padding:6px 0 16px;
-  }
-  .marquee-slot{
-    box-shadow:0 12px 22px -10px rgba(0,0,0,.4);
-  }
-  .marquee-slot:nth-child(even){margin-top:14px}
-}
-@media(max-width:520px){
-  .screen-marquee{
-    --marquee-slot-k:.56;
-    padding:24px 0 28px;
-  }
-  .screen-marquee::before{
-    width:min(720px,130vw);
-    height:min(520px,88%);
-    background:radial-gradient(
-      ellipse 70% 55% at 50% 50%,
-      rgba(155,215,255,.56) 0%,
-      rgba(120,190,255,.28) 32%,
-      transparent 74%
-    );
-  }
-  .marquee-track{gap:16px;padding:4px 0 12px}
-}
-@media (prefers-reduced-motion: reduce){
-  .marquee-track{
-    animation:none;
-    flex-wrap:wrap;
-    justify-content:center;
-    width:auto;
-    max-width:min(1120px,calc(100% - 40px));
-    margin:0 auto;
-    gap:16px;
-    padding:0 20px;
-  }
-  .marquee-slot:nth-child(even){margin-top:0}
-  .marquee-slot:nth-child(n+7){display:none}
-}
+
+
+/* Tone device ambient for ivory pages */
+.feature-visual.device-stage::before{content:none;display:none}
+.device-showcase--feature{padding-bottom:8px}
 
 @media (prefers-reduced-motion: reduce){
-  .device-showcase--hero .device{animation:none !important}
-  .device-showcase[data-device-reveal]{opacity:1;transform:none;filter:none;transition:none;animation:none !important}
-  .device-showcase[data-device-reveal] .device{opacity:1;transition:none}
-  .device-showcase[data-device-reveal] .mockup-img{opacity:1;transition:none}
-  .device-tilt{transform:none !important;transition:none !important}
-  .blob{animation:none !important}
-  .join-orb,.feature-copy .icon-3d,.feature-copy .icon-3d img{animation:none !important}
-  .marquee-slot{opacity:1;transform:none;transition:none;animation:none !important}
-  .btn-primary .arr{animation:none !important}
-  .subscribe-form input,.reveal.in .subscribe-form .btn{opacity:1 !important;transform:none !important;animation:none !important}
-  .feature-copy .points li,.perk{opacity:1;transform:none;transition:none}
-  .footer{opacity:1;transform:none;transition:none}
-  .hero .reveal,.hero .device-showcase[data-device-reveal]{animation:none !important;opacity:1 !important;transform:none !important}
-}
-
-@media(max-width:768px){
-  .device-showcase--hero.device-showcase--duo .device--back,
-  .device-showcase--hero.device-showcase--duo .device--front{
-    animation:none !important;
-  }
-  .device-showcase--hero.device-showcase--frontal .device{
-    --device-w:clamp(170px,44vw,220px);
-  }
-}
-
-@media(max-width:899px){
-  .hero-grid{gap:20px;min-width:0}
-  .hero-copy,.hero-visual{min-width:0;width:100%;max-width:100%}
-  .hero{padding-bottom:64px}
-  .hero-visual{
-    padding:0 4px 8px;
-    width:100%;max-width:100%;
-  }
-  .device-showcase--hero{padding:4px 8px 12px;max-width:100%}
-  /* No perpetual motion on mobile — keeps scroll buttery */
-  .hero-visual .device-tilt,
-  .hero-visual .device-showcase--frontal .device{
-    transform:none !important;
-    animation:none !important;
-  }
-  .join-orb,
-  .feature-copy .icon-3d img,
-  .btn-primary .arr{
-    animation:none !important;
-  }
-  .marquee-track{animation-duration:70s}
-  .hero-visual.device-stage::before{
-    width:min(640px,160%);
-    height:min(640px,140%);
-  }
-  .feature-row{gap:24px;margin-bottom:40px}
-  .feature-visual{padding:4px 4px 8px}
-  .feature-visual.device-stage{padding:4px 4px 8px}
-  .features-head{margin-bottom:40px}
-  .blob-1{width:420px;height:420px;top:-120px;right:-100px}
-  .blob-2{width:340px;height:340px;bottom:-90px;left:-120px}
-}
-
-@media(max-width:768px){
-  :root{
-    --device-persp:900px;
-    --device-shadow:
-      0 18px 36px -14px rgba(0,0,0,.32),
-      0 6px 14px -8px rgba(0,0,0,.16);
-    --device-shadow-front:
-      0 22px 40px -14px rgba(0,0,0,.36),
-      0 8px 18px -10px rgba(0,0,0,.18);
-  }
-  .device-btn{display:none}
-  .btn-primary{box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
-  .hero-ctas{
-    flex-direction:column;
-    align-items:center;
-    width:100%;
-    max-width:100%;
-    gap:10px;
-  }
-  /* Visible overflow so phone glow can feather; page-level clip still stops sideways scroll */
-  .device-stage{
-    overflow:visible;
-    padding:20px 18px 40px;
-    max-width:100%;
-    touch-action:pan-y;
-    pointer-events:none;
-  }
-  .feature-visual.device-stage{
-    overflow:visible;
-    padding:22px 16px 44px;
-  }
-  .hero-visual.device-stage{
-    overflow:visible;
-    padding:16px 14px 36px;
-  }
-  .device-tilt{
-    max-width:100%;
-    padding:0;
-    overflow:visible;
-    pointer-events:none;
-    touch-action:pan-y;
-  }
-  .device-showcase{
-    max-width:100%;
-    padding-left:0;
-    padding-right:0;
-    padding-bottom:8px;
-    overflow:visible !important;
-    pointer-events:none;
-    touch-action:pan-y;
-  }
-  .device-showcase--feature{padding-bottom:8px}
-  .device-showcase--hero{padding-bottom:8px}
-  .store-cta{max-width:min(300px,100%)}
-  .hero h1{font-size:clamp(36px,10vw,52px)}
-  .hero .sub{font-size:16px;padding:0 4px}
-}
-
-@media(max-width:520px){
-  :root{
-    --device-w:clamp(118px,32vw,150px);
-    --device-w-sm:clamp(108px,29vw,136px);
-    --device-w-lg:clamp(126px,34vw,162px);
-    --device-overlap:calc(var(--device-w) * -0.22);
-  }
-  .hero{padding-top:calc(104px + env(safe-area-inset-top, 0px));padding-bottom:56px}
-  .device-showcase--hero{padding:4px 0 8px}
-  .device-stage{padding:14px 12px 34px}
-  .feature-visual.device-stage{padding:16px 10px 38px}
-  .blob-1{width:300px;height:300px;top:-90px;right:-70px;opacity:.42}
-  .blob-2{width:260px;height:260px;bottom:-70px;left:-90px;opacity:.42}
-  .blob-3{width:180px;height:180px;opacity:.35}
-}
-
-@media(max-width:414px){
-  :root{
-    --device-w:clamp(112px,31vw,144px);
-    --device-w-sm:clamp(102px,28vw,130px);
-    --device-w-lg:clamp(120px,33vw,154px);
-    --device-overlap:calc(var(--device-w) * -0.2);
-  }
-}
-
-@media(max-width:375px){
-  :root{
-    --device-w:clamp(104px,30vw,134px);
-    --device-w-sm:clamp(96px,27vw,120px);
-    --device-w-lg:clamp(112px,32vw,142px);
-  }
-  .device-showcase--hero{padding:4px 0 8px}
-  .header-inner{padding:12px 0}
-}
-
-/* ============================================================
-   FEATURES
-   ============================================================ */
-.features-head{text-align:center;max-width:620px;margin:0 auto 56px}
-.features-head h2{font-size:clamp(34px,6vw,54px);margin:16px 0 18px;letter-spacing:-.04em}
-.features-head .sub{max-width:520px;margin-inline:auto;line-height:1.6;color:var(--gray)}
-.features-head .kicker{justify-content:center}
-.features-head .kicker::before{display:none}
-@media(max-width:899px){
-  .features-head .kicker{
-    display:flex;justify-content:center;text-align:center;
-    margin-inline:auto;
-  }
-}
-
-.feature-row{
-  position:relative;
-  display:grid;gap:28px;align-items:center;
-  margin-bottom:56px;
-  overflow:visible;
-}
-/* Soft phone light on the whole row — wash onto copy, never a clipped band */
-.feature-row::before{
-  content:"";
-  position:absolute;
-  left:72%;
-  top:50%;
-  width:min(1100px,110vw);
-  height:min(1100px,110vw);
-  transform:translate(-50%,-50%);
-  background:radial-gradient(
-    circle at 50% 50%,
-    rgba(155,215,255,.64) 0%,
-    rgba(120,190,255,.34) 18%,
-    rgba(90,160,230,.14) 36%,
-    rgba(60,120,190,.04) 52%,
-    transparent 68%
-  );
-  -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 0%, #000 52%, transparent 74%);
-  mask-image:radial-gradient(circle at 50% 50%, #000 0%, #000 52%, transparent 74%);
-  pointer-events:none;
-  z-index:0;
-}
-.feature-row.flip::before{left:28%}
-.feature-row > *{position:relative;z-index:1}
-.feature-row:last-child{margin-bottom:0}
-@media(min-width:860px){
-  .feature-row{grid-template-columns:1fr 1fr;gap:64px}
-  .feature-row.flip .feature-copy{order:2}
-  .feature-row.flip .feature-visual{order:1}
-}
-@media(max-width:859px){
-  .feature-row::before,
-  .feature-row.flip::before{
-    left:50%;
-    top:68%;
-    width:min(920px,190vw);
-    height:min(920px,170vw);
-    background:radial-gradient(
-      circle at 50% 50%,
-      rgba(155,215,255,.68) 0%,
-      rgba(120,190,255,.36) 18%,
-      rgba(90,160,230,.15) 36%,
-      rgba(60,120,190,.05) 52%,
-      transparent 68%
-    );
-    -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 0%, #000 50%, transparent 74%);
-    mask-image:radial-gradient(circle at 50% 50%, #000 0%, #000 50%, transparent 74%);
-  }
-}
-
-.feature-copy .icon,
-.feature-copy .icon-3d{
-  width:76px;height:76px;
-  border:none;border-radius:0;background:none;box-shadow:none;padding:0;
-  display:flex;align-items:center;justify-content:center;margin-bottom:22px;
-  filter:drop-shadow(0 16px 26px rgba(0,0,0,.4));
-  transition:transform var(--dur-micro) var(--ease-premium),filter var(--dur-micro) var(--ease-premium);
-}
-.feature-copy .icon-3d img{
-  width:100%;height:100%;object-fit:contain;display:block;
-  -webkit-user-select:none;user-select:none;pointer-events:none;
-}
-@keyframes icon-rise{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:none}
-}
-.reveal.in .feature-copy .icon-3d{
-  animation:icon-rise .55s var(--ease-out) both;
-}
-.feature-copy:hover .icon-3d{
-  transform:translateY(-3px);
-  filter:drop-shadow(0 18px 28px rgba(0,0,0,.45));
-}
-.feature-copy h3{font-size:clamp(28px,4.4vw,38px);margin-bottom:14px;letter-spacing:-.035em}
-.feature-copy p{color:var(--gray);font-size:16px;line-height:1.6;max-width:440px}
-.feature-copy .points{margin-top:20px;display:flex;flex-direction:column;gap:10px}
-.feature-copy .points li{
-  list-style:none;display:block;font-size:15px;color:var(--ink);
-  opacity:0;transform:translate3d(0,12px,0);
-  transition:opacity .45s var(--ease-out),transform .45s var(--ease-out);
-  padding-left:0;
-}
-.reveal.in .feature-copy .points li{opacity:1;transform:none}
-.reveal.in .feature-copy .points li:nth-child(1){transition-delay:.12s}
-.reveal.in .feature-copy .points li:nth-child(2){transition-delay:.2s}
-.reveal.in .feature-copy .points li:nth-child(3){transition-delay:.28s}
-.feature-copy .points li::before{
-  content:none;display:none;
-}
-
-.feature-visual{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:100%;
-  padding:8px 0;
-  overflow:visible;
-  max-width:100%;
-}
-@media(max-width:859px){
-  .feature-copy p,.feature-copy .points{max-width:100%}
-  .feature-visual{overflow:visible}
-}
-
-/* ============================================================
-   SIGN-UP — THE CENTERPIECE
-   ============================================================ */
-.join.section{
-  position:relative;
-  padding:40px 0 32px;
-  overflow:visible;
-}
-@media(min-width:760px){.join.section{padding:56px 0 40px}}
-.join .wrap{position:relative;z-index:1}
-.join.section::before{
-  content:"";
-  position:absolute;
-  left:50%;top:22%;
-  width:min(520px,80%);
-  height:280px;
-  transform:translateX(-50%);
-  background:
-    radial-gradient(ellipse at 50% 45%, rgba(70,130,200,.14) 0%, rgba(40,90,160,.05) 48%, transparent 72%);
-  pointer-events:none;
-  z-index:0;
-}
-
-.join-shell{
-  position:relative;
-  overflow:visible;
-  padding:0;
-  margin:28px auto 24px;
-  max-width:920px;
-  border-radius:var(--r-md);
-  background:none;
-  box-shadow:none;
-}
-.join-shell.reveal{
-  transform:translate3d(0,28px,0) scale(.985);
-}
-.join-shell.reveal.in{
-  transform:none;
-}
-@media(min-width:760px){.join-shell{margin:36px auto 28px}}
-@media(min-width:900px){.join-shell{margin:40px auto 32px}}
-
-/* 3D objects — back layer tucked under banner, front layer peeks over edges */
-.join-orbs{
-  position:absolute;inset:0;
-  pointer-events:none;
-}
-.join-orbs--back{z-index:0}
-.join-orbs--front{z-index:3}
-.join-orb{
-  position:absolute;
-  display:block;
-  object-fit:contain;
-  filter:drop-shadow(0 16px 28px rgba(0,0,0,.45));
-  opacity:1;
-  animation:none;
-}
-.join-shell.in .join-orb{
-  animation:join-float 7s ease-in-out infinite;
-}
-.join-orb--orb{
-  width:100px;height:100px;
-  right:-24px;bottom:-36px;
-  left:auto;
-  animation-delay:0s;
-}
-.join-orb--ring{
-  width:96px;height:96px;
-  right:-36px;top:36%;
-  animation-delay:-3.2s;
-}
-.join-orb--crystal{
-  width:92px;height:92px;
-  top:-40px;left:6%;
-  animation-delay:-1.4s;
-}
-.join-orb--search{
-  width:88px;height:88px;
-  top:-32px;right:8%;
-  animation-delay:-2.6s;
-}
-.join-orb--bolt{
-  width:80px;height:80px;
-  right:-16px;bottom:-32px;
-  animation-delay:-4.8s;
-}
-.join-shell.in .join-orb--ring{animation-name:join-float-tilt-a}
-.join-shell.in .join-orb--crystal,
-.join-shell.in .join-orb--bolt{animation-name:join-float-tilt-b}
-.join-shell.in .join-orb--search{animation-name:join-float-tilt-c}
-@media(min-width:900px){
-  .join-orb--orb{width:128px;height:128px;right:-40px;bottom:-48px;left:auto}
-  .join-orb--ring{width:118px;height:118px;right:-52px;top:32%}
-  .join-orb--crystal{width:110px;height:110px;top:-48px;left:5%}
-  .join-orb--search{width:104px;height:104px;top:-40px;right:7%}
-  .join-orb--bolt{width:96px;height:96px;left:-28px;bottom:-40px;right:auto}
-}
-@keyframes join-float{
-  0%,100%{transform:translate3d(0,0,0)}
-  50%{transform:translate3d(0,-12px,0)}
-}
-@keyframes join-float-tilt-a{
-  0%,100%{transform:translate3d(0,0,0) rotate(16deg)}
-  50%{transform:translate3d(0,-12px,0) rotate(22deg)}
-}
-@keyframes join-float-tilt-b{
-  0%,100%{transform:translate3d(0,0,0) rotate(-14deg)}
-  50%{transform:translate3d(0,-10px,0) rotate(-8deg)}
-}
-@keyframes join-float-tilt-c{
-  0%,100%{transform:translate3d(0,0,0) rotate(12deg)}
-  50%{transform:translate3d(0,-11px,0) rotate(18deg)}
-}
-
-.join-card{
-  position:relative;overflow:hidden;z-index:1;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 10%, rgba(90,140,200,.1) 0%, transparent 68%),
-    linear-gradient(180deg, #141820 0%, #0C1016 100%);
-  border:none;
-  border-radius:var(--r-md);
-  box-shadow:
-    0 28px 64px -28px rgba(0,0,0,.75),
-    0 16px 40px -24px rgba(20,50,100,.18);
-  padding:28px 22px 22px;
-  text-align:center;
-}
-@media(min-width:760px){.join-card{padding:36px 40px 28px}}
-@media(min-width:900px){.join-card{padding:40px 44px 30px}}
-
-.join-head{
-  position:relative;z-index:1;
-  margin:0 auto 24px;
-  max-width:420px;
-  text-align:center;
-}
-@media(min-width:900px){.join-head{margin-bottom:28px}}
-
-.join-card h2{
-  font-size:clamp(26px,4vw,36px);
-  margin:0 0 10px;
-  letter-spacing:-.04em;
-  line-height:1.12;
-  color:var(--ink);
-  font-weight:600;
-  text-wrap:balance;
-}
-.join-card h2 .join-accent{
-  font-style:normal;font-weight:600;
-  background:linear-gradient(180deg, #F2F7FF 10%, #9CCCF4 50%, #6AA9E0 100%);
-  -webkit-background-clip:text;background-clip:text;
-  color:transparent;
-  -webkit-text-fill-color:transparent;
-}
-.join-card .join-cta-text{
-  font-size:14.5px;line-height:1.5;
-  max-width:320px;margin:0 auto;
-  color:rgba(186,182,176,.95);
-}
-
-.join-card-grid{
-  position:relative;z-index:1;
-  display:grid;gap:24px;align-items:stretch;
-  max-width:380px;margin:0 auto;
-  text-align:left;
-}
-@media(min-width:900px){
-  .join-card-grid{
-    max-width:760px;
-    grid-template-columns:1fr 1fr;
-    gap:0;
-  }
-  .join-copy{
-    min-width:0;
-    padding-right:32px;
-    display:flex;
-    border-right:1px solid rgba(140,180,230,.1);
-  }
-  .join-form-col{
-    min-width:0;
-    width:100%;
-    padding-left:32px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
-}
-
-.perks{
-  display:flex;flex-direction:column;justify-content:center;
-  gap:18px;
-  margin:0;
-  width:100%;
-  text-align:left;
-}
-.perk{
-  display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;
-  padding:0;
-  border:none;
-  background:none;
-  border-radius:0;
-  opacity:0;transform:translate3d(0,16px,0);
-  transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);
-}
-.reveal.in .perk{opacity:1;transform:none}
-.reveal.in .perk:nth-child(1){transition-delay:.08s}
-.reveal.in .perk:nth-child(2){transition-delay:.16s}
-.reveal.in .perk:nth-child(3){transition-delay:.24s}
-.perk:hover{transform:none !important}
-.perk-icon{
-  width:48px;height:48px;border-radius:0;
-  display:flex;align-items:center;justify-content:center;
-  background:none;border:none;padding:0;
-  filter:drop-shadow(0 8px 14px rgba(20,50,100,.3));
-  opacity:1;
-  transition:transform .3s var(--ease-out);
-}
-.perk:hover .perk-icon{transform:translateY(-2px)}
-.perk-icon img{width:100%;height:100%;object-fit:contain;display:block}
-.perk-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
-.perk-copy strong{
-  font-size:14.5px;font-weight:600;color:var(--ink);
-  letter-spacing:-.02em;
-}
-.perk-copy span{font-size:12.5px;color:var(--gray);line-height:1.35}
-
-/* form — glass fields with blue energy */
-.join-form-panel{display:contents}
-.form-zone{max-width:none;margin:0;position:relative;min-height:0;width:100%}
-.subscribe-form{
-  display:flex;flex-direction:column;gap:10px;
-}
-.subscribe-form.error{animation:shake .45s var(--ease-out)}
-@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
-.subscribe-form input{
-  width:100%;
-  border:1px solid rgba(120,160,210,.14);
-  background:rgba(0,0,0,.28);
-  outline:none;
-  font-family:var(--font-body);font-size:15px;color:var(--ink);letter-spacing:-.015em;
-  padding:13px 16px;border-radius:12px;
-  opacity:0;
-  transform:translate3d(0,16px,0);
-  transition:
-    border-color .4s var(--ease-premium),
-    box-shadow .4s var(--ease-premium),
-    background .4s ease,
-    transform .55s var(--ease-premium),
-    opacity .55s var(--ease-premium);
-}
-.reveal.in .subscribe-form input{
-  opacity:1;
-  transform:none;
-}
-.reveal.in .subscribe-form input:nth-child(1){transition-delay:.28s}
-.reveal.in .subscribe-form input:nth-child(2){transition-delay:.38s}
-.reveal.in .subscribe-form input:nth-child(3){transition-delay:.48s}
-.reveal.in .subscribe-form .btn{
-  opacity:0;
-  transform:translate3d(0,12px,0);
-  animation:device-in .5s .4s var(--ease-out) both;
-}
-.subscribe-form input::placeholder{color:rgba(142,138,132,.88);transition:opacity .3s ease}
-.subscribe-form input:focus{
-  border-color:rgba(123,180,232,.45);
-  box-shadow:0 0 0 3px rgba(82,148,212,.14);
-  background:rgba(0,0,0,.35);
-  transform:translateY(-1px);
-}
-.subscribe-form input:focus::placeholder{opacity:.5}
-.subscribe-form input.invalid{border-color:#B4482E}
-.subscribe-form .btn{
-  padding:14px 20px;font-size:14.5px;width:100%;margin-top:2px;
-  border-radius:12px;
-  box-shadow:0 14px 32px -14px rgba(69,136,204,.55);
-}
-.btn .spinner{
-  width:18px;height:18px;border-radius:50%;
-  border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;
-  animation:spin .7s linear infinite;display:none;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.subscribe-form.loading .spinner{display:block}
-.subscribe-form.loading .btn-label{display:none}
-
-.form-hint{
-  margin-top:4px;padding:0;
-  font-size:12.5px;color:var(--gray);line-height:1.45;text-align:center;letter-spacing:.01em;
-}
-
-.form-msg{
-  min-height:0;margin-top:0;font-size:14px;font-weight:500;color:#B4482E;
-  opacity:0;transform:translateY(-4px);transition:opacity .3s,transform .3s,margin .3s;
-}
-.form-msg.show{opacity:1;transform:none;margin-top:12px;min-height:20px}
-
-/* success state */
-.success-state{
-  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-  background:radial-gradient(ellipse at 50% 20%, rgba(82,148,212,.12), transparent 55%), #121216;
-  border-radius:14px;
-  opacity:0;pointer-events:none;transform:scale(.96);
-  transition:
-    opacity .4s var(--ease-out),
-    transform .4s var(--ease-out);
-}
-.form-zone.done .subscribe-form,.form-zone.done .form-msg,.form-zone.done .form-hint{visibility:hidden}
-.form-zone.done .success-state{opacity:1;pointer-events:auto;transform:none}
-.success-check{width:64px;height:64px;margin-bottom:6px}
-.success-check circle{fill:none;stroke:var(--forest);stroke-width:2.4;stroke-dasharray:166;stroke-dashoffset:166}
-.success-check path{fill:none;stroke:var(--forest);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:48;stroke-dashoffset:48}
-.form-zone.done .success-check circle{animation:draw-c .7s var(--ease-out) forwards}
-.form-zone.done .success-check path{animation:draw-c .5s .5s var(--ease-out) forwards}
-@keyframes draw-c{to{stroke-dashoffset:0}}
-.success-eyebrow{
-  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;
-}
-.success-state b{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
-.success-state p{font-size:14px;color:var(--gray);max-width:280px;line-height:1.5}
-
-.join-foot{
-  position:relative;z-index:1;
-  margin:22px 0 0;
-  padding-top:14px;
-  border-top:1px solid rgba(255,255,255,.05);
-  font-size:11.5px;color:rgba(154,150,144,.9);line-height:1.5;
-  text-align:center;
-  max-width:none;
-  letter-spacing:.005em;
-}
-@media(min-width:900px){.join-foot{margin-top:28px}}
-.join-foot a{color:var(--forest);text-decoration:underline;text-underline-offset:2px}
-.join-foot a:hover{color:#8BB8E8}
-
-/* mobile / tablet — premium compact join, orbs on top of card */
-@media(max-width:899px){
-  .join.section{
-    padding:32px 0 40px;
-    overflow:visible;
-  }
-  .join .wrap{
-    width:100%;
-    padding:0 14px;
-    box-sizing:border-box;
-    overflow:visible;
-  }
-  /* No external section glow on mobile — it clips into hard top/bottom light lines */
-  .join.section::before{display:none}
-  .join-shell{
-    margin:24px 0 20px;
-    max-width:100%;
-    padding:0;
-    border-radius:22px;
-    overflow:visible;
-  }
-  .join-orbs--front{display:block !important}
-  .join-orbs--back{display:block !important}
-  .join-orbs--back .join-orb--ring{display:none !important}
-  .join-orbs--front .join-orb--search,
-  .join-orbs--front .join-orb--bolt{display:none !important}
-  .join-orbs--front .join-orb--crystal{
-    display:block;
-    width:64px;height:64px;
-    top:-22px;left:10px;
-    animation:none;
-    filter:drop-shadow(0 12px 20px rgba(0,0,0,.45));
-  }
-  .join-orbs--front .join-orb--orb{
-    display:block;
-    width:86px;height:86px;
-    right:2px;bottom:-10px;
-    left:auto;
-    animation:none;
-    filter:drop-shadow(0 14px 24px rgba(30,80,160,.55));
-  }
-  .join-card{
-    padding:28px 20px 22px;
-    border-radius:22px;
-    outline:none;
-    border:0;
-    background:
-      radial-gradient(ellipse 65% 38% at 50% 20%, rgba(90,140,200,.12) 0%, transparent 72%),
-      linear-gradient(180deg, #151B24 0%, #0D1118 100%);
-    box-shadow:0 24px 52px -26px rgba(0,0,0,.75);
-  }
-  .join-head{margin:0 auto 22px;max-width:280px}
-  .join-card h2{
-    font-size:clamp(24px,6.4vw,30px);
-    margin:0 0 10px;
-    line-height:1.15;
-    letter-spacing:-.035em;
-  }
-  .join-card .join-cta-text{
-    max-width:260px;
-    font-size:13.5px;
-    line-height:1.5;
-    color:rgba(188,184,178,.96);
-  }
-  .join-card-grid{
-    max-width:100%;
-    margin:0;
-    gap:22px;
-    grid-template-columns:1fr;
-  }
-  .join-copy,.join-form-col{
-    padding:0;
-    border-right:none;
-    width:100%;
-  }
-  .perks{
-    gap:16px;
-    display:flex;
-    flex-direction:column;
-  }
-  .perk{
-    grid-template-columns:42px 1fr;
-    gap:12px;
-    padding:0;
-    align-items:center;
-  }
-  .perk + .perk{border:none}
-  .perk-icon{
-    width:42px;height:42px;
-    filter:drop-shadow(0 8px 14px rgba(40,100,180,.4)) brightness(1.08);
-  }
-  .perk-copy{gap:3px}
-  .perk-copy strong{
-    font-size:14.5px;
-    letter-spacing:-.02em;
-    line-height:1.25;
-  }
-  .perk-copy span{
-    font-size:12.5px;
-    line-height:1.4;
-    color:rgba(168,164,158,.96);
-  }
-  .form-zone{max-width:100%}
-  .subscribe-form{gap:10px}
-  .subscribe-form input{
-    font-size:16px;
-    padding:13px 15px;
-    border-radius:13px;
-    background:rgba(0,0,0,.28);
-    border-color:rgba(140,170,210,.16);
-  }
-  .subscribe-form .btn{
-    padding:14px 18px;font-size:14.5px;margin-top:4px;
-    border:0;
-    border-radius:13px;
-    box-shadow:0 12px 28px -14px rgba(69,136,204,.5);
-  }
-  .join-foot{
-    margin-top:18px;padding-top:14px;
-    font-size:11px;line-height:1.5;
-    color:rgba(156,152,146,.95);
-  }
-  .feature-copy .sub,
-  .feature-copy p{color:rgba(190,186,180,.96)}
-  .feature-copy .icon-3d{
-    filter:drop-shadow(0 16px 28px rgba(40,100,180,.35)) brightness(1.1);
-  }
-  .feature-visual .device-screen{box-shadow:none}
-  .feature-row{margin-bottom:56px;gap:28px}
-  .features-head{margin-bottom:36px}
-}
-@media(max-width:520px){
-  .join .wrap{padding:0 12px}
-  .join-shell{margin:22px 0 18px;border-radius:20px}
-  .join-card{padding:26px 18px 20px;border-radius:20px}
-  .join-orbs--front .join-orb--crystal{
-    width:58px;height:58px;top:-20px;left:8px;
-  }
-  .join-orbs--front .join-orb--orb{
-    width:70px;height:70px;
-    right:-4px;bottom:-22px;
-  }
-  .join-head{margin-bottom:20px;max-width:260px}
-  .join-card-grid{gap:20px}
-  .perks{gap:14px}
-  .feature-row{margin-bottom:48px}
-  .feature-copy{padding:0}
-  .feature-copy h3{font-size:clamp(26px,7vw,32px)}
-  .feature-copy p{font-size:15px;line-height:1.55}
-}
-
-/* ============================================================
-   DOWNLOAD CTA — open composition, matches hero tone
-   ============================================================ */
-.download{
-  text-align:center;
-  padding:80px 0 120px;
-  position:relative;
-  overflow:hidden;
-}
-.download-card{
-  position:relative;
-  max-width:560px;margin:0 auto;
-  padding:40px 20px 12px;
-  display:flex;flex-direction:column;align-items:center;
-  background:transparent;border:0;box-shadow:none;border-radius:0;
-}
-.download-card::before{
-  content:"";
-  position:absolute;
-  left:50%;top:38%;
-  width:min(720px,170%);height:130%;
-  transform:translate(-50%,-50%);
-  background:
-    radial-gradient(ellipse at center, rgba(47,107,196,.28) 0%, rgba(74,143,212,.12) 38%, transparent 68%);
-  pointer-events:none;z-index:0;
-}
-.download-card > *{position:relative;z-index:1}
-.download h2{
-  font-family:var(--font-display);
-  font-size:clamp(36px,5.8vw,52px);
-  letter-spacing:-.045em;margin:0 0 14px;font-weight:600;
-  color:var(--ink);
-  line-height:1.05;
-}
-.download h2 em{
-  font-style:normal;font-weight:600;
-  color:var(--logo-blue);
-}
-.download .sub{
-  margin:0 auto 32px;max-width:38ch;
-  font-size:18px;color:#F0ECE7;line-height:1.55;
-}
-.download .store-cta{
-  max-width:360px;margin:0 auto;
-  align-items:center;
-  gap:16px;
-}
-.download .store-cta::before{
-  display:block;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:150%;
-  background:radial-gradient(ellipse at center, rgba(74,143,212,.2) 0%, rgba(74,143,212,.05) 45%, transparent 70%);
-}
-.download .store-cta-note{color:#C5DCF2}
-@media(max-width:899px){
-  .download{padding:56px 0 96px}
-  .download .sub{font-size:16.5px;color:#F0ECE7}
-  .download .store-cta{max-width:min(320px,100%)}
-}
-@media(max-width:479px){
-  .download{padding:44px 0 80px}
-  .download-card{padding:24px 8px 0}
-  .download h2{font-size:clamp(32px,8.5vw,42px)}
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.footer{
-  border-top:1px solid rgba(255,255,255,.06);
-  padding:64px 0 calc(40px + env(safe-area-inset-bottom));
-  opacity:0;transform:translate3d(0,16px,0);
-  transition:opacity .9s var(--ease-premium),transform .9s var(--ease-premium);
-  background:linear-gradient(180deg, transparent, rgba(0,0,0,.35));
-}
-.footer.in{opacity:1;transform:none}
-.footer-top{
-  display:grid;
-  gap:36px;
-  padding-bottom:36px;
-  border-bottom:1px solid var(--divider);
-}
-@media(min-width:800px){
-  .footer-top{
-    grid-template-columns:1.4fr 1fr 1fr 1fr;
-    gap:28px 40px;
-    align-items:start;
-  }
-}
-.footer-brand{display:flex;flex-direction:column;gap:12px;max-width:280px}
-.footer .logo-mark{font-size:15.5px;height:1em;border-radius:0}
-.footer .logo-wordmark{font-size:15.5px}
-.footer-tagline{font-size:14px;line-height:1.5;color:var(--gray);margin:0}
-.footer-col h3{
-  margin:0 0 14px;
-  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink);
-}
-.footer-col nav{
-  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
-  font-size:14px;color:var(--gray);
-}
-.footer-col a{color:var(--gray);transition:color .25s}
-.footer-col a:hover{color:var(--forest)}
-.footer-bottom{
-  display:flex;flex-direction:column;gap:10px;align-items:flex-start;
-  padding-top:22px;
-}
-@media(min-width:700px){
-  .footer-bottom{flex-direction:row;justify-content:space-between;align-items:center}
-}
-.footer .copy{font-size:12.5px;color:var(--gray);margin:0}
-.footer-meta{font-size:12.5px;color:var(--gray);margin:0}
-.footer-meta a{color:var(--forest)}
-.footer-meta a:hover{text-decoration:underline;text-underline-offset:2px}
-@media(max-width:799px){
-  .footer{text-align:center}
-  .footer-brand{
-    max-width:none;
-    align-items:center;
-    margin-inline:auto;
-  }
-  .footer .logo{justify-content:center}
-  .footer-col nav{align-items:center}
-  .footer-bottom{align-items:center}
-  .footer .copy,.footer-meta{text-align:center}
+  html{scroll-behavior:auto}
+  .reveal,.device-showcase[data-device-reveal]{opacity:1 !important;transform:none !important;transition:none !important;animation:none !important}
+  .hero-media img,.editorial-item img{animation:none !important;transition:none !important;transform:none !important}
+  .device-tilt{transform:none !important}
 }
 </style>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
 <header class="header" id="header">
-  <div class="wrap header-inner">
+  <div class="header-inner">
     <a class="logo" href="#top" aria-label="LifeMaxxing home">
-      <img class="logo-mark" src="assets/logo-mark-sm.png?v=21" alt="" width="22" height="17" decoding="async">
+      <img class="logo-mark" src="assets/logo-mark-sm.png?v=41" alt="" width="26" height="26" decoding="async">
       <span class="logo-wordmark">LifeMaxxing</span>
     </a>
-    <a href="#download" class="btn btn-primary">
-      <span class="btn-label-long">Get the app</span>
-      <span class="btn-label-short">Download</span>
-    </a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#discover">Explore</a>
+      <a href="/how-it-works/">The App</a>
+      <a href="#philosophy">About</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#download" class="btn btn-on-dark header-cta-light">
+        <span class="btn-label-long">Get the app</span>
+        <span class="btn-label-short">Get app</span>
+        <span class="arr" aria-hidden="true">↗</span>
+      </a>
+      <a href="#download" class="btn btn-primary header-cta-dark">
+        <span class="btn-label-long">Get the app</span>
+        <span class="btn-label-short">Get app</span>
+        <span class="arr" aria-hidden="true">↗</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer" id="menuToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
+<div class="nav-overlay" id="navOverlay" hidden></div>
+<aside class="nav-drawer" id="navDrawer" hidden aria-label="Mobile menu">
+  <button class="nav-close" type="button" aria-label="Close menu" id="menuClose">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <a href="#discover">Explore</a>
+  <a href="/how-it-works/">The App</a>
+  <a href="#philosophy">About</a>
+  <a href="#download">Get the app</a>
+  <a href="/support/">Support</a>
+  <a class="btn btn-primary" href="/download/">Get the app <span class="arr" aria-hidden="true">↗</span></a>
+</aside>
+
 <main class="page">
 
-<!-- ================= HERO ================= -->
+<!-- 1. Cinematic hero -->
 <section class="hero" id="top">
-  <div class="hero-bg" data-parallax="0.08">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
+  <div class="hero-media" aria-hidden="true">
+    <picture>
+      <source media="(max-width:699px)" type="image/webp" srcset="assets/hero-cinematic-mobile.webp?v=42">
+      <source media="(max-width:699px)" type="image/jpeg" srcset="assets/hero-cinematic-mobile.jpg?v=42">
+      <source type="image/webp" srcset="assets/hero-cinematic-960.webp?v=42 960w, assets/hero-cinematic-1600.webp?v=42 1600w, assets/hero-cinematic.webp?v=42 2400w" sizes="100vw">
+      <img src="assets/hero-cinematic-1600.jpg?v=42" srcset="assets/hero-cinematic-960.jpg?v=42 960w, assets/hero-cinematic-1600.jpg?v=42 1600w, assets/hero-cinematic.jpg?v=42 2400w" sizes="100vw" alt="" width="1600" height="1063" decoding="async" fetchpriority="high" onerror="this.onerror=null;this.src='assets/hero-fallback.jpg'">
+    </picture>
   </div>
-
-  <div class="wrap hero-grid">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-content">
     <div class="hero-copy">
-      <span class="kicker reveal" data-delay="1"><span class="kicker-text kicker-text--long">Imagine IMDb and Instagram were combined for real life</span><span class="kicker-text kicker-text--short">IMDb × Instagram for real life</span></span>
-      <h1 class="reveal" data-delay="1">Log your life.<br><em>Max it out.</em></h1>
-      <p class="sub reveal" data-delay="2">Every trail, table, trip and tiny win, logged, rated and mapped. Your life, beautifully on record.</p>
+      <span class="kicker reveal" data-delay="1">Explore more · Live exceptionally</span>
+      <h1 class="reveal" data-delay="1">A life worth<br>discovering.</h1>
+      <p class="sub reveal" data-delay="2">Find remarkable places. Remember the moments. Build your own map of a life well lived.</p>
       <div class="hero-ctas reveal" data-delay="3">
-        <div class="store-cta">
-          <div class="store-badges">
-            <a class="store-badge store-badge--apple" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer">
-              <img src="assets/badge-app-store-white.svg?v=36" alt="Download on the App Store" width="120" height="40" decoding="async">
-            </a>
-            <a class="store-badge store-badge--google" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer">
-              <img src="assets/badge-google-play.svg?v=36" alt="Get it on Google Play" width="135" height="40" decoding="async">
-            </a>
-          </div>
-        </div>
+        <a class="btn btn-on-dark" href="#download">Get the app <span class="arr" aria-hidden="true">↗</span></a>
+        <a class="btn btn-text" href="/how-it-works/">See how it works <span class="arr" aria-hidden="true">→</span></a>
       </div>
-    </div>
-
-    <div class="hero-visual device-stage">
-      <div class="device-tilt">
-      <div class="device-showcase device-showcase--hero device-showcase--frontal" data-device-reveal aria-label="LifeMaxxing app preview">
-        <div class="device">
-          <span class="device-btn device-btn--action" aria-hidden="true"></span>
-          <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
-          <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
-          <span class="device-btn device-btn--power" aria-hidden="true"></span>
-          <div class="device-screen">
-            <img class="device-media device-media--poster" src="assets/poster-demo-360.webp" srcset="assets/poster-demo-360.webp 360w, assets/poster-demo-480.webp 480w, assets/poster-demo.webp 750w" sizes="(max-width:899px) 46vw, 280px" alt="" width="540" height="1170" decoding="async" fetchpriority="high">
-            <video class="device-media device-media--video" data-src="assets/app-demo.mp4?v=17" muted loop playsinline webkit-playsinline preload="none" aria-label="LifeMaxxing app demo"></video>
-          </div>
-        </div>
-      </div>
-      </div>
+      <p class="hero-note reveal" data-delay="4">Free on iOS and Android.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= APP SCREENS MARQUEE ================= -->
-<section class="screen-marquee reveal" aria-label="LifeMaxxing app screens">
-  <div class="marquee-track" id="screenMarquee"></div>
+<!-- 2. Editorial manifesto -->
+<section class="section manifesto" id="philosophy">
+  <div class="wrap">
+    <div class="manifesto-inner reveal">
+      <span class="kicker">Our philosophy</span>
+      <h2>There is more out there.</h2>
+      <p>The little café you return to. A weekend that becomes a story. A place you never expected to love. LifeMaxxing helps you discover what is next, and remember what was worth it.</p>
+    </div>
+  </div>
 </section>
 
-<!-- ================= WHAT IS LIFEMAXXING ================= -->
-<section class="section" id="what">
+<!-- 3–6 Product narrative -->
+<section class="section" id="discover">
   <div class="wrap">
     <div class="features-head reveal">
-      <span class="kicker">What is LifeMaxxing</span>
-      <h2>Your life, beautifully on record.</h2>
-      <p class="sub"><span class="kicker-text kicker-text--long">Imagine IMDb and Instagram were combined for real life.</span><span class="kicker-text kicker-text--short">IMDb × Instagram for real life.</span> The hikes, the dinners, the cities, all in one place you will actually want to open.</p>
+      <span class="kicker">The app</span>
+      <h2>Your world, on record.</h2>
+      <p class="sub">Discover what is next, log what mattered, and watch your Life Map fill in — with the same screens you will open in the app.</p>
     </div>
 
-    <!-- Feature 1: Discover -->
-    <div class="feature-row">
+    <!-- Discover -->
+    <div class="feature-row" id="feature-discover">
       <div class="feature-copy reveal">
-        <div class="icon icon-3d" aria-hidden="true"><img src="assets/3d/obj-search.png?v=15" alt="" width="84" height="84" loading="lazy" decoding="async"></div>
-        <h3>Discover what to do next</h3>
-        <p>Never ask "so what should we do?" again. Explore experiences ranked by people you actually trust: trending, highest rated, near you, or picked by friends.</p>
+        <span class="kicker">Discover</span>
+        <h3>Find your next favourite place.</h3>
+        <p class="sub">Explore places and experiences through ratings and recommendations, including the people you trust.</p>
         <ul class="points">
-          <li>Filter by category, distance and rating</li>
-          <li>Friends' picks beat anonymous five star strangers</li>
-          <li>From your street to the other side of the world</li>
+          <li>Search, categories, proximity and rating</li>
+          <li>Friends’ picks you can actually trust</li>
+          <li>From your street to further afield</li>
         </ul>
+        <a class="btn btn-text" href="/how-it-works/">Explore how it works <span class="arr" aria-hidden="true">→</span></a>
       </div>
-      <div class="feature-visual device-stage" data-parallax-tilt="0.018">
+      <div class="feature-visual device-stage" data-parallax-tilt="0.014">
         <div class="device-tilt">
         <div class="device-showcase device-showcase--feature device-showcase--duo-reverse" data-device-reveal aria-label="Discover experiences in LifeMaxxing">
           <div class="device device--back">
@@ -2226,7 +1163,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/explore.webp?v=15" alt="LifeMaxxing explore with trending life logs and categories" width="471" height="1024" loading="eager" decoding="async" fetchpriority="low">
+              <img class="device-media" src="assets/screens/explore.webp?v=15" alt="LifeMaxxing explore with trending experiences and categories" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="device device--front">
@@ -2235,7 +1172,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/filters.webp?v=15" alt="LifeMaxxing map filters for category, sort and distance" width="471" height="1024" loading="eager" decoding="async" fetchpriority="low">
+              <img class="device-media" src="assets/screens/filters.webp?v=15" alt="LifeMaxxing filters for category, sort and distance" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -2243,19 +1180,19 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
       </div>
     </div>
 
-    <!-- Feature 2: Life Map -->
-    <div class="feature-row flip">
+    <!-- Life Map -->
+    <div class="feature-row flip" id="life-map">
       <div class="feature-copy reveal">
-        <div class="icon icon-3d" aria-hidden="true"><img src="assets/3d/obj-pin.png?v=15" alt="" width="84" height="84" loading="lazy" decoding="async"></div>
-        <h3>Watch your Life Map fill up</h3>
-        <p>Every log drops a pin. Zoom out and your life becomes a map: the cafes on your block, the summits on your bucket list, and every country in between.</p>
+        <span class="kicker">Life Map</span>
+        <h3>Your world, beautifully mapped.</h3>
+        <p class="sub">From the corner café to the other side of the world, every experience becomes part of your personal map.</p>
         <ul class="points">
-          <li>Your personal atlas of everywhere you have been</li>
+          <li>Every log drops a pin on your atlas</li>
           <li>Places, cities and countries, counted for you</li>
-          <li>See friends' pins layered over yours</li>
+          <li>See friends’ pins layered over yours</li>
         </ul>
       </div>
-      <div class="feature-visual device-stage" data-parallax-tilt="0.014">
+      <div class="feature-visual device-stage" data-parallax-tilt="0.012">
         <div class="device-tilt">
         <div class="device-showcase device-showcase--feature device-showcase--duo-map" data-device-reveal aria-label="LifeMaxxing map views">
           <div class="device device--back">
@@ -2273,7 +1210,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/map-place-detail.webp?v=15" alt="LifeMaxxing map place detail for Hidden Garden Brunch" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/map-place-detail.webp?v=15" alt="LifeMaxxing map place detail" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -2281,57 +1218,19 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
       </div>
     </div>
 
-    <!-- Feature 3: Life Graph -->
-    <div class="feature-row">
+    <!-- Log -->
+    <div class="feature-row" id="log">
       <div class="feature-copy reveal">
-        <div class="icon icon-3d" aria-hidden="true"><img src="assets/3d/obj-layers.png?v=15" alt="" width="84" height="84" loading="lazy" decoding="async"></div>
-        <h3>Every place has a page.</h3>
-        <p>A restaurant in Lisbon isn't a photo that vanishes from your feed. It's a permanent node in the Life Graph: every rating, every visit, every person who went there. Structured like IMDb, built for real life.</p>
+        <span class="kicker">Log the moment</span>
+        <h3>More than a photo.</h3>
+        <p class="sub">Save the place, the people, the rating and the story. Make the moments easy to find long after they happen.</p>
         <ul class="points">
-          <li>Person, place, activity, date, rating: all connected</li>
-          <li>Places ranked by people you actually trust</li>
-          <li>The more you live, the smarter it gets</li>
-        </ul>
-      </div>
-      <div class="feature-visual device-stage" data-parallax-tilt="0.016">
-        <div class="device-tilt">
-        <div class="device-showcase device-showcase--feature device-showcase--duo-reverse" data-device-reveal aria-label="LifeMaxxing place page">
-          <div class="device device--back">
-            <span class="device-btn device-btn--action" aria-hidden="true"></span>
-            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
-            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
-            <span class="device-btn device-btn--power" aria-hidden="true"></span>
-            <div class="device-screen">
-              <img class="device-media" src="assets/screens/place-page.webp?v=15" alt="LifeMaxxing meditation log with directions" width="471" height="1024" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="device device--front">
-            <span class="device-btn device-btn--action" aria-hidden="true"></span>
-            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
-            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
-            <span class="device-btn device-btn--power" aria-hidden="true"></span>
-            <div class="device-screen">
-              <img class="device-media" src="assets/screens/achievements.webp?v=15" alt="LifeMaxxing profile physical achievements" width="471" height="1024" loading="lazy" decoding="async">
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature 4: Log experiences -->
-    <div class="feature-row flip">
-      <div class="feature-copy reveal">
-        <div class="icon icon-3d" aria-hidden="true"><img src="assets/3d/obj-pen.png?v=15" alt="" width="84" height="84" loading="lazy" decoding="async"></div>
-        <h3>Log every experience</h3>
-        <p>Places, ratings, photos, the story of the moment. Capture it in seconds and keep it forever. Your memories become a collection, not a camera roll graveyard.</p>
-        <ul class="points">
-          <li>Rate places out of 5. Your reviews, your record</li>
+          <li>Rate places out of 5 — your record, your words</li>
           <li>Attach photos and the story behind them</li>
-          <li>Tag the activity: dining, adventure, wellness, travel</li>
+          <li>Tag dining, adventure, wellness, travel and more</li>
         </ul>
       </div>
-      <div class="feature-visual device-stage" data-parallax-tilt="0.015">
+      <div class="feature-visual device-stage" data-parallax-tilt="0.013">
         <div class="device-tilt">
         <div class="device-showcase device-showcase--feature device-showcase--duo" data-device-reveal aria-label="Log an experience in LifeMaxxing">
           <div class="device device--back">
@@ -2349,7 +1248,36 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
             <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
             <span class="device-btn device-btn--power" aria-hidden="true"></span>
             <div class="device-screen">
-              <img class="device-media" src="assets/screens/logged.webp?v=15" alt="LifeMaxxing pick a log date" width="471" height="1024" loading="lazy" decoding="async">
+              <img class="device-media" src="assets/screens/logged.webp?v=15" alt="LifeMaxxing finished log" width="471" height="1024" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust -->
+    <div class="feature-row flip" id="trust">
+      <div class="feature-copy reveal">
+        <span class="kicker">Trust</span>
+        <h3>The best recommendations feel personal.</h3>
+        <p class="sub">Find ideas through friends and the people whose taste you trust — not anonymous noise.</p>
+        <ul class="points">
+          <li>See what people you know actually loved</li>
+          <li>Place pages that keep every visit connected</li>
+          <li>A social layer that stays grounded in real life</li>
+        </ul>
+      </div>
+      <div class="feature-visual device-stage" data-parallax-tilt="0.012">
+        <div class="device-tilt">
+        <div class="device-showcase device-showcase--feature device-showcase--frontal" data-device-reveal aria-label="LifeMaxxing feed and place pages">
+          <div class="device">
+            <span class="device-btn device-btn--action" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-up" aria-hidden="true"></span>
+            <span class="device-btn device-btn--vol-down" aria-hidden="true"></span>
+            <span class="device-btn device-btn--power" aria-hidden="true"></span>
+            <div class="device-screen">
+              <img class="device-media" src="assets/screens/home-feed.webp?v=15" alt="LifeMaxxing home feed with friend recommendations" width="471" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -2359,43 +1287,72 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
   </div>
 </section>
 
-<!-- ================= DOWNLOAD ================= -->
+<!-- 7. Editorial interlude -->
+<section class="editorial" aria-label="Lifestyle moments">
+  <div class="editorial-head">
+    <div class="wrap reveal">
+      <span class="kicker">Explore more</span>
+      <h2>Go further. Look closer. Remember more.</h2>
+    </div>
+  </div>
+  <div class="editorial-grid">
+    <figure class="editorial-item reveal">
+      <img src="assets/editorial-table.webp" alt="A warmly lit dining table ready for a shared meal" width="1400" height="933" loading="lazy" decoding="async">
+      <figcaption>A table worth sharing</figcaption>
+    </figure>
+    <figure class="editorial-item reveal">
+      <img src="assets/editorial-trail.webp" alt="Hikers on a mountain trail at golden hour" width="1400" height="934" loading="lazy" decoding="async">
+      <figcaption>A trail worth taking</figcaption>
+    </figure>
+    <figure class="editorial-item reveal">
+      <img src="assets/editorial-city.webp" alt="Paris cityscape at dusk over the Seine" width="1400" height="990" loading="lazy" decoding="async">
+      <figcaption>A city worth returning to</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 8. Conversion -->
 <section class="section download" id="download">
   <div class="wrap">
-    <div class="download-card reveal">
-      <h2>Get <em>LifeMaxxing</em></h2>
-      <p class="sub">Start logging the places, nights out, and trips that make your life yours.</p>
-      <div class="store-cta">
-        <div class="store-badges">
-          <a class="store-badge store-badge--apple" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer">
-            <img src="assets/badge-app-store-white.svg?v=36" alt="Download on the App Store" width="120" height="40" loading="lazy" decoding="async">
-          </a>
-          <a class="store-badge store-badge--google" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer">
-            <img src="assets/badge-google-play.svg?v=36" alt="Get it on Google Play" width="135" height="40" loading="lazy" decoding="async">
-          </a>
-        </div>
-        <p class="store-cta-note">Free on iOS and Android</p>
+    <div class="download-inner reveal">
+      <span class="kicker">Get the app</span>
+      <h2>Your next chapter starts outside.</h2>
+      <p class="sub">Download LifeMaxxing and start building your own record of a life explored.</p>
+
+      <div class="store-badges">
+        <a class="store-badge store-badge--apple" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer">
+          <img src="assets/badge-app-store-white.svg?v=36" alt="Download on the App Store" width="120" height="40" loading="lazy" decoding="async">
+        </a>
+        <a class="store-badge store-badge--google" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer">
+          <img src="assets/badge-google-play.svg?v=36" alt="Get it on Google Play" width="135" height="40" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <p class="store-cta-note">Free on iOS and Android</p>
+      <div class="download-qr">
+        <img src="assets/qr-download.png" alt="QR code to download LifeMaxxing" width="140" height="140" loading="lazy" decoding="async">
+        <span>Scan to download</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
         <a class="logo" href="#top" aria-label="LifeMaxxing">
-          <img class="logo-mark" src="assets/logo-mark-sm.png?v=21" alt="" width="20" height="16" loading="lazy" decoding="async">
+          <img class="logo-mark" src="assets/logo-mark-sm.png?v=41" alt="" width="28" height="28" loading="lazy" decoding="async">
           <span class="logo-wordmark">LifeMaxxing</span>
         </a>
-        <p class="footer-tagline">Log your life. Max it out.</p>
+        <p class="footer-tagline">Explore more</p>
       </div>
       <div class="footer-col">
         <h3>Product</h3>
         <nav aria-label="Product">
-          <a href="#download">Download</a>
-          <a href="#what">What is LifeMaxxing</a>
+          <a href="#discover">Explore</a>
+          <a href="/how-it-works/">The App</a>
+          <a href="#philosophy">About</a>
+          <a href="/download/">Download</a>
           <a href="/support/">Support</a>
         </nav>
       </div>
@@ -2427,108 +1384,83 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter
 
 </main>
 
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <a class="btn btn-primary" href="#download">Get the app</a>
+</div>
+
 <script>
 (() => {
 'use strict';
 
-/* ============================================================
-   1. HEADER — glass + solidify on scroll
-   ============================================================ */
 const header = document.getElementById('header');
-if (header) {
-  const onScrollHeader = () => header.classList.toggle('scrolled', window.scrollY > 24);
-  onScrollHeader();
-  window.addEventListener('scroll', onScrollHeader, { passive: true });
-}
-
+const stickyCta = document.getElementById('stickyCta');
+const hero = document.querySelector('.hero');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const heroVideo = document.querySelector('.device-media--video');
-const heroScreen = heroVideo && heroVideo.closest('.device-screen');
-if (heroVideo) {
-  const canPlayVideo = () => {
-    if (reduceMotion || document.hidden) return false;
-    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    if (conn && (conn.saveData || /2g/.test(conn.effectiveType || ''))) return false;
-    return true;
-  };
-
-  const markReady = () => {
-    heroVideo.classList.add('is-ready');
-    if (heroScreen) heroScreen.classList.add('is-playing');
-  };
-
-  const loadAndPlay = () => {
-    if (!canPlayVideo()) return;
-    const src = heroVideo.dataset.src;
-    if (src && !heroVideo.src) {
-      heroVideo.src = src;
-      heroVideo.load();
-    }
-    const play = () => heroVideo.play().then(markReady).catch(() => {});
-    if (heroVideo.readyState >= 2) play();
-    else heroVideo.addEventListener('canplay', play, { once: true });
-  };
-
-  if ('IntersectionObserver' in window) {
-    const vio = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          // Defer video until after first paint / LCP
-          const start = () => loadAndPlay();
-          if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 1800 });
-          else setTimeout(start, 900);
-          vio.disconnect();
-        }
-      });
-    }, { rootMargin: '120px' });
-    vio.observe(heroVideo);
-  } else {
-    setTimeout(loadAndPlay, 1000);
+function updateHeader() {
+  const y = window.scrollY || 0;
+  const pastHero = hero ? y > hero.offsetHeight - 80 : y > 24;
+  header.classList.toggle('scrolled', y > 24);
+  header.classList.toggle('on-light', pastHero);
+  if (stickyCta) {
+    const show = y > (hero ? hero.offsetHeight * 0.85 : 400);
+    stickyCta.classList.toggle('show', show);
+    stickyCta.setAttribute('aria-hidden', show ? 'false' : 'true');
   }
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) heroVideo.pause();
-    else if (heroVideo.src && canPlayVideo()) heroVideo.play().catch(() => {});
-  });
 }
+updateHeader();
+window.addEventListener('scroll', updateHeader, { passive: true });
+
+/* Mobile menu */
+const menuToggle = document.getElementById('menuToggle');
+const menuClose = document.getElementById('menuClose');
+const navDrawer = document.getElementById('navDrawer');
+const navOverlay = document.getElementById('navOverlay');
+let menuOpen = false;
+
+function setMenu(open) {
+  menuOpen = open;
+  navDrawer.hidden = !open;
+  navOverlay.hidden = !open;
+  requestAnimationFrame(() => {
+    navDrawer.classList.toggle('open', open);
+    navOverlay.classList.toggle('open', open);
+  });
+  menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.body.style.overflow = open ? 'hidden' : '';
+  if (!open) menuToggle.focus();
+}
+menuToggle?.addEventListener('click', () => setMenu(true));
+menuClose?.addEventListener('click', () => setMenu(false));
+navOverlay?.addEventListener('click', () => setMenu(false));
+navDrawer?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && menuOpen) setMenu(false);
+});
 
 function revealEl(el) {
   if (!el || el.classList.contains('in')) return;
   el.classList.add('in');
 }
-
 function revealGroup(root) {
   if (!root) return;
   revealEl(root);
-  root.querySelectorAll('.reveal, .reveal-stagger, [data-device-reveal]').forEach(revealEl);
+  root.querySelectorAll('.reveal, [data-device-reveal]').forEach(revealEl);
 }
-
 function isNearViewport(el, pad = 160) {
   const r = el.getBoundingClientRect();
   const vh = window.innerHeight || 0;
   return r.top < vh + pad && r.bottom > -pad;
 }
 
-function revealHeroOnLoad() {
-  document.querySelectorAll('.hero .reveal, .hero .device-showcase[data-device-reveal]').forEach(revealEl);
-}
-
-/* ============================================================
-   2. REVEAL ON SCROLL — group feature rows so copy + phones
-   animate together (no empty black holes under text)
-   ============================================================ */
 const REVEAL_PAD = Math.max(40, Math.round((window.innerHeight || 800) * 0.08));
-const revealNodes = () => document.querySelectorAll('.reveal, .reveal-stagger, .footer, [data-device-reveal]');
+const revealNodes = () => document.querySelectorAll('.reveal, [data-device-reveal]');
 const featureRows = () => document.querySelectorAll('.feature-row');
 
 function revealVisibleNow() {
-  const pad = REVEAL_PAD;
-  featureRows().forEach((row) => {
-    if (isNearViewport(row, pad)) revealGroup(row);
-  });
+  featureRows().forEach((row) => { if (isNearViewport(row, REVEAL_PAD)) revealGroup(row); });
   revealNodes().forEach((el) => {
-    if (isNearViewport(el, pad)) {
+    if (isNearViewport(el, REVEAL_PAD)) {
       const row = el.closest('.feature-row');
       if (row) revealGroup(row);
       else revealEl(el);
@@ -2536,7 +1468,10 @@ function revealVisibleNow() {
   });
 }
 
-if ('IntersectionObserver' in window) {
+if (reduceMotion) {
+  revealNodes().forEach(revealEl);
+  featureRows().forEach(revealGroup);
+} else if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting || e.intersectionRatio > 0) {
@@ -2547,167 +1482,54 @@ if ('IntersectionObserver' in window) {
       }
     });
   }, { threshold: 0.12, rootMargin: '60px 0px -5% 0px' });
-
   featureRows().forEach((row) => io.observe(row));
   revealNodes().forEach((el) => io.observe(el));
-
   requestAnimationFrame(() => {
-    revealHeroOnLoad();
+    document.querySelectorAll('.hero .reveal').forEach(revealEl);
     revealVisibleNow();
   });
   window.addEventListener('load', revealVisibleNow, { once: true });
-  window.addEventListener('hashchange', () => setTimeout(revealVisibleNow, 60));
 } else {
   revealNodes().forEach(revealEl);
   featureRows().forEach(revealGroup);
 }
 
-if (reduceMotion) {
-  revealNodes().forEach(revealEl);
-  featureRows().forEach(revealGroup);
-}
-
-/* ============================================================
-   3. LIGHT MOTION — scroll-triggered only (no perpetual rAF)
-   ============================================================ */
-const lerp = (a, b, t) => a + (b - a) * t;
-const pxEls = document.querySelectorAll('[data-parallax]');
+/* Light tilt — desktop only, no scroll-jacking */
 const tiltStages = document.querySelectorAll('[data-parallax-tilt]');
 const isMobileViewport = () => window.matchMedia('(max-width: 899px)').matches;
-
-function resetMobileMotion() {
-  pxEls.forEach((el) => { el.style.transform = ''; });
-  tiltStages.forEach((stage) => {
-    const tiltEl = stage.querySelector('.device-tilt');
-    if (!tiltEl) return;
-    tiltEl.style.setProperty('--stage-ry', '0deg');
-    tiltEl.style.setProperty('--stage-rx', '0deg');
-  });
-}
-
 function updateMotionOnce() {
   if (reduceMotion || isMobileViewport()) {
-    resetMobileMotion();
+    tiltStages.forEach((stage) => {
+      const tiltEl = stage.querySelector('.device-tilt');
+      if (tiltEl) {
+        tiltEl.style.setProperty('--stage-ry', '0deg');
+        tiltEl.style.setProperty('--stage-rx', '0deg');
+      }
+    });
     return;
   }
   const vh = window.innerHeight || 1;
-  const scrollY = window.scrollY || 0;
-  pxEls.forEach((el) => {
-    const amount = parseFloat(el.dataset.parallax) || 0;
-    el.style.transform = `translate3d(0,${(scrollY * amount * 0.35).toFixed(1)}px,0)`;
-  });
   tiltStages.forEach((stage) => {
     const tiltEl = stage.querySelector('.device-tilt');
     if (!tiltEl) return;
     const amount = parseFloat(stage.dataset.parallaxTilt) || 0.02;
     const rect = stage.getBoundingClientRect();
     const progress = (rect.top + rect.height * 0.5 - vh * 0.5) / vh;
-    const ry = Math.max(-6, Math.min(6, progress * amount * 90));
+    const ry = Math.max(-5, Math.min(5, progress * amount * 90));
     tiltEl.style.setProperty('--stage-ry', `${ry.toFixed(2)}deg`);
-    tiltEl.style.setProperty('--stage-rx', '0deg');
   });
 }
-
 let motionQueued = false;
 const queueMotion = () => {
   if (motionQueued) return;
   motionQueued = true;
-  requestAnimationFrame(() => {
-    updateMotionOnce();
-    motionQueued = false;
-  });
+  requestAnimationFrame(() => { updateMotionOnce(); motionQueued = false; });
 };
-
 if (!reduceMotion) {
   window.addEventListener('scroll', queueMotion, { passive: true });
   window.addEventListener('resize', queueMotion, { passive: true });
   queueMotion();
-} else {
-  resetMobileMotion();
 }
-
-/* ============================================================
-   3a. SCREEN MARQUEE — build phones and loop
-   ============================================================ */
-const MARQUEE_SCREENS = [
-  { src: 'assets/screens/home-feed.webp?v=15', alt: 'LifeMaxxing home feed' },
-  { src: 'assets/screens/explore.webp?v=15', alt: 'LifeMaxxing explore screen' },
-  { src: 'assets/screens/experience-detail.webp?v=15', alt: 'LifeMaxxing experience detail' },
-  { src: 'assets/screens/map-friend-experience.webp?v=15', alt: 'LifeMaxxing map discovery' },
-  { src: 'assets/screens/place-page.webp?v=15', alt: 'LifeMaxxing place page' },
-  { src: 'assets/screens/profile.webp?v=15', alt: 'LifeMaxxing profile' },
-  { src: 'assets/screens/streak.webp?v=15', alt: 'LifeMaxxing ambition quests' },
-  { src: 'assets/screens/logged.webp?v=15', alt: 'LifeMaxxing logged experience' },
-];
-
-const screenMarquee = document.getElementById('screenMarquee');
-const marqueeSection = document.querySelector('.screen-marquee');
-if (screenMarquee && MARQUEE_SCREENS.length) {
-  const screens = (typeof isMobileViewport === 'function' && isMobileViewport())
-    ? MARQUEE_SCREENS.slice(0, 6)
-    : MARQUEE_SCREENS;
-  const frag = document.createDocumentFragment();
-  screens.forEach(({ src, alt }) => {
-    const slot = document.createElement('div');
-    slot.className = 'marquee-slot';
-    slot.innerHTML = `
-      <div class="marquee-phone">
-        <div class="device device--marquee">
-          <div class="device-screen">
-            <img class="device-media" src="${src}" alt="${alt}" width="471" height="1024" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>`;
-    frag.appendChild(slot);
-  });
-  screenMarquee.appendChild(frag);
-  if (!reduceMotion) {
-    Array.from(screenMarquee.children).forEach((slot) => {
-      screenMarquee.appendChild(slot.cloneNode(true));
-    });
-  }
-
-  if ('IntersectionObserver' in window && marqueeSection) {
-    const mio = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        screenMarquee.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
-      });
-    }, { rootMargin: '160px 0px' });
-    mio.observe(marqueeSection);
-    screenMarquee.style.animationPlayState = 'paused';
-  }
-}
-
-/* ============================================================
-   3b. DEVICE REVEAL ON SCROLL (kept in sync with feature groups)
-   ============================================================ */
-const deviceShowcases = document.querySelectorAll('[data-device-reveal]');
-const revealDeviceShowcases = () => {
-  deviceShowcases.forEach((el) => {
-    if (!isNearViewport(el, REVEAL_PAD)) return;
-    const row = el.closest('.feature-row');
-    if (row) revealGroup(row);
-    else revealEl(el);
-  });
-};
-if ('IntersectionObserver' in window && deviceShowcases.length) {
-  const deviceIO = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting || e.intersectionRatio > 0) {
-        const row = e.target.closest('.feature-row');
-        if (row) revealGroup(row);
-        else revealEl(e.target);
-        deviceIO.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '60px 0px -5% 0px' });
-  deviceShowcases.forEach((el) => deviceIO.observe(el));
-  requestAnimationFrame(revealDeviceShowcases);
-  window.addEventListener('load', revealDeviceShowcases, { once: true });
-} else {
-  deviceShowcases.forEach(revealEl);
-}
-
 })();
 </script>
 </body>

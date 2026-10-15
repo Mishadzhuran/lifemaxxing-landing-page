@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Download | LifeMaxxing</title>
+<meta name="description" content="Download LifeMaxxing for iPhone or Android. Start discovering places, logging moments, and mapping a life well lived.">
+<meta name="theme-color" content="#22372E">
+<link rel="canonical" href="https://lifemaxxing.io/download/">
+<link rel="icon" type="image/png" href="/assets/favicon.png?v=41">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=41">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#F7F4ED;--ink:#17201B;--forest:#22372E;--forest-deep:#1A2B24;
+  --sand:#B39A74;--muted:#5C655F;--divider:rgba(23,32,27,.1);
+  --font-display:"Cormorant Garamond",Georgia,serif;
+  --font-body:"Instrument Sans",system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--forest)}
+body{
+  min-height:100svh;font-family:var(--font-body);color:var(--ivory);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(179,154,116,.18), transparent 55%),
+    var(--forest);
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:min(720px,calc(100% - 40px));margin:0 auto}
+.top{padding:20px 0;display:flex;justify-content:space-between;align-items:center}
+.logo{display:inline-flex;align-items:center;gap:10px}
+.logo img{width:28px;height:28px}
+.logo span{font-family:var(--font-display);letter-spacing:.28em;text-transform:uppercase;font-size:15px}
+.back{font-size:14px;color:rgba(247,244,237,.7)}
+.back:hover{color:var(--sand)}
+.panel{padding:48px 0 72px;text-align:center}
+.kicker{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:14px}
+h1{font-family:var(--font-display);font-weight:500;font-size:clamp(40px,7vw,64px);line-height:1.08;margin:0 0 14px}
+.lead{color:rgba(247,244,237,.72);max-width:440px;margin:0 auto 28px;font-size:17px}
+.hint{
+  display:inline-block;margin:0 auto 28px;padding:8px 14px;
+  border:1px solid rgba(247,244,237,.16);border-radius:999px;
+  font-size:13px;color:rgba(247,244,237,.7);
+}
+.store-badges{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
+.store-badge{transition:transform .25s var(--ease)}
+.store-badge:hover{transform:translateY(-2px)}
+.store-badge img{height:52px;width:auto}
+.store-badge--google img{height:72px;margin:-10px 0}
+.qr-block{
+  margin:40px auto 0;padding:28px 24px;max-width:320px;
+  background:rgba(247,244,237,.06);border:1px solid rgba(247,244,237,.1);
+  display:none;flex-direction:column;align-items:center;gap:14px;
+}
+@media(min-width:860px){.qr-block{display:flex}}
+.qr-block img{width:160px;height:160px;background:var(--ivory);padding:12px}
+.qr-block span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,244,237,.55)}
+.links{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px;justify-content:center;font-size:14px;color:rgba(247,244,237,.65)}
+.links a:hover{color:var(--sand)}
+.foot{padding:0 0 40px;text-align:center;font-size:12.5px;color:rgba(247,244,237,.45)}
+</style>
+</head>
+<body>
+  <div class="wrap top">
+    <a class="logo" href="/" aria-label="LifeMaxxing home">
+      <img src="/assets/logo-mark-sm.png?v=41" alt="" width="28" height="28">
+      <span>LifeMaxxing</span>
+    </a>
+    <a class="back" href="/">← Home</a>
+  </div>
+
+  <main class="wrap panel">
+    <span class="kicker">Download</span>
+    <h1>Go somewhere. Make it yours.</h1>
+    <p class="lead">Get LifeMaxxing on your phone and start building your own record of a life explored.</p>
+    <p class="hint" id="osHint">Available on iOS and Android</p>
+
+    <div class="store-badges">
+      <a class="store-badge store-badge--apple" id="btnApple" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/badge-app-store-white.svg?v=36" alt="Download on the App Store" width="135" height="52">
+      </a>
+      <a class="store-badge store-badge--google" id="btnGoogle" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/badge-google-play.svg?v=36" alt="Get it on Google Play" width="150" height="52">
+      </a>
+    </div>
+
+    <div class="qr-block" id="qrBlock">
+      <img src="/assets/qr-download.png" alt="QR code linking to the LifeMaxxing download page" width="160" height="160">
+      <span>Scan with your phone</span>
+    </div>
+
+    <nav class="links" aria-label="Helpful links">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/support/">Support</a>
+      <a href="/legal/privacy/">Privacy</a>
+      <a href="/account/delete/">Delete account</a>
+    </nav>
+  </main>
+
+  <p class="foot">© 2026 LifeMaxxing · Explore more</p>
+
+<script>
+(() => {
+  const ua = navigator.userAgent || '';
+  const hint = document.getElementById('osHint');
+  const apple = document.getElementById('btnApple');
+  const google = document.getElementById('btnGoogle');
+  const isiOS = /iPhone|iPad|iPod/i.test(ua);
+  const isAndroid = /Android/i.test(ua);
+  if (isiOS && hint) {
+    hint.textContent = 'Looks like you are on iPhone — App Store is ready';
+    google.style.opacity = '.72';
+  } else if (isAndroid && hint) {
+    hint.textContent = 'Looks like you are on Android — Google Play is ready';
+    apple.style.opacity = '.72';
+  }
+})();
+</script>
+</body>
+</html>
