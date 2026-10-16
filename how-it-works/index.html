@@ -74,9 +74,9 @@ details p{padding:0 4px 18px;color:var(--muted);max-width:60ch}
 .cta{background:var(--forest);color:var(--ivory);text-align:center;padding:72px 20px}
 .cta h2{font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4vw,48px);margin:0 0 12px}
 .cta p{color:rgba(247,244,237,.72);margin:0 auto 24px;max-width:440px}
-.store-badges{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.store-badge img{height:48px;width:auto}
-.store-badge--google img{height:66px;margin:-9px 0}
+.store-badges{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
+.store-badge{display:inline-flex;align-items:center;justify-content:center;height:44px;line-height:0}
+.store-badge img{height:44px;width:auto;display:block;object-fit:contain}
 .footer{padding:40px 20px;text-align:center;font-size:13px;color:var(--muted)}
 .footer a{color:var(--forest)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -183,11 +183,11 @@ details p{padding:0 4px 18px;color:var(--muted);max-width:60ch}
     <h2>Ready when you are.</h2>
     <p>Download LifeMaxxing and start building your own record of a life explored.</p>
     <div class="store-badges">
-      <a class="store-badge" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/badge-app-store-white.svg?v=36" alt="Download on the App Store" width="120" height="40">
+      <a class="store-badge" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer" aria-label="Download for iPhone">
+        <img src="/assets/badge-app-store-eq.png?v=45" alt="Download on the App Store" width="133" height="44">
       </a>
-      <a class="store-badge store-badge--google" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/badge-google-play.svg?v=36" alt="Get it on Google Play" width="135" height="40">
+      <a class="store-badge store-badge--google" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer" aria-label="Download for Android">
+        <img src="/assets/badge-google-play-eq.png?v=45" alt="Get it on Google Play" width="148" height="44">
       </a>
     </div>
   </section>

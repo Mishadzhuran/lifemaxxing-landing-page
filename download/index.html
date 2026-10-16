@@ -48,18 +48,12 @@ h1{font-family:var(--font-display);font-weight:500;font-size:clamp(40px,7vw,64px
   font-size:13px;color:rgba(247,244,237,.7);
 }
 .store-badges{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
-.store-badge{transition:transform .25s var(--ease)}
-.store-badge:hover{transform:translateY(-2px)}
-.store-badge img{height:52px;width:auto}
-.store-badge--google img{height:72px;margin:-10px 0}
-.qr-block{
-  margin:40px auto 0;padding:28px 24px;max-width:320px;
-  background:rgba(247,244,237,.06);border:1px solid rgba(247,244,237,.1);
-  display:none;flex-direction:column;align-items:center;gap:14px;
+.store-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:44px;line-height:0;transition:transform .25s var(--ease);
 }
-@media(min-width:860px){.qr-block{display:flex}}
-.qr-block img{width:160px;height:160px;background:var(--ivory);padding:12px}
-.qr-block span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,244,237,.55)}
+.store-badge:hover{transform:translateY(-2px)}
+.store-badge img{height:44px;width:auto;display:block;object-fit:contain}
 .links{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px;justify-content:center;font-size:14px;color:rgba(247,244,237,.65)}
 .links a:hover{color:var(--sand)}
 .foot{padding:0 0 40px;text-align:center;font-size:12.5px;color:rgba(247,244,237,.45)}
@@ -76,22 +70,17 @@ h1{font-family:var(--font-display);font-weight:500;font-size:clamp(40px,7vw,64px
 
   <main class="wrap panel">
     <span class="kicker">Download</span>
-    <h1>Go somewhere. Make it yours.</h1>
-    <p class="lead">Get LifeMaxxing on your phone and start building your own record of a life explored.</p>
+    <h1>Your next chapter starts outside.</h1>
+    <p class="lead">Download LifeMaxxing and start building your own record of a life explored.</p>
     <p class="hint" id="osHint">Available on iOS and Android</p>
 
     <div class="store-badges">
-      <a class="store-badge store-badge--apple" id="btnApple" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/badge-app-store-white.svg?v=36" alt="Download on the App Store" width="135" height="52">
+      <a class="store-badge store-badge--apple" id="btnApple" href="https://apps.apple.com/app/lifemaxxing" target="_blank" rel="noopener noreferrer" aria-label="Download for iPhone">
+        <img src="/assets/badge-app-store-eq.png?v=45" alt="Download on the App Store" width="133" height="44">
       </a>
-      <a class="store-badge store-badge--google" id="btnGoogle" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/badge-google-play.svg?v=36" alt="Get it on Google Play" width="150" height="52">
+      <a class="store-badge store-badge--google" id="btnGoogle" href="https://play.google.com/store/apps/details?id=com.lifemaxxing.app" target="_blank" rel="noopener noreferrer" aria-label="Download for Android">
+        <img src="/assets/badge-google-play-eq.png?v=45" alt="Get it on Google Play" width="148" height="44">
       </a>
-    </div>
-
-    <div class="qr-block" id="qrBlock">
-      <img src="/assets/qr-download.png" alt="QR code linking to the LifeMaxxing download page" width="160" height="160">
-      <span>Scan with your phone</span>
     </div>
 
     <nav class="links" aria-label="Helpful links">
